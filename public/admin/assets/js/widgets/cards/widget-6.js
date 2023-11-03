@@ -11,10 +11,10 @@ var KTCardsWidget6 = function () {
         }
 
         var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
-        var baseColor = KTUtil.getCssVariableValue('--kt-primary');
-        var secondaryColor = KTUtil.getCssVariableValue('--kt-gray-300');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');
 
         var options = {
             series: [{

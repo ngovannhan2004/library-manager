@@ -6,8 +6,8 @@
 .docs-aside {
 	display: flex;
 	flex-direction: column;
-	box-shadow: var(--kt-docs-aside-box-shadow);
-	background-color: var(--kt-docs-aside-bg-color);
+	box-shadow: var(--#{$prefix}docs-aside-box-shadow);
+	background-color: var(--#{$prefix}docs-aside-bg-color);
 	padding: 0;
 }
 

@@ -6,7 +6,9 @@
 .app-footer {
     transition: $app-footer-transition;
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    background-color: var(--#{$prefix}app-footer-bg-color);         
+    border-top: var(--#{$prefix}app-footer-border-top); 
 }
 
 // Desktop mode
@@ -14,23 +16,20 @@
     // Base
     .app-footer {
         @include property( z-index, $app-footer-z-index);
-
-        background-color: var(--kt-app-footer-bg-color); 
-        box-shadow: var(--kt-app-footer-box-shadow); 
-        border-top: var(--kt-app-footer-border-top); 
     }    
 
     // Vars
     :root {
-        --kt-app-footer-height: #{$app-footer-height};
+        --#{$prefix}app-footer-height: #{$app-footer-height};
     }
 
     // States
     .app-footer {
-        height: var(--kt-app-footer-height);
+        height: var(--#{$prefix}app-footer-height);
 
         [data-kt-app-footer-fixed="true"] & {        
             @include property( z-index, $app-footer-fixed-z-index);   
+            box-shadow: var(--#{$prefix}app-footer-box-shadow); 
             position: fixed;
             left: 0;
             right: 0;
@@ -43,30 +42,30 @@
         // Sidebar
         [data-kt-app-sidebar-fixed="true"][data-kt-app-sidebar-push-footer="true"] & {
             left: calc(
-                var(--kt-app-sidebar-width) + 
-                var(--kt-app-sidebar-gap-start, 0px) + 
-                var(--kt-app-sidebar-gap-end, 0px)
+                var(--#{$prefix}app-sidebar-width) + 
+                var(--#{$prefix}app-sidebar-gap-start, 0px) + 
+                var(--#{$prefix}app-sidebar-gap-end, 0px)
             );
         }   
 
         // Sidebar Panel
         [data-kt-app-sidebar-panel-fixed="true"][data-kt-app-sidebar-panel-push-footer="true"] & {
             left: calc(
-                var(--kt-app-sidebar-width) + 
-                var(--kt-app-sidebar-gap-start, 0px) + 
-                var(--kt-app-sidebar-gap-end, 0px) +
-                var(--kt-app-sidebar-panel-width) + 
-                var(--kt-app-sidebar-panel-gap-start, 0px) + 
-                var(--kt-app-sidebar-panel-gap-end, 0px)
+                var(--#{$prefix}app-sidebar-width) + 
+                var(--#{$prefix}app-sidebar-gap-start, 0px) + 
+                var(--#{$prefix}app-sidebar-gap-end, 0px) +
+                var(--#{$prefix}app-sidebar-panel-width) + 
+                var(--#{$prefix}app-sidebar-panel-gap-start, 0px) + 
+                var(--#{$prefix}app-sidebar-panel-gap-end, 0px)
             );
         }
 
         // Aside
         [data-kt-app-aside-fixed="true"][data-kt-app-aside-push-footer="true"] & {
             right: calc(
-                var(--kt-app-aside-width) + 
-                var(--kt-app-aside-gap-start, 0px) + 
-                var(--kt-app-aside-gap-end, 0px)
+                var(--#{$prefix}app-aside-width) + 
+                var(--#{$prefix}app-aside-gap-start, 0px) + 
+                var(--#{$prefix}app-aside-gap-end, 0px)
             );
         }
     } 
@@ -77,23 +76,20 @@
     // Base
     .app-footer {
         @include property( z-index, $app-footer-z-index-mobile);
-
-        background-color: var(--kt-app-footer-bg-color-mobile); 
-        box-shadow: var(--kt-app-footer-box-shadow-mobile); 
-        border-top: var(--kt-app-footer-border-top-mobile); 
     }
 
     // Vars
     body {
-        --kt-app-footer-height: #{$app-footer-height-mobile};
+        --#{$prefix}app-footer-height: #{$app-footer-height-mobile};
     }
 
     // States
     .app-footer {
-        height: var(--kt-app-footer-height);
+        height: var(--#{$prefix}app-footer-height);
 
         [data-kt-app-footer-fixed-mobile="true"] & {
             @include property( z-index, $app-footer-fixed-z-index-mobile);
+            box-shadow: var(--#{$prefix}app-footer-box-shadow); 
             position: fixed;
             left: 0;
             right: 0;

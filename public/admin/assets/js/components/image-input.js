@@ -151,7 +151,7 @@ var KTImageInput = function(element, options) {
         return the.inputElement;
     }
 
-    the.goElement = function() {
+    the.getElement = function() {
         return the.element;
     }
     
@@ -202,13 +202,6 @@ KTImageInput.createInstances = function(selector = '[data-kt-image-input]') {
 KTImageInput.init = function() {
     KTImageInput.createInstances();
 };
-
-// On document ready
-if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', KTImageInput.init);
-} else {
-    KTImageInput.init();
-}
 
 // Webpack Support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

@@ -30,8 +30,8 @@ var KTSlidersWidget1 = function() {
         }
 
         var height = parseInt(KTUtil.css(element, 'height'));
-        var baseColor = KTUtil.getCssVariableValue('--kt-' + 'primary');
-        var lightColor = KTUtil.getCssVariableValue('--kt-' + 'primary-light' );         
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + 'primary');
+        var lightColor = KTUtil.getCssVariableValue('--bs-' + 'primary-light' );         
 
         var options = {
             series: [data],

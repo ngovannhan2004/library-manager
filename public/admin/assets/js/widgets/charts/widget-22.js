@@ -32,10 +32,10 @@ var KTChartsWidget22 = function () {
                 }
             },
             colors: [
-                KTUtil.getCssVariableValue('--kt-info'), 
-                KTUtil.getCssVariableValue('--kt-success'), 
-                KTUtil.getCssVariableValue('--kt-primary'), 
-                KTUtil.getCssVariableValue('--kt-danger') 
+                KTUtil.getCssVariableValue('--bs-info'), 
+                KTUtil.getCssVariableValue('--bs-success'), 
+                KTUtil.getCssVariableValue('--bs-primary'), 
+                KTUtil.getCssVariableValue('--bs-danger') 
             ],           
             stroke: {
               width: 0

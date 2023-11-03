@@ -17,10 +17,10 @@ var KTChartsWidget2 = function () {
 
         var color = element.getAttribute('data-kt-chart-color');
         var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-800');
-        var strokeColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
-        var baseColor = KTUtil.getCssVariableValue('--kt-' + color);
-        var lightColor = KTUtil.getCssVariableValue('--kt-' + color + '-light');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-800');
+        var strokeColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
+        var lightColor = KTUtil.getCssVariableValue('--bs-' + color + '-light');
 
         var options = {
             series: [{

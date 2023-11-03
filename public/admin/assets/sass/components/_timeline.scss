@@ -32,7 +32,12 @@
 		transform: translate(50%);
 		border-left-width: 1px;
 		border-left-style: dashed;
-		border-left-color: var(--kt-gray-300); 
+		border-left-color: var(--#{$prefix}gray-300); 
+	}
+
+	// Line solid
+	.timeline-line-solid {				
+		border-left-style: solid !important;				
 	}
 
 	// Icon

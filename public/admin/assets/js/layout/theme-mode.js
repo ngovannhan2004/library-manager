@@ -9,10 +9,10 @@ var KTThemeMode = function () {
     var getMode = function() {
 		var mode;
 
-		if ( document.documentElement.hasAttribute("data-theme") ) {
-            return document.documentElement.getAttribute("data-theme");
-        } else if ( localStorage.getItem("data-theme") !== null ) {
-			return localStorage.getItem("data-theme");
+		if ( document.documentElement.hasAttribute("data-bs-theme") ) {
+            return document.documentElement.getAttribute("data-bs-theme");
+        } else if ( localStorage.getItem("data-bs-theme") !== null ) {
+			return localStorage.getItem("data-bs-theme");
 		} else if ( getMenuMode() === "system" ) {
 			return getSystemMode();
 		}
@@ -39,7 +39,7 @@ var KTThemeMode = function () {
 		document.documentElement.setAttribute("data-kt-theme-mode-switching", "true");
 		
 		// Set mode to the target document.documentElement
-		document.documentElement.setAttribute("data-theme", mode);
+		document.documentElement.setAttribute("data-bs-theme", mode);
 
 		// Disable switching state
 		setTimeout(function() {
@@ -47,11 +47,11 @@ var KTThemeMode = function () {
 		}, 300);
 		
 		// Store mode value in storage
-        localStorage.setItem("data-theme", mode);			
+        localStorage.setItem("data-bs-theme", mode);			
 		
 		// Set active menu item
 		if ( activeMenuItem ) {
-			localStorage.setItem("data-theme-mode", menuMode);
+			localStorage.setItem("data-bs-theme-mode", menuMode);
 			setActiveMenuItem(activeMenuItem);
 		}			
 
@@ -61,14 +61,18 @@ var KTThemeMode = function () {
     }
 
 	var getMenuMode = function() {
+		if (!menu) {
+			return null;
+		}
+
 		var menuItem = menu ? menu.querySelector('.active[data-kt-element="mode"]') : null;
 
 		if ( menuItem && menuItem.getAttribute('data-kt-value') ) {
             return menuItem.getAttribute('data-kt-value');
-        } else if ( document.documentElement.hasAttribute("data-theme-mode") ) {
-			return document.documentElement.getAttribute("data-theme-mode")
-		} else if ( localStorage.getItem("data-theme-mode") !== null ) {
-			return localStorage.getItem("data-theme-mode");
+        } else if ( document.documentElement.hasAttribute("data-bs-theme-mode") ) {
+			return document.documentElement.getAttribute("data-bs-theme-mode")
+		} else if ( localStorage.getItem("data-bs-theme-mode") !== null ) {
+			return localStorage.getItem("data-bs-theme-mode");
 		} else {
 			return typeof defaultThemeMode !== "undefined" ? defaultThemeMode : "light";
 		}
@@ -97,7 +101,7 @@ var KTThemeMode = function () {
 		}
 
 		item.classList.add("active");
-		localStorage.setItem("data-theme-mode", menuMode);
+		localStorage.setItem("data-bs-theme-mode", menuMode);
 	}
 
 	var handleMenu = function() {

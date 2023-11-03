@@ -14,8 +14,8 @@ var KTChartsWidget27 = function () {
             return;
         }
         
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-800');    
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-800');    
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
         var maxValue = 18;
         
         var options = {

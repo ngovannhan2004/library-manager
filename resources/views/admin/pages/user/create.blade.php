@@ -10,11 +10,19 @@
     {{auth()->user()->email}}
 @endsection
 @section('css_custom')
-    <link href="{{asset('/admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css"/>
+    <!-- Tempus Dominus Styles -->
 @endsection
 @section('js_custom')
-    <script src="{{asset('/admin/assets/plugins/global/plugins.bundle.js')}}"></script>
 
+    <script>
+        new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization"), {
+            localization: {
+                locale: "de",
+                startOfTheWeek: 1,
+                format: "dd/MM/yyyy"
+            }
+        });
+    </script>
 @endsection
 @section('menu')
     @php
@@ -29,7 +37,7 @@
     Create User
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.users.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('admin.users.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-list"></i> List User
     </a>
 @endsection
@@ -41,20 +49,31 @@
         @csrf
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
-            <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên" value="{{ old('name') }}">
+            <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
+                   value="{{ old('name') }}">
         </div>
         <div class="mb-10">
             <label for="email" class="required form-label">Email</label>
-            <input name="email" type="text" class="form-control form-control-solid" placeholder="Nhập email" value="{{ old('email') }}">
+            <input name="email" type="text" class="form-control form-control-solid" placeholder="Nhập email"
+                   value="{{ old('email') }}">
         </div>
         <div class="mb-10">
             <label for="password" class="required form-label">Mật khẩu</label>
-            <input name="password" type="password" class="form-control form-control-solid" placeholder="Nhập mật khẩu" value="{{ old('password') }}">
+            <input name="password" type="password" class="form-control form-control-solid" placeholder="Nhập mật khẩu"
+                   value="{{ old('password') }}">
         </div>
         <div class="mb-10">
-            <label for="namsinh" class="required form-label">Năm Sinh</label>
-            <input name="namsinh" type="text" class="form-control form-control-solid" placeholder="Nhập năm sinh" value="{{ old('namsinh') }}">
+            <label for="namsinh" class="required form-label">Năm sinh</label>
+            <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
+                 data-td-target-toggle="nearest">
+                <input type="text" class="form-control" name="namsinh" data-td-target="#kt_td_picker_localization"/>
+                <span class="input-group-text" data-td-target="#kt_td_picker_localization"
+                      data-td-toggle="datetimepicker">
+        <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
+    </span>
+            </div>
         </div>
+
         <div class="mb-10">
             <label for="gender" class="required form-label">Gender</label>
             <select name="gender" class="form-control form-control-solid">
@@ -66,11 +85,15 @@
 
         <div class="mb-10">
             <label for="sdt" class="required form-label">Số Điện Thoại</label>
-            <input name="sdt" type="text" class="form-control form-control-solid" placeholder="Nhập số điện thoại" value="{{ old('sdt') }}">
+            <input name="sdt" type="text" class="form-control form-control-solid" placeholder="Nhập số điện thoại"
+                   value="{{ old('sdt') }}">
         </div>
         <div class="mb-10">
             <label for="role" class="required form-label">Role</label>
-            <input name="role" type="text" class="form-control form-control-solid" placeholder="Nhập role" value="{{ old('role') }}">
+            <select name="role" class="form-control form-control-solid">
+                <option value="admin" {{ old('role') === 'admin' ? 'selected' : '' }}>Admin</option>
+                <option value="user" {{ old('role') === 'user' ? 'selected' : '' }}>User</option>
+            </select>
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
@@ -78,7 +101,6 @@
             </button>
         </div>
     </form>
-
 
 @endsection
 @section('footer_card')

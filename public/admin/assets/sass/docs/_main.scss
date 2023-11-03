@@ -4,7 +4,7 @@
 
 // Wrapper
 .docs-wrapper {
-	background-color: var(--kt-docs-page-bg-color);
+	background-color: var(--#{$prefix}docs-page-bg-color);
 }
 
 // Desktop Mode

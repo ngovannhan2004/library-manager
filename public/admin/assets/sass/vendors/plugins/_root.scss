@@ -3,34 +3,34 @@
 //
 
 :root,
-[data-theme="light"] {
+[data-bs-theme="light"] {
 	// Select2
 	
 	// Prismjs
-	--kt-highlight-bg: #{$highlight-bg};
+	--#{$prefix}prismjs-bg: #{$prismjs-bg};
 
-	--kt-highlight-border: #{$highlight-border};
+	--#{$prefix}prismjs-border: #{$prismjs-border};
 
-	--kt-highlight-btn-bg: #{$highlight-btn-bg};
-	--kt-highlight-btn-bg-hover: #{$highlight-btn-bg-hover};
-	--kt-highlight-btn-color: #{$highlight-btn-color};
-	--kt-highlight-btn-color-hover: #{$highlight-btn-color-hover};
+	--#{$prefix}prismjs-btn-bg: #{$prismjs-btn-bg};
+	--#{$prefix}prismjs-btn-bg-hover: #{$prismjs-btn-bg-hover};
+	--#{$prefix}prismjs-btn-color: #{$prismjs-btn-color};
+	--#{$prefix}prismjs-btn-color-hover: #{$prismjs-btn-color-hover};
 
-	--kt-highlight-scrollbar-color: #{$highlight-scrollbar-color};
-	--kt-highlight-scrollbar-color: #{$highlight-scrollbar-hover-color};
+	--#{$prefix}prismjs-scrollbar-color: #{$prismjs-scrollbar-color};
+	--#{$prefix}prismjs-scrollbar-color-hover: #{$prismjs-scrollbar-color-hover};
 }
 
-[data-theme="dark"] {
+[data-bs-theme="dark"] {
 	// Prismjs
-	--kt-highlight-bg: #{$highlight-bg-dark};
+	--#{$prefix}prismjs-bg: #{$prismjs-bg-dark};
 
-	--kt-highlight-border: #{$highlight-border-dark};
+	--#{$prefix}prismjs-border: #{$prismjs-border-dark};
 
-	--kt-highlight-btn-bg: #{$highlight-btn-bg-dark};
-	--kt-highlight-btn-bg-hover: #{$highlight-btn-bg-hover-dark};
-	--kt-highlight-btn-color: #{$highlight-btn-color-dark};
-	--kt-highlight-btn-color-hover: #{$highlight-btn-color-hover-dark};
+	--#{$prefix}prismjs-btn-bg: #{$prismjs-btn-bg-dark};
+	--#{$prefix}prismjs-btn-bg-hover: #{$prismjs-btn-bg-hover-dark};
+	--#{$prefix}prismjs-btn-color: #{$prismjs-btn-color-dark};
+	--#{$prefix}prismjs-btn-color-hover: #{$prismjs-btn-color-hover-dark};
 
-	--kt-highlight-scrollbar-color: #{$highlight-scrollbar-color-dark};
-	--kt-highlight-scrollbar-color-hover: #{$highlight-scrollbar-hover-color-dark};
+	--#{$prefix}prismjs-scrollbar-color: #{$prismjs-scrollbar-color-dark};
+	--#{$prefix}prismjs-scrollbar-color-hover: #{$prismjs-scrollbar-color-hover-dark};
 }

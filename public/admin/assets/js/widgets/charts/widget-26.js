@@ -16,10 +16,10 @@ var KTChartsWidget26 = function () {
         }
         
         var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
-        var baseColor = KTUtil.getCssVariableValue('--kt-primary');
-        var lightColor = KTUtil.getCssVariableValue('--kt-primary');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        var lightColor = KTUtil.getCssVariableValue('--bs-primary');
         var chartInfo = element.getAttribute('data-kt-chart-info');
 
         var options = {

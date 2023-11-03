@@ -49,7 +49,7 @@ var KTChartsWidget39 = (function () {
 			});
 
 			xRenderer.grid.template.setAll({
-				stroke: am5.color(KTUtil.getCssVariableValue("--kt-gray-700"))
+				stroke: am5.color(KTUtil.getCssVariableValue("--bs-gray-700"))
 			});
 
 			var yRenderer = am5radar.AxisRendererRadial.new(root, {
@@ -57,7 +57,7 @@ var KTChartsWidget39 = (function () {
 			});	
 			
 			yRenderer.grid.template.setAll({
-				stroke: am5.color(KTUtil.getCssVariableValue("--kt-gray-700"))
+				stroke: am5.color(KTUtil.getCssVariableValue("--bs-gray-700"))
 			});
 
 			var xAxis = chart.xAxes.push(
@@ -79,12 +79,12 @@ var KTChartsWidget39 = (function () {
 
 			xRenderer.labels.template.setAll({
 				fontSize: 11,
-				fill: am5.color(KTUtil.getCssVariableValue("--kt-gray-800")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-800")),
 			});
 
 			yRenderer.labels.template.setAll({
 				fontSize: 11,
-				fill: am5.color(KTUtil.getCssVariableValue("--kt-gray-800")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-800")),
 			});
 
 			//yAxis.get("renderer").labels.template.set("forceHidden", true);

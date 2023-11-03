@@ -54,7 +54,7 @@ var KTChartsWidget17 = (function () {
             series.labels.template.setAll({
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             series.states.create("hidden", {
@@ -73,12 +73,12 @@ var KTChartsWidget17 = (function () {
             // Set data
             // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
             series.data.setAll([
-                { value: 10, category: "One", fill: am5.color(KTUtil.getCssVariableValue('--kt-primary')) },
-                { value: 9, category: "Two", fill: am5.color(KTUtil.getCssVariableValue('--kt-success')) },
-                { value: 6, category: "Three", fill: am5.color(KTUtil.getCssVariableValue('--kt-danger')) },
-                { value: 5, category: "Four", fill: am5.color(KTUtil.getCssVariableValue('--kt-warning')) },
-                { value: 4, category: "Five", fill: am5.color(KTUtil.getCssVariableValue('--kt-info')) },
-                { value: 3, category: "Six", fill: am5.color(KTUtil.getCssVariableValue('--kt-secondary')) }
+                { value: 10, category: "One", fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')) },
+                { value: 9, category: "Two", fill: am5.color(KTUtil.getCssVariableValue('--bs-success')) },
+                { value: 6, category: "Three", fill: am5.color(KTUtil.getCssVariableValue('--bs-danger')) },
+                { value: 5, category: "Four", fill: am5.color(KTUtil.getCssVariableValue('--bs-warning')) },
+                { value: 4, category: "Five", fill: am5.color(KTUtil.getCssVariableValue('--bs-info')) },
+                { value: 3, category: "Six", fill: am5.color(KTUtil.getCssVariableValue('--bs-secondary')) }
             ]);
 
             series.appear(1000, 100);

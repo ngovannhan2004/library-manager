@@ -112,10 +112,10 @@ var KTTablesWidget16 = function () {
         
         var height = parseInt(KTUtil.css(element, 'height'));
         var color = element.getAttribute('data-kt-chart-color');
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-800');
-        var strokeColor = KTUtil.getCssVariableValue('--kt-gray-300');
-        var baseColor = KTUtil.getCssVariableValue('--kt-' + color);
-        var lightColor = KTUtil.getCssVariableValue('--kt-body-bg');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-800');
+        var strokeColor = KTUtil.getCssVariableValue('--bs-gray-300');
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
+        var lightColor = KTUtil.getCssVariableValue('--bs-body-bg');
 
         var options = {
             series: [{

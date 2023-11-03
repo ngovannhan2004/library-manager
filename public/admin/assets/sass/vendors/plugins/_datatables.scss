@@ -10,7 +10,7 @@ table.dataTable {
     margin: 0 !important;
 
     th {
-        border-bottom-color: var(--kt-table-border-color);
+        border-bottom-color: var(--#{$prefix}table-border-color);
     }
 }
 
@@ -27,14 +27,14 @@ div.dataTables_wrapper div.dataTables_info {
     display: flex;
     flex-direction: column;    
     font-weight: $font-weight-semibold;
-    color: var(--kt-gray-700);
+    color: var(--#{$prefix}gray-700);
     padding: $toolbar-spacing;
 
     .select-info, 
     .select-item {
         margin-left: 0;
         font-size: 0.9rem;
-        color: var(--kt-text-muted);
+        color: var(--#{$prefix}text-muted);
     }
 }
 
@@ -97,12 +97,12 @@ table.dataTable > thead {
 
 table.dataTable > thead .sorting_asc:after {
     opacity: 1;
-    @include svg-bg-icon(arrow-top, var(--kt-text-muted));
+    @include svg-bg-icon(arrow-top, var(--#{$prefix}text-muted));
 }
 
 table.dataTable > thead .sorting_desc:after {
     opacity: 1;
-    @include svg-bg-icon(arrow-bottom, var(--kt-text-muted));
+    @include svg-bg-icon(arrow-bottom, var(--#{$prefix}text-muted));
 }
 
 // Processing
@@ -113,22 +113,28 @@ div.dataTables_wrapper {
 
     div.dataTables_processing {
         @include border-radius($border-radius);
-        box-shadow: var(--kt-dropdown-box-shadow);
-        background-color: var(--kt-tooltip-bg);
-        color: var(--kt-gray-700);
+        box-shadow: var(--#{$prefix}dropdown-box-shadow);
+        background-color: var(--#{$prefix}tooltip-bg);
+        color: var(--#{$prefix}gray-700);
         font-weight: $font-weight-semibold;
         margin: 0 !important;
         width: auto;
         padding: 1rem 2rem !important;
         transform: translateX(-50%) translateY(-50%);
+
+        > div {
+            display: none;    
+        }
     }
 }
 
 // Responsive
 table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control, 
-table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control,
+table.dataTable.dtr-column.collapsed > tbody > tr > td.dtr-control, 
+table.dataTable.dtr-column.collapsed > tbody > tr > th.dtr-control {
     $icon-size:  1.35rem;
-
+    
     &:before {
         top: 50%;
         left: 0;
@@ -148,18 +154,27 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
         content: ".";
 
         :root &,
-        [data-theme="light"] & {
+        [data-bs-theme="light"] & {
             @include svg-bg-icon(expand, $gray-600);  
         }
 
-        [data-theme="dark"] & {
+        [data-bs-theme="dark"] & {
             @include svg-bg-icon(expand, $gray-600-dark);  
+        }
+    }
+
+    &.dtr-control-last {
+        &:before {
+            left: 100%;
+            right: 0;
         }
     }
 }
 
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before, 
-table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before {
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before,
+table.dataTable.dtr-column.collapsed > tbody > tr.parent > td.dtr-control:before, 
+table.dataTable.dtr-column.collapsed > tbody > tr.parent > th.dtr-control:before {
     @include svg-bg-icon(collapse, $primary);
 }
 
@@ -175,44 +190,83 @@ table.dataTable > tbody > tr.child span.dtr-data {
 
 // Striped
 table.dataTable.table-striped > tbody > tr.odd > * {
-    box-shadow: inset 0 0 0 9999px var(--bs-table-striped-bg);
+    box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-striped-bg);
 }
 
 table.dataTable > tbody > tr.selected > * {
-    box-shadow: inset 0 0 0 9999px var(--kt-primary);
-    color: var(--kt-primary-inverse);
+    box-shadow: inset 0 0 0 9999px var(--#{$prefix}primary);
+    color: var(--#{$prefix}primary-inverse);
+
+    a:not([class="btn"]) {
+        color: var(--#{$prefix}primary-light);
+        font-weight: $font-weight-semibold;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+
+        &:hover {
+            color: var(--#{$prefix}primary-inverse);
+        }
+    }
 }
 
 // Scroll
 div.dataTables_scrollBody {
     border-left: 0 !important;
+
+    .sorting_disabled.sorting_asc,
+    .sorting_disabled.sorting_desc {
+        &:after {
+            display: none !important;
+        }
+    }
 }
 
-.dataTables_scroll .dataTables_scrollBody .table {
-    thead {
-        line-height: 0;    
-
-        .sorting {
-            &:after,
-            &:before {
-                display: none !important;
-            }
+.dataTables_scroll > .dataTables_scrollBody > .table > thead {
+    line-height: 0;
+    
+    .sorting {
+        &:after,
+        &:before {
+            display: none !important;
         }
     }
 }
 
 div.dtfc-right-top-blocker,
 div.dtfc-left-top-blocker {
-    background-color: var(--kt-body-bg);
+    background-color: var(--#{$prefix}body-bg);
 }
 
 // Fixed column
 table.dataTable thead tr > .dtfc-fixed-left, 
 table.dataTable thead tr > .dtfc-fixed-right {
-    background-color: var(--kt-body-bg);
+    background-color: var(--#{$prefix}body-bg);
 }
 
 table.dataTable tbody tr > .dtfc-fixed-left, 
 table.dataTable tbody tr > .dtfc-fixed-right {
-    background-color: var(--kt-body-bg);
+    background-color: var(--#{$prefix}body-bg);
+}
+
+// Fixed header
+.dtfh-floatingparent {
+    box-shadow: var(--#{$prefix}box-shadow-sm);
+
+    .table {
+        background-color: var(--#{$prefix}body-bg) !important;
+    }
+    
+    &,
+    .table,
+    .table th {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+}
+
+// Child details
+.dtr-details {
+    li {
+        display: flex;    
+    }    
 }

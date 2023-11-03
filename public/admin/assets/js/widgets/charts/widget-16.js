@@ -124,7 +124,7 @@ var KTChartsWidget16 = (function () {
                 paddingTop: 10,
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             xAxis.get("renderer").grid.template.setAll({
@@ -144,11 +144,11 @@ var KTChartsWidget16 = (function () {
                 paddingLeft: 10,
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             yAxis.get("renderer").grid.template.setAll({
-                stroke: am5.color(KTUtil.getCssVariableValue('--kt-gray-300')),
+                stroke: am5.color(KTUtil.getCssVariableValue('--bs-gray-300')),
                 strokeWidth: 1,
                 strokeOpacity: 1,
                 strokeDasharray: [3]
@@ -170,7 +170,7 @@ var KTChartsWidget16 = (function () {
             paretoAxis.get("renderer").labels.template.setAll({
                 fontWeight: "400",
                 fontSize: 13,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             paretoAxisRenderer.grid.template.set("forceHidden", true);
@@ -211,7 +211,7 @@ var KTChartsWidget16 = (function () {
                     yAxis: paretoAxis,
                     valueYField: "pareto",
                     categoryXField: "country",
-                    stroke: am5.color(KTUtil.getCssVariableValue('--kt-dark')),
+                    stroke: am5.color(KTUtil.getCssVariableValue('--bs-dark')),
                     maskBullets: false,
                 })
             );
@@ -221,8 +221,8 @@ var KTChartsWidget16 = (function () {
                     locationY: 1,
                     sprite: am5.Circle.new(root, {
                         radius: 5,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary')),
-                        stroke: am5.color(KTUtil.getCssVariableValue('--kt-dark'))
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')),
+                        stroke: am5.color(KTUtil.getCssVariableValue('--bs-dark'))
                     }),
                 });
             });

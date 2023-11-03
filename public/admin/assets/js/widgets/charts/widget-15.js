@@ -47,7 +47,7 @@ var KTChartsWidget15 = (function () {
                     visits: 725,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/united-states.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -55,7 +55,7 @@ var KTChartsWidget15 = (function () {
                     visits: 625,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/united-kingdom.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -63,7 +63,7 @@ var KTChartsWidget15 = (function () {
                     visits: 602,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/china.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -71,7 +71,7 @@ var KTChartsWidget15 = (function () {
                     visits: 509,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/japan.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -79,7 +79,7 @@ var KTChartsWidget15 = (function () {
                     visits: 322,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/germany.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -87,7 +87,7 @@ var KTChartsWidget15 = (function () {
                     visits: 214,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/france.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -95,7 +95,7 @@ var KTChartsWidget15 = (function () {
                     visits: 204,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/india.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary')),        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')),        
                     }
                 },
                 {
@@ -103,7 +103,7 @@ var KTChartsWidget15 = (function () {
                     visits: 200,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/spain.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -111,7 +111,7 @@ var KTChartsWidget15 = (function () {
                     visits: 165,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/italy.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -119,7 +119,7 @@ var KTChartsWidget15 = (function () {
                     visits: 152,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/russia.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -127,7 +127,7 @@ var KTChartsWidget15 = (function () {
                     visits: 125,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/norway.svg",
                     columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
                 {
@@ -135,7 +135,7 @@ var KTChartsWidget15 = (function () {
                     visits: 99,
                     icon: "https://www.amcharts.com/wp-content/uploads/flags/canada.svg",
                    columnSettings: { 
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary'))        
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary'))        
                     }
                 },
             ];
@@ -167,7 +167,7 @@ var KTChartsWidget15 = (function () {
                 paddingTop: 20,                
                 fontWeight: "400",
                 fontSize: 10,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
             
             xAxis.get("renderer").grid.template.setAll({
@@ -184,7 +184,7 @@ var KTChartsWidget15 = (function () {
             );
 
             yAxis.get("renderer").grid.template.setAll({
-                stroke: am5.color(KTUtil.getCssVariableValue('--kt-gray-300')),
+                stroke: am5.color(KTUtil.getCssVariableValue('--bs-gray-300')),
                 strokeWidth: 1,
                 strokeOpacity: 1,
                 strokeDasharray: [3]
@@ -193,7 +193,7 @@ var KTChartsWidget15 = (function () {
             yAxis.get("renderer").labels.template.setAll({
                 fontWeight: "400",
                 fontSize: 10,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500'))
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500'))
             });
 
             // Add series

@@ -16,11 +16,11 @@ var KTChartsWidget9 = function () {
         }
 
         var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-400');
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');    
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-400');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');    
 
-        var baseColor = KTUtil.getCssVariableValue('--kt-gray-200');
-        var secondaryColor = KTUtil.getCssVariableValue('--kt-primary');
+        var baseColor = KTUtil.getCssVariableValue('--bs-gray-200');
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-primary');
 
 
         var options = {
@@ -128,7 +128,7 @@ var KTChartsWidget9 = function () {
                 show: true,
                 position: 'front',
                 stroke: {
-                    color: KTUtil.getCssVariableValue('--kt-border-dashed-color'),
+                    color: KTUtil.getCssVariableValue('--bs-border-dashed-color'),
                     width: 1,
                     dashArray: 0,
                 },
@@ -145,7 +145,7 @@ var KTChartsWidget9 = function () {
             },
             markers: {
                 colors: [baseColor, secondaryColor],
-                strokeColor: [KTUtil.getCssVariableValue('--kt-primary'), KTUtil.getCssVariableValue('--kt-gray-300')],
+                strokeColor: [KTUtil.getCssVariableValue('--bs-primary'), KTUtil.getCssVariableValue('--bs-gray-300')],
                 strokeWidth: 3
             }
         };        

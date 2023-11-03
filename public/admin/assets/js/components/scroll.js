@@ -1,5 +1,7 @@
 "use strict";
 
+var KTScrollHandlersInitialized = false;
+
 // Class definition
 var KTScroll = function(element, options) {
     ////////////////////////////
@@ -156,6 +158,8 @@ var KTScroll = function(element, options) {
         height = height - _getElementSpacing(the.element); 
 
         // Height dependencies
+        //console.log('Q:' + JSON.stringify(dependencies));
+
         if ( dependencies !== null ) {
             var elements = document.querySelectorAll(dependencies);
 
@@ -340,15 +344,13 @@ KTScroll.handleResize = function() {
 // Global initialization
 KTScroll.init = function() {
     KTScroll.createInstances();
-    KTScroll.handleResize();
-};
 
-// On document ready
-if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', KTScroll.init);
-} else {
-    KTScroll.init();
-}
+    if (KTScrollHandlersInitialized === false) {
+        KTScroll.handleResize();
+
+        KTScrollHandlersInitialized = true;
+    }    
+};
 
 // Webpack Support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

@@ -17,9 +17,9 @@ var KTCardWidget8 = function () {
         }
 
         var height = parseInt(KTUtil.css(element, 'height'));       
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
-        var baseColor = KTUtil.getCssVariableValue('--kt-gray-800');
-        var lightColor = KTUtil.getCssVariableValue('--kt-success');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-gray-800');
+        var lightColor = KTUtil.getCssVariableValue('--bs-success');
 
         var options = {
             series: [{

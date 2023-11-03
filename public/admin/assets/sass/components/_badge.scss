@@ -3,8 +3,6 @@
 //
 
 .badge {
-    --#{$prefix}badge-color: var(--kt-badge-color);
-
     display: inline-flex;
     align-items: center;
     
@@ -60,18 +58,18 @@
 
 @each $name, $value in $theme-colors {
     .badge-#{$name} {
-        color: var(--kt-#{$name}-inverse);
-        background-color: var(--kt-#{$name});
+        color: var(--#{$prefix}#{$name}-inverse);
+        background-color: var(--#{$prefix}#{$name});
 
         &.badge-outline {
-            border: 1px solid var(--kt-#{$name});
-            color: var(--kt-#{$name});
+            border: 1px solid var(--#{$prefix}#{$name});
+            color: var(--#{$prefix}#{$name});
             background-color: transparent;
         }
     }
 
     .badge-light-#{$name} {
-        color: var(--kt-#{$name});
-        background-color: var(--kt-#{$name}-light);
+        color: var(--#{$prefix}#{$name});
+        background-color: var(--#{$prefix}#{$name}-light);
     }    
 }

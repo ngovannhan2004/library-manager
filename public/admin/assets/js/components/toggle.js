@@ -210,13 +210,6 @@ KTToggle.init = function() {
     KTToggle.createInstances();
 };
 
-// On document ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', KTToggle.init);
-} else {
-    KTToggle.init();
-}
-
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = KTToggle;

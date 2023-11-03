@@ -168,7 +168,7 @@ var KTTablesWidget4 = function () {
 
             // Populate elements with data
             const imageSrc = image.getAttribute('data-kt-src-path');
-            image.setAttribute('src', imageSrc + d.image + '.gif');
+            image.setAttribute('src', imageSrc + d.image + '.png');
             name.innerText = d.name;
             description.innerText = d.description;
             cost.innerText = d.cost;
