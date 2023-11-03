@@ -3,11 +3,11 @@
 <html lang="en">
 <!--begin::Head-->
 <head>
-    <title>@yield('')</title>
+    <title>@yield('title')</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta property="og:locale" content="en_US"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="https://youtube-thumbnail-grabber.com/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://youtube-thumbnail-grabber.com/images/favicon-32x32.png">
     <meta property="og:type" content="article"/>
     <meta property="og:url" content="https://keenthemes.com/metronic"/>
     <meta property="og:site_name" content="Keenthemes | Metronic"/>

@@ -16,12 +16,12 @@ var KTChartsWidget36 = function () {
         }
         
         var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
-        var baseprimaryColor = KTUtil.getCssVariableValue('--kt-primary');
-        var lightprimaryColor = KTUtil.getCssVariableValue('--kt-primary');
-        var basesuccessColor = KTUtil.getCssVariableValue('--kt-success');
-        var lightsuccessColor = KTUtil.getCssVariableValue('--kt-success');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseprimaryColor = KTUtil.getCssVariableValue('--bs-primary');
+        var lightprimaryColor = KTUtil.getCssVariableValue('--bs-primary');
+        var basesuccessColor = KTUtil.getCssVariableValue('--bs-success');
+        var lightsuccessColor = KTUtil.getCssVariableValue('--bs-success');
 
         var options = {
             series: [{

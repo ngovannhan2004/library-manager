@@ -145,11 +145,10 @@ KTScrolltop.getInstance = function(element) {
 KTScrolltop.createInstances = function(selector = '[data-kt-scrolltop="true"]') {
     // Initialize Menus
     var elements = document.body.querySelectorAll(selector);
-    var scrolltop;
 
     if ( elements && elements.length > 0 ) {
         for (var i = 0, len = elements.length; i < len; i++) {
-            scrolltop = new KTScrolltop(elements[i]);
+            new KTScrolltop(elements[i]);
         }
     }
 }
@@ -158,13 +157,6 @@ KTScrolltop.createInstances = function(selector = '[data-kt-scrolltop="true"]') 
 KTScrolltop.init = function() {
     KTScrolltop.createInstances();
 };
-
-// On document ready
-if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', KTScrolltop.init);
-} else {
-    KTScrolltop.init();
-}
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

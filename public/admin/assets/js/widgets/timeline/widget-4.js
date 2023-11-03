@@ -75,7 +75,7 @@ var KTTimelineWidget4 = function () {
                 group: 'ui',
                 start: moment(now).add(30, 'minutes'),
                 end: moment(now).add(2.5, 'hours'),
-                content: 'Landing pages',
+                content: 'Landing page',
                 progress: "55%",
                 color: 'danger',
                 users: [
@@ -137,19 +137,19 @@ var KTTimelineWidget4 = function () {
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
                     <div class="position-absolute rounded-pill d-block bg-${item.color} start-0 top-0 h-100 z-index-1" style="width: ${item.progress};"></div>
-
+        
                     <div class="d-flex align-items-center position-relative z-index-2">
                         <div class="symbol-group symbol-hover flex-nowrap me-3">
                             ${userTemplate}
                         </div>
-
+        
                         <a href="#" class="fw-bold text-white text-hover-dark">${item.content}</a>
                     </div>
-
+        
                     <div class="d-flex flex-center bg-body rounded-pill fs-7 fw-bolder ms-auto h-100 px-3 position-relative z-index-2">
                         ${item.progress}
                     </div>
-                </div>
+                </div>        
                 `;
             },
 
@@ -163,7 +163,7 @@ var KTTimelineWidget4 = function () {
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);
+                    }, 1000);      
                 }
             }
         };
@@ -172,7 +172,7 @@ var KTTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {
+        timeline.on("currentTimeTick", () => {            
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -313,19 +313,19 @@ var KTTimelineWidget4 = function () {
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
                     <div class="position-absolute rounded-pill d-block bg-${item.color} start-0 top-0 h-100 z-index-1" style="width: ${item.progress};"></div>
-
+        
                     <div class="d-flex align-items-center position-relative z-index-2">
                         <div class="symbol-group symbol-hover flex-nowrap me-3">
                             ${userTemplate}
                         </div>
-
+        
                         <a href="#" class="fw-bold text-white text-hover-dark">${item.content}</a>
                     </div>
-
+        
                     <div class="d-flex flex-center bg-body rounded-pill fs-7 fw-bolder ms-auto h-100 px-3 position-relative z-index-2">
                         ${item.progress}
                     </div>
-                </div>
+                </div>        
                 `;
             },
 
@@ -339,7 +339,7 @@ var KTTimelineWidget4 = function () {
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);
+                    }, 1000);      
                 }
             }
         };
@@ -348,7 +348,7 @@ var KTTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {
+        timeline.on("currentTimeTick", () => {            
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
@@ -489,33 +489,33 @@ var KTTimelineWidget4 = function () {
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
                     <div class="position-absolute rounded-pill d-block bg-${item.color} start-0 top-0 h-100 z-index-1" style="width: ${item.progress};"></div>
-
+        
                     <div class="d-flex align-items-center position-relative z-index-2">
                         <div class="symbol-group symbol-hover flex-nowrap me-3">
                             ${userTemplate}
                         </div>
-
+        
                         <a href="#" class="fw-bold text-white text-hover-dark">${item.content}</a>
                     </div>
-
+        
                     <div class="d-flex flex-center bg-body rounded-pill fs-7 fw-bolder ms-auto h-100 px-3 position-relative z-index-2">
                         ${item.progress}
                     </div>
-                </div>
+                </div>        
                 `;
             },
 
             // Remove block ui on initial draw
             onInitialDrawComplete: function () {
                 handleAvatarPath();
-
+                
                 const target = element.closest('[data-kt-timeline-widget-4-blockui="true"]');
                 const blockUI = KTBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);
+                    }, 1000);                    
                 }
             }
         };
@@ -524,12 +524,12 @@ var KTTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {
+        timeline.on("currentTimeTick", () => {            
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });
     }
-
+    
     // 2022 timeline
     const initTimeline2022 = () => {
         // Detect element
@@ -665,33 +665,33 @@ var KTTimelineWidget4 = function () {
 
                 return `<div class="rounded-pill bg-light-${item.color} d-flex align-items-center position-relative h-40px w-100 p-2 overflow-hidden">
                     <div class="position-absolute rounded-pill d-block bg-${item.color} start-0 top-0 h-100 z-index-1" style="width: ${item.progress};"></div>
-
+        
                     <div class="d-flex align-items-center position-relative z-index-2">
                         <div class="symbol-group symbol-hover flex-nowrap me-3">
                             ${userTemplate}
                         </div>
-
+        
                         <a href="#" class="fw-bold text-white text-hover-dark">${item.content}</a>
                     </div>
-
+        
                     <div class="d-flex flex-center bg-body rounded-pill fs-7 fw-bolder ms-auto h-100 px-3 position-relative z-index-2">
                         ${item.progress}
                     </div>
-                </div>
+                </div>        
                 `;
             },
 
             // Remove block ui on initial draw
             onInitialDrawComplete: function () {
                 handleAvatarPath();
-
+                
                 const target = element.closest('[data-kt-timeline-widget-4-blockui="true"]');
                 const blockUI = KTBlockUI.getInstance(target);
 
                 if (blockUI.isBlocked()) {
                     setTimeout(() => {
                         blockUI.release();
-                    }, 1000);
+                    }, 1000);                    
                 }
             }
         };
@@ -700,7 +700,7 @@ var KTTimelineWidget4 = function () {
         const timeline = new vis.Timeline(element, items, groups, options);
 
         // Prevent infinite loop draws
-        timeline.on("currentTimeTick", () => {
+        timeline.on("currentTimeTick", () => {            
             // After fired the first time we un-subscribed
             timeline.off("currentTimeTick");
         });

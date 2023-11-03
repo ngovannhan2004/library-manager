@@ -7,9 +7,20 @@
 // Bootstrap color system
 $white: 											#ffffff;
 
+// Gray colors
+$gray-100-dark:  									#1b1b29;
+$gray-200-dark:  									#2B2B40;
+$gray-300-dark:  									#323248;
+$gray-400-dark:  									#474761;
+$gray-500-dark:  									#565674;
+$gray-600-dark:  									#6D6D80;
+$gray-700-dark:  									#92929F;
+$gray-800-dark:  									#CDCDDE;
+$gray-900-dark:  									#FFFFFF;
+
 // Theme colors
 // Primary
-$primary:       									#009ef7;
+$primary:       									#3E97FF;
 $primary-active:    								#0095e8;
 $primary-light:    								    #f1faff;
 $primary-light-dark:    							#212e48;
@@ -42,3 +53,11 @@ $warning-active:    								#f1bc00;
 $warning-light:    									#fff8dd;
 $warning-light-dark:    							#392f28;
 $warning-inverse:  									$white;
+
+// Card Box Shadow
+$card-border-enabled:								true;
+$card-box-shadow:                                   0px 4px 12px 0px rgba(0, 0, 0, 0.03);
+$card-box-shadow-dark:                              none;
+
+// Body
+$body-bg-dark:										#1c1c1c;

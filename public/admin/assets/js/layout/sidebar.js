@@ -7,7 +7,8 @@ var KTAppSidebar = function () {
 	var sidebar;
 	var headerMenu;
 	var menuDashboardsCollapse;
-	var menuWrapper;
+	var menuScroll;
+	var toggle;
 
 	// Private functions
 	// Handle sidebar minimize mode toggle
@@ -55,7 +56,7 @@ var KTAppSidebar = function () {
 	// Handle dashboards menu items collapse mode
 	var handleShowMore = function() {
 		menuDashboardsCollapse.addEventListener('hide.bs.collapse', event => {
-			menuWrapper.scrollTo({
+			menuScroll.scrollTo({
 				top: 0,
 				behavior: 'instant'
 			});
@@ -63,18 +64,18 @@ var KTAppSidebar = function () {
 	}
 
 	var handleMenuScroll = function() {
-		var menuActiveItem = menuWrapper.querySelector(".menu-link.active");
+		var menuActiveItem = menuScroll.querySelector(".menu-link.active");
 
 		if ( !menuActiveItem ) {
 			return;
 		} 
 
-		if ( KTUtil.isVisibleInContainer(menuActiveItem, menuWrapper) === true) {
+		if ( KTUtil.isVisibleInContainer(menuActiveItem, menuScroll) === true) {
 			return;
 		}
 
-		menuWrapper.scroll({
-			top: KTUtil.getRelativeTopPosition(menuActiveItem, menuWrapper),
+		menuScroll.scroll({
+			top: KTUtil.getRelativeTopPosition(menuActiveItem, menuScroll),
 			behavior: 'smooth'
 		});
 	}
@@ -87,7 +88,7 @@ var KTAppSidebar = function () {
 			toggle = document.querySelector('#kt_app_sidebar_toggle');
 			headerMenu = document.querySelector('#kt_app_header_menu');
 			menuDashboardsCollapse = document.querySelector('#kt_app_sidebar_menu_dashboards_collapse');
-			menuWrapper = document.querySelector('#kt_app_sidebar_menu_wrapper');
+			menuScroll = document.querySelector('#kt_app_sidebar_menu_scroll');
 			
 			if ( sidebar === null ) {
 				return;
@@ -97,7 +98,7 @@ var KTAppSidebar = function () {
 				handleToggle();	
 			}
 
-			if ( menuWrapper ) {
+			if ( menuScroll ) {
 				handleMenuScroll();
 			}
 

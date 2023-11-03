@@ -1,5 +1,7 @@
 "use strict";
 
+var KTMenuHandlersInitialized = false;
+
 // Class definition
 var KTMenu = function(element, options) {
     ////////////////////////////
@@ -243,7 +245,7 @@ var KTMenu = function(element, options) {
 
     // Set external trigger element
     var _setTriggerElement = function() {
-        var target = document.querySelector('[data-kt-menu-target="# ' + the.element.getAttribute('id')  + '"]');
+        var target = document.querySelector('[data-kt-menu-target="#' + the.element.getAttribute('id')  + '"]');
 
         if ( target !== null ) {
             the.triggerElement = target;
@@ -360,7 +362,7 @@ var KTMenu = function(element, options) {
         }
 
         // Item is parent of element
-        if ( (item = element.closest('.menu-item[data-kt-menu-trigger]')) ) {
+        if ( (item = element.closest('.menu-item')) ) {
             return item;
         }
 
@@ -377,7 +379,7 @@ var KTMenu = function(element, options) {
         var sub = item.closest('.menu-sub');
         var parentItem;
 
-        if ( KTUtil.data(sub).has('item') ) {
+        if ( sub && KTUtil.data(sub).has('item') ) {
             return KTUtil.data(sub).get('item');
         }
 
@@ -687,6 +689,11 @@ var KTMenu = function(element, options) {
 
     var _setActiveLink = function(link) {
         var item = _getItemElement(link);
+
+        if (!item) {
+            return;
+        }
+
         var parentItems = _getItemParentElements(item);
         var parentTabPane = link.closest('.tab-pane');
 
@@ -736,7 +743,7 @@ var KTMenu = function(element, options) {
     }
 
     var _getLinkByAttribute = function(value, name = "href") {
-        var link = the.element.querySelector('a[' + name + '="' + value + '"]');
+        var link = the.element.querySelector('.menu-link[' + name + '="' + value + '"]');
 
         if (link) {
             return link;
@@ -827,6 +834,10 @@ var KTMenu = function(element, options) {
 
     the.hide = function(item) {
         return _hide(item);
+    }
+
+    the.toggle = function(item) {
+        return _toggle(item);
     }
 
     the.reset = function(item) {
@@ -986,7 +997,7 @@ KTMenu.updateDropdowns = function() {
 KTMenu.initHandlers = function() {
     // Dropdown handler
     document.addEventListener("click", function(e) {
-        var items = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]');
+        var items = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]:not([data-kt-menu-static="true"])');
         var menu;
         var item;
         var sub;
@@ -1083,7 +1094,7 @@ KTMenu.initHandlers = function() {
 
 // Render menus by url
 KTMenu.updateByLinkAttribute = function(value, name = "href") {
-    // Locate and update Offcanvas instances on window resize
+    // Set menu link active state by attribute value
     var elements = document.querySelectorAll('[data-kt-menu="true"]');
 
     if ( elements && elements.length > 0 ) {
@@ -1091,7 +1102,7 @@ KTMenu.updateByLinkAttribute = function(value, name = "href") {
             var menu = KTMenu.getInstance(elements[i]);
 
             if (menu) {
-                var link = menu.getLinkByAttribute(value, name);
+                var link = menu.getLinkByAttribute(value, name);                
                 if (link) {
                     menu.setActiveLink(link);
                 }
@@ -1113,19 +1124,14 @@ KTMenu.createInstances = function(selector = '[data-kt-menu="true"]') {
 
 // Global initialization
 KTMenu.init = function() {
-    // Event handlers
-    KTMenu.initHandlers();
-
-    // Initialization
     KTMenu.createInstances();
-};
 
-// On document ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', KTMenu.init);
-} else {
-    KTMenu.init();
-}
+    if (KTMenuHandlersInitialized === false) {
+        KTMenu.initHandlers();
+
+        KTMenuHandlersInitialized = true;
+    }    
+};
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

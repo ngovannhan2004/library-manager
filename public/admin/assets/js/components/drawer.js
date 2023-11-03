@@ -1,5 +1,7 @@
 "use strict";
 
+var KTDrawerHandlersInitialized = false; 
+
 // Class definition
 var KTDrawer = function(element, options) {
     //////////////////////////////
@@ -226,7 +228,10 @@ var KTDrawer = function(element, options) {
 
             KTUtil.addEvent(the.overlayElement, 'click', function(e) {
                 e.preventDefault();
-                _hide();
+
+                if ( _getOption('permanent') !== true ) {
+                    _hide();
+                }
             });
         }
     }
@@ -402,6 +407,29 @@ KTDrawer.handleShow = function() {
     });
 }
 
+// Handle escape key press
+KTDrawer.handleEscapeKey = function() {
+    document.addEventListener('keydown', (event) => {        
+        if (event.key === 'Escape') {
+            //if esc key was not pressed in combination with ctrl or alt or shift
+            const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
+            if (isNotCombinedKey) {
+                var elements = document.querySelectorAll('.drawer-on[data-kt-drawer="true"]:not([data-kt-drawer-escape="false"])');
+                var drawer;
+
+                if ( elements && elements.length > 0 ) {
+                    for (var i = 0, len = elements.length; i < len; i++) {
+                        drawer = KTDrawer.getInstance(elements[i]);
+                        if (drawer.isShown()) {
+                            drawer.hide();
+                        }
+                    }
+                }              
+            }
+        }
+    });
+}
+
 // Dismiss instances
 KTDrawer.handleDismiss = function() {
     // External drawer toggle handler
@@ -442,17 +470,16 @@ KTDrawer.handleResize = function() {
 // Global initialization
 KTDrawer.init = function() {
     KTDrawer.createInstances();
-    KTDrawer.handleResize();
-    KTDrawer.handleShow();
-    KTDrawer.handleDismiss();
-};
 
-// On document ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', KTDrawer.init);
-} else {
-    KTDrawer.init();
-}
+    if (KTDrawerHandlersInitialized === false) {
+        KTDrawer.handleResize();
+        KTDrawer.handleShow();
+        KTDrawer.handleDismiss();
+        KTDrawer.handleEscapeKey();
+
+        KTDrawerHandlersInitialized = true;
+    }
+};
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

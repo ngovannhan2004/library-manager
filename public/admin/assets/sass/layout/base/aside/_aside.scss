@@ -5,6 +5,8 @@
 // General mode
 .app-aside {    
     transition: $app-aside-base-transition;
+    background-color: var(--#{$prefix}app-aside-base-bg-color);
+    box-shadow: var(--#{$prefix}app-aside-base-box-shadow);
 }
 
 // Utilities
@@ -22,54 +24,46 @@
     .app-aside {        
         display: flex;    
         flex-shrink: 0;
-        width: var(--kt-app-aside-width);      
-        background-color: var(--kt-app-aside-base-bg-color);
-        box-shadow: var(--kt-app-aside-base-box-shadow);
-        border-left: var(--kt-app-aside-base-border-left);
-        border-right: var(--kt-app-aside-base-border-right);
-
+        width: var(--#{$prefix}app-aside-width); 
+        @include property( z-index, $app-aside-base-z-index);
         @include property( margin-left, $app-aside-base-gap-start);
         @include property( margin-right, $app-aside-base-gap-end);
         @include property( margin-top, $app-aside-base-gap-top);
-        @include property( margin-bottom, $app-aside-base-gap-bottom);
-        @include property( z-index, $app-aside-base-z-index);
+        @include property( margin-bottom, $app-aside-base-gap-bottom);        
     }    
 
     // Vars
     :root {
-        --kt-app-aside-width: #{$app-aside-base-width};
-        --kt-app-aside-width-actual: #{$app-aside-base-width};
-
-        --kt-app-aside-gap-start: #{$app-aside-base-gap-start};
-        --kt-app-aside-gap-end: #{$app-aside-base-gap-end};
-        --kt-app-aside-gap-top: #{$app-aside-base-gap-top};
-        --kt-app-aside-gap-bottom: #{$app-aside-base-gap-bottom};
+        --#{$prefix}app-aside-width: #{$app-aside-base-width};
+        --#{$prefix}app-aside-width-actual: #{$app-aside-base-width};
+        --#{$prefix}app-aside-gap-start: #{$app-aside-base-gap-start};
+        --#{$prefix}app-aside-gap-end: #{$app-aside-base-gap-end};
+        --#{$prefix}app-aside-gap-top: #{$app-aside-base-gap-top};
+        --#{$prefix}app-aside-gap-bottom: #{$app-aside-base-gap-bottom};
     }
 
     [data-kt-app-aside-stacked="true"] {
-        --kt-app-aside-width: calc(var(--kt-app-aside-primary-width) + var(--kt-app-aside-secondary-width));
+        --#{$prefix}app-aside-width: calc(var(--#{$prefix}app-aside-primary-width) + var(--#{$prefix}app-aside-secondary-width));
     }
 
     [data-kt-app-aside-minimize="on"] {
-        --kt-app-aside-width: #{$app-aside-minimize-width};
-
-        --kt-app-aside-gap-start: #{$app-aside-minimize-gap-start};
-        --kt-app-aside-gap-end: #{$app-aside-minimize-gap-end};
-        --kt-app-aside-gap-top: #{$app-aside-minimize-gap-top};
-        --kt-app-aside-gap-bottom: #{$app-aside-minimize-gap-bottom};
+        --#{$prefix}app-aside-width: #{$app-aside-minimize-width};
+        --#{$prefix}app-aside-gap-start: #{$app-aside-minimize-gap-start};
+        --#{$prefix}app-aside-gap-end: #{$app-aside-minimize-gap-end};
+        --#{$prefix}app-aside-gap-top: #{$app-aside-minimize-gap-top};
+        --#{$prefix}app-aside-gap-bottom: #{$app-aside-minimize-gap-bottom};
     }
 
     [data-kt-app-aside-sticky="on"] {
-        --kt-app-aside-width: #{$app-aside-sticky-width};
-
-        --kt-app-aside-gap-start: #{$app-aside-sticky-gap-start};
-        --kt-app-aside-gap-end: #{$app-aside-sticky-gap-end};
-        --kt-app-aside-gap-top: #{$app-aside-sticky-gap-top};
-        --kt-app-aside-gap-bottom: #{$app-aside-sticky-gap-bottom};
+        --#{$prefix}app-aside-width: #{$app-aside-sticky-width};
+        --#{$prefix}app-aside-gap-start: #{$app-aside-sticky-gap-start};
+        --#{$prefix}app-aside-gap-end: #{$app-aside-sticky-gap-end};
+        --#{$prefix}app-aside-gap-top: #{$app-aside-sticky-gap-top};
+        --#{$prefix}app-aside-gap-bottom: #{$app-aside-sticky-gap-bottom};
     }    
 
     [data-kt-app-aside-collapse="on"] {
-        --kt-app-aside-width: 0px;  
+        --#{$prefix}app-aside-width: 0px;  
     }
 
     // States
@@ -98,9 +92,9 @@
             position: fixed;
             transition: $app-aside-base-transition;
 
-            box-shadow: var(--kt-app-aside-sticky-box-shadow);
-            border-left: var(--kt-aside-sticky-border-start);
-            border-right: var(--kt-app-aside-sticky-border-end);
+            box-shadow: var(--#{$prefix}app-aside-sticky-box-shadow);
+            border-left: var(--#{$prefix}aside-sticky-border-start);
+            border-right: var(--#{$prefix}app-aside-sticky-border-end);
 
             @include property( top, $app-aside-sticky-top);
             @include property( bottom, $app-aside-sticky-bottom);
@@ -115,10 +109,10 @@
         [data-kt-app-aside-minimize="on"] & {
             transition: $app-aside-base-transition;
 
-            background-color: var(--kt-app-aside-minimize-bg-color);
-            box-shadow: var(--kt-app-aside-minimize-box-shadow);
-            border-start: var(--kt-app-aside-minimize-border-start);
-            border-end: var(--kt-app-aside-minimize-border-end);
+            //background-color: var(--#{$prefix}app-aside-minimize-bg-color);
+            //box-shadow: var(--#{$prefix}app-aside-minimize-box-shadow);
+            //border-start: var(--#{$prefix}app-aside-minimize-border-start);
+            //border-end: var(--#{$prefix}app-aside-minimize-border-end);
 
             @include property( margin-left, $app-aside-minimize-gap-start);
             @include property( margin-right, $app-aside-minimize-gap-end);
@@ -128,20 +122,20 @@
 
         [data-kt-app-aside-hoverable="true"] & {
             .app-aside-wrapper {
-                width: var(--kt-app-aside-width-actual); 
+                width: var(--#{$prefix}app-aside-width-actual); 
             }
         }
 
         [data-kt-app-aside-hoverable="true"][data-kt-app-aside-minimize="on"] &:hover:not(.animating) {
             transition: $app-aside-base-transition;
-			width: var(--kt-app-aside-width-actual);
-            box-shadow: var(--kt-app-aside-minimize-hover-box-shadow);
+			width: var(--#{$prefix}app-aside-width-actual);
+            box-shadow: var(--#{$prefix}app-aside-minimize-hover-box-shadow);
         }
 
         [data-kt-app-aside-collapse="on"] & {
             transition: $app-aside-base-transition;
-            width: var(--kt-app-aside-width-actual);
-            margin-right: calc( -1 * var(--kt-app-aside-width-actual));
+            width: var(--#{$prefix}app-aside-width-actual);
+            margin-right: calc( -1 * var(--#{$prefix}app-aside-width-actual));
         }
     }
 
@@ -180,12 +174,12 @@
     .app-aside {
         // Header
         [data-kt-app-aside-fixed="true"][data-kt-app-header-fixed="true"]:not([data-kt-app-aside-push-header="true"]) & {
-            top: var(--kt-app-header-height);
+            top: var(--#{$prefix}app-header-height);
         }
 
         // Toolbar
         [data-kt-app-aside-fixed="true"][data-kt-app-header-fixed="true"][data-kt-app-toolbar-fixed="true"]:not([data-kt-app-aside-push-toolbar="true"]) & {
-            top: calc(var(--kt-app-header-height) + var(--kt-app-toolbar-height, 0px));
+            top: calc(var(--#{$prefix}app-header-height) + var(--#{$prefix}app-toolbar-height, 0px));
         }
     }
 }
@@ -195,14 +189,8 @@
     // Base
     .app-aside {
         display: none;
-        width: var(--kt-app-aside-width);
+        width: var(--#{$prefix}app-aside-width);
         @include property( z-index, $app-aside-base-z-index-mobile);
-
-        background-color: var(--kt-app-aside-base-bg-color-mobile);
-        box-shadow: var(--kt-app-aside-base-box-shadow-mobile);
-        border-left: var(--kt-app-aside-base-border-start-mobile);
-        order-right: var(--kt-app-aside-base-border-end-mobile);
-
         @include property( margin-left, $app-aside-base-gap-start-mobile);
         @include property( margin-right, $app-aside-base-gap-end-mobile);
         @include property( margin-top, $app-aside-base-gap-top-mobile);
@@ -211,26 +199,24 @@
 
     // Vars
     :root {
-        --kt-app-aside-width: #{$app-aside-base-width-mobile};
-        --kt-app-aside-width-actual: #{$app-aside-base-width-mobile};
-
-        --kt-app-aside-gap-start: #{$app-aside-base-gap-start-mobile};
-        --kt-app-aside-gap-end: #{$app-aside-base-gap-end-mobile};
-        --kt-app-aside-gap-top: #{$app-aside-base-gap-top-mobile};
-        --kt-app-aside-gap-bottom: #{$app-aside-base-gap-bottom-mobile};
+        --#{$prefix}app-aside-width: #{$app-aside-base-width-mobile};
+        --#{$prefix}app-aside-width-actual: #{$app-aside-base-width-mobile};
+        --#{$prefix}app-aside-gap-start: #{$app-aside-base-gap-start-mobile};
+        --#{$prefix}app-aside-gap-end: #{$app-aside-base-gap-end-mobile};
+        --#{$prefix}app-aside-gap-top: #{$app-aside-base-gap-top-mobile};
+        --#{$prefix}app-aside-gap-bottom: #{$app-aside-base-gap-bottom-mobile};
     }
 
     [data-kt-app-aside-minimize-mobile="on"] {
-        --kt-app-aside-width: #{$app-aside-minimize-width-mobile};
-
-        --kt-app-aside-gap-start: #{$app-aside-minimize-gap-start-mobile};
-        --kt-app-aside-gap-end: #{$app-aside-minimize-gap-end-mobile};
-        --kt-app-aside-gap-top: #{$app-aside-minimize-gap-top-mobile};
-        --kt-app-aside-gap-bottom: #{$app-aside-minimize-gap-bottom-mobile};
+        --#{$prefix}app-aside-width: #{$app-aside-minimize-width-mobile};
+        --#{$prefix}app-aside-gap-start: #{$app-aside-minimize-gap-start-mobile};
+        --#{$prefix}app-aside-gap-end: #{$app-aside-minimize-gap-end-mobile};
+        --#{$prefix}app-aside-gap-top: #{$app-aside-minimize-gap-top-mobile};
+        --#{$prefix}app-aside-gap-bottom: #{$app-aside-minimize-gap-bottom-mobile};
     }
 
     [data-kt-app-aside-collapse-mobile="on"] {
-        --kt-app-aside-width: 0px;
+        --#{$prefix}app-aside-width: 0px;
     }
 
     // States
@@ -240,12 +226,7 @@
         }
             
         [data-kt-app-aside-minimize-mobile="on"] & {
-            transition: $app-aside-base-transition;
-            background-color: var(--kt-app-aside-minimize-bg-color-mobile);
-            box-shadow: var(--kt-app-aside-minimize-box-shadow-mobile);
-            border-left: var(--kt-app-aside-minimize-border-start-mobile);
-            border-right: var(--kt-app-aside-minimize-border-end-mobile);
-        
+            transition: $app-aside-base-transition;        
             @include property( margin-left, $app-aside-minimize-gap-start-mobile);
             @include property( margin-right, $app-aside-minimize-gap-end-mobile);
             @include property( margin-top, $app-aside-minimize-gap-top-mobile);
@@ -254,20 +235,20 @@
 
         [data-kt-app-aside-hoverable-mobile="true"] & {
             .app-aside-wrapper {
-                width: var(--kt-app-aside-width-actual); 
+                width: var(--#{$prefix}app-aside-width-actual); 
             }
         }
 
         [data-kt-app-aside-hoverable-mobile="true"][data-kt-app-aside-minimize-mobile="on"] &:hover:not(.animating) {
             transition: $app-aside-base-transition;
-			width: var(--kt-app-aside-width-actual);
-            box-shadow: var(--kt-app-aside-minimize-hover-box-shadow-mobile);
+			width: var(--#{$prefix}app-aside-width-actual);
+            box-shadow: var(--#{$prefix}app-aside-minimize-hover-box-shadow-mobile);
         }
 
         [data-kt-app-aside-collapse-mobile="on"] & {
             transition: $app-aside-base-transition;
-            width: var(--kt-app-aside-width-actual);
-            margin-right: calc( -1 * var(--kt-app-aside-width-actual));
+            width: var(--#{$prefix}app-aside-width-actual);
+            margin-right: calc( -1 * var(--#{$prefix}app-aside-width-actual));
         }
     }
 

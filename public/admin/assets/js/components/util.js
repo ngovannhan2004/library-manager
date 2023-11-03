@@ -303,7 +303,7 @@ var KTUtil = function() {
          * @returns {number}
          */
         getBreakpoint: function(breakpoint) {
-            var value = this.getCssVariableValue('--kt-' + breakpoint);
+            var value = this.getCssVariableValue('--bs-' + breakpoint);
 
             if ( value ) {
                 value = parseInt(value.trim());
@@ -832,19 +832,15 @@ var KTUtil = function() {
             return !(el.offsetWidth === 0 && el.offsetHeight === 0);
         },
 
-        isVisibleInContainer: function (el, container) {
+        isVisibleInContainer: function (el, container, offset = 0) {
             const eleTop = el.offsetTop;
-            const eleBottom = eleTop + el.clientHeight;
-        
+            const eleBottom = eleTop + el.clientHeight + offset;
             const containerTop = container.scrollTop;
             const containerBottom = containerTop + container.clientHeight;
         
             // The element is fully visible in the container
             return (
-                (eleTop >= containerTop && eleBottom <= containerBottom) ||
-                // Some part of the element is visible in the container
-                (eleTop < containerTop && containerTop < eleBottom) ||
-                (eleTop < containerBottom && containerBottom < eleBottom)
+                (eleTop >= containerTop && eleBottom <= containerBottom)
             );
         },
 
@@ -1468,7 +1464,7 @@ var KTUtil = function() {
 
         getResponsiveValue: function(value, defaultValue) {
             var width = this.getViewPort().width;
-            var result;
+            var result = null;
 
             value = KTUtil.parseJson(value);
 
@@ -1559,6 +1555,22 @@ var KTUtil = function() {
                 rect.left >= 0 &&
                 rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        },
+
+        isPartiallyInViewport: function(element) {        
+            let x = element.getBoundingClientRect().left;
+            let y = element.getBoundingClientRect().top;
+            let ww = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            let hw = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            let w = element.clientWidth;
+            let h = element.clientHeight;
+
+            return (
+                (y < hw &&
+                y + h > 0) &&
+                (x < ww &&
+                x + w > 0)
             );
         },
 

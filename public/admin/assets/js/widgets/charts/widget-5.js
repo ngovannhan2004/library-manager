@@ -15,7 +15,7 @@ var KTChartsWidget5 = function () {
             return;
         }
         
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
         
         var options = {
             series: [{
@@ -51,7 +51,7 @@ var KTChartsWidget5 = function () {
                       return val + "K"
                     },
                     style: {
-                        colors: KTUtil.getCssVariableValue('--kt-gray-400'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-400'),
                         fontSize: '14px',
                         fontWeight: '600',
                         align: 'left'                                              
@@ -64,7 +64,7 @@ var KTChartsWidget5 = function () {
             yaxis: {
                 labels: {                   
                     style: {
-                        colors: KTUtil.getCssVariableValue('--kt-gray-800'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-800'),
                         fontSize: '14px',
                         fontWeight: '600'                                                                 
                     },

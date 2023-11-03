@@ -28,7 +28,7 @@
     }
 
     .app-sidebar-wrapper {
-        width: var(--kt-app-sidebar-width-actual); 
+        width: var(--#{$prefix}app-sidebar-width-actual); 
     }
 
     .app-sidebar-menu {

@@ -15,18 +15,28 @@
         scrollbar-width: thin;
 
         // Webkit
-        &::-webkit-scrollbar {
-            width: var(--kt-scrollbar-width);
-            height: var(--kt-scrollbar-height);
+        &::-webkit-scrollbar {            
+            width: var(--#{$prefix}scrollbar-size);
+            height: var(--#{$prefix}scrollbar-size);
+        }
+
+        ::-webkit-scrollbar-track {
+           background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            @include border-radius(var(--#{$prefix}scrollbar-size));
         }
 
         // Default color
-        @include scrollbar-color(var(--kt-scrollbar-color), var(--kt-scrollbar-hover-color));
+        @include scrollbar-color(var(--#{$prefix}scrollbar-color), var(--#{$prefix}scrollbar-hover-color));
     }
 }
 
-// Overflow scroll
-.scroll {
+// Scroll
+.scroll,
+.hover-scroll,
+.hover-scroll-overlay {
     overflow: scroll;
     position: relative;
 
@@ -36,7 +46,9 @@
     }
 }
 
-.scroll-x {
+.scroll-x,
+.hover-scroll-x,
+.hover-scroll-overlay-x {
     overflow-x: scroll;
     position: relative;
 
@@ -46,7 +58,9 @@
     }
 }
 
-.scroll-y {
+.scroll-y,
+.hover-scroll-y,
+.hover-scroll-overlay-y {
     overflow-y: scroll;
     position: relative;
 
@@ -56,159 +70,42 @@
     }
 }
 
-// Hover overflow scroll
-.hover-scroll {
-    position: relative;
-
-    // Desktop mode
-    @include media-breakpoint-up(lg) {
-        overflow: hidden;
-
-        border-right: var(--kt-scrollbar-width) solid transparent;
-        border-bottom: var(--kt-scrollbar-height) transparent;
-        margin-right: calc( -1 * var(--kt-scrollbar-width));
-        margin-bottom: calc( -1 * var(--kt-scrollbar-height));
-
-        &:hover {
-            overflow: scroll;
-            border-right: 0;
-            border-bottom: 0;
-        }
-
-        // Firefox hack
-        @-moz-document url-prefix() {
-            overflow: scroll;
-            position: relative;
-            border-right: 0;
-            border-bottom: 0;
-        }
-    }
-
-    // Tablet & mobile modes
-    @include media-breakpoint-down(lg) {
-        overflow: auto;
-    }
+.hover-scroll,
+.hover-scroll-overlay,
+.hover-scroll-x,
+.hover-scroll-overlay-x,
+.hover-scroll-y,
+.hover-scroll-overlay-y {
+    @include scrollbar-color(transparent, var(--#{$prefix}scrollbar-color));
 }
 
-// Hover overflow scroll y
-.hover-scroll-y {
-    position: relative;
-
-    // Desktop mode
-    @include media-breakpoint-up(lg) {
-        overflow-y: hidden;
-        border-right: var(--kt-scrollbar-width) solid transparent;
-        margin-right: calc( -1 * var(--kt-scrollbar-width));
-
-        &:hover {
-            overflow-y: scroll;
-            border-right: 0;
-        }
-
-        // Firefox hack
-        @-moz-document url-prefix() {
-            overflow-y: scroll;
-            position: relative;
-            border-right: 0;
-        }
-    }
-
-    // Tablet & mobile modes
-    @include media-breakpoint-down(lg) {
-        overflow-y: auto;
-    }
-}
-
-// Hover overflow scroll x
-.hover-scroll-x {
-    position: relative;
-
-    // Desktop mode
-    @include media-breakpoint-up(lg) {
-        overflow-x: hidden;
-        border-bottom: var(--kt-scrollbar-height) solid transparent;
-
-        &:hover {
-            overflow-x: scroll;
-            border-bottom: 0;
-        }
-
-        // Firefox hack
-        @-moz-document url-prefix() {
-            overflow-x: scroll;
-            position: relative;
-            border-bottom: 0;
-        }
-    }
-
-    // Tablet & mobile modes
-    @include media-breakpoint-down(lg) {
-        overflow-x: auto;
-    }
-}
-
-// Hover overflow overlay
-.hover-scroll-overlay-y {    
-    position: relative;
-
-    // Desktop mode
-    @include media-breakpoint-up(lg) {
-        overflow-y: hidden;
-
-        // Webkit
-        &::-webkit-scrollbar {
-            width: calc( var(--kt-scrollbar-width) + var(--kt-scrollbar-space) );
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background-clip: content-box;
-            border-right: var(--kt-scrollbar-space) solid transparent;
-        }
-
-        &:hover {
-            overflow-y: overlay;
-        }
-
-        // Firefox hack
-        @-moz-document url-prefix() {
-            overflow-y: scroll;
-            position: relative;
-        }
-    }
-
-    // Tablet & mobile modes
-    @include media-breakpoint-down(lg) {
-        overflow-y: auto;
-    }   
-}
-
-// Utility classes  
+// Utilities  
 .scroll-ps {
-    padding-left: var(--kt-scrollbar-width) !important;
+    padding-left: var(--#{$prefix}scrollbar-size) !important;
 }
 
 .scroll-ms {
-    margin-left: var(--kt-scrollbar-width) !important;
+    margin-left: var(--#{$prefix}scrollbar-size) !important;
 }
 
 .scroll-mb {
-    margin-bottom: var(--kt-scrollbar-height) !important;
+    margin-bottom: var(--#{$prefix}scrollbar-size) !important;
 }
 
 .scroll-pe {
-    padding-right: var(--kt-scrollbar-width) !important;
+    padding-right: var(--#{$prefix}scrollbar-size) !important;
 }
 
 .scroll-me {
-    margin-right: var(--kt-scrollbar-width) !important;
+    margin-right: var(--#{$prefix}scrollbar-size) !important;
 }
 
 .scroll-px {
-    padding-left: var(--kt-scrollbar-width) !important;
-    padding-right: var(--kt-scrollbar-width) !important;
+    padding-left: var(--#{$prefix}scrollbar-size) !important;
+    padding-right: var(--#{$prefix}scrollbar-size) !important;
 }
 
 .scroll-mx {
-    margin-left: var(--kt-scrollbar-width) !important;
-    margin-right: var(--kt-scrollbar-width) !important;
+    margin-left: var(--#{$prefix}scrollbar-size) !important;
+    margin-right: var(--#{$prefix}scrollbar-size) !important;
 }

@@ -1,5 +1,7 @@
 "use strict";
 
+var KTSwapperHandlersInitialized = false;
+
 // Class definition
 var KTSwapper = function(element, options) {
     ////////////////////////////
@@ -142,35 +144,35 @@ KTSwapper.createInstances = function(selector = '[data-kt-swapper="true"]') {
 }
 
 // Window resize handler
-window.addEventListener('resize', function() {
-    var timer;
-
-    KTUtil.throttle(timer, function() {
-        // Locate and update Offcanvas instances on window resize
-        var elements = document.querySelectorAll('[data-kt-swapper="true"]');
-
-        if ( elements && elements.length > 0 ) {
-            for (var i = 0, len = elements.length; i < len; i++) {
-                var swapper = KTSwapper.getInstance(elements[i]);
-                if (swapper) {
-                    swapper.update();
-                }                
+KTSwapper.handleResize = function() {
+    window.addEventListener('resize', function() {
+        var timer;
+    
+        KTUtil.throttle(timer, function() {
+            // Locate and update Offcanvas instances on window resize
+            var elements = document.querySelectorAll('[data-kt-swapper="true"]');
+    
+            if ( elements && elements.length > 0 ) {
+                for (var i = 0, len = elements.length; i < len; i++) {
+                    var swapper = KTSwapper.getInstance(elements[i]);
+                    if (swapper) {
+                        swapper.update();
+                    }                
+                }
             }
-        }
-    }, 200);
-});
+        }, 200);
+    });
+};
 
 // Global initialization
 KTSwapper.init = function() {
     KTSwapper.createInstances();
-};
 
-// On document ready
-if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', KTSwapper.init);
-} else {
-    KTSwapper.init();
-}
+    if (KTSwapperHandlersInitialized === false) {
+        KTSwapper.handleResize();
+        KTSwapperHandlersInitialized = true;
+    }
+};
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

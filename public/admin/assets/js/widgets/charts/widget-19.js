@@ -48,7 +48,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-info')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-info')),
                     },
                 },
                 {
@@ -57,7 +57,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-danger')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-danger')),
                     },
                 },
                 {
@@ -66,7 +66,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')),
                     },
                 },
                 {
@@ -75,7 +75,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-success')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
                     },
                 },
             ];
@@ -117,7 +117,7 @@ var KTChartsWidget19 = (function () {
             );
 
             xAxis.get("renderer").labels.template.setAll({
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500')),
                 fontWeight: "500",
                 fontSize: 16,
             });
@@ -130,7 +130,7 @@ var KTChartsWidget19 = (function () {
                 centerX: am5.p100,
                 fontWeight: "500",
                 fontSize: 18,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500')),
                 templateField: "columnSettings",
             });
 
@@ -255,7 +255,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-info')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-info')),
                     },
                 },
                 {
@@ -264,7 +264,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-danger')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-danger')),
                     },
                 },
                 {
@@ -273,7 +273,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-primary')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-primary')),
                     },
                 },
                 {
@@ -282,7 +282,7 @@ var KTChartsWidget19 = (function () {
                     full: 100,
                     columnSettings: {
                         fillOpacity: 1,
-                        fill: am5.color(KTUtil.getCssVariableValue('--kt-success')),
+                        fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
                     },
                 },
             ];
@@ -331,7 +331,7 @@ var KTChartsWidget19 = (function () {
                 centerX: am5.p100,
                 fontWeight: "500",
                 fontSize: 18,
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-500')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-500')),
                 templateField: "columnSettings",
             });
 

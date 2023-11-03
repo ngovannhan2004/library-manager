@@ -59,9 +59,11 @@ var KTPasswordMeter = function(element, options) {
 
     // Handlers
     var _handlers = function() {
-        the.inputElement.addEventListener('input', function() {
-            _check();
-        });
+        if (the.highlightElement) {
+            the.inputElement.addEventListener('input', function() {
+                _check();
+            });
+        }
 
         if (the.visibilityElement) {
             the.visibilityElement.addEventListener('click', function() {
@@ -163,8 +165,8 @@ var KTPasswordMeter = function(element, options) {
     }
 
     var _visibility = function() {
-        var visibleIcon = the.visibilityElement.querySelector('i:not(.d-none), .svg-icon:not(.d-none)');
-        var hiddenIcon = the.visibilityElement.querySelector('i.d-none, .svg-icon.d-none');
+        var visibleIcon = the.visibilityElement.querySelector(':scope > i:not(.d-none)');
+        var hiddenIcon = the.visibilityElement.querySelector(':scope > i.d-none');
         
         if (the.inputElement.getAttribute('type').toLowerCase() === 'password' ) {
             the.inputElement.setAttribute('type', 'text');
@@ -244,13 +246,6 @@ KTPasswordMeter.createInstances = function(selector = '[data-kt-password-meter]'
 KTPasswordMeter.init = function() {
     KTPasswordMeter.createInstances();
 };
-
-// On document ready
-if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', KTPasswordMeter.init);
-} else {
-    KTPasswordMeter.init();
-}
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

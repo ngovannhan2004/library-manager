@@ -3,18 +3,7 @@
 //
 
 // Table
-.table {
-	--#{$prefix}table-color: var(--kt-table-color);
-	--#{$prefix}table-bg: var(--kt-table-bg);
-	--#{$prefix}table-border-color: var(--kt-table-border-color);
-	--#{$prefix}table-accent-bg: var(--kt-table-accent-bg);
-	--#{$prefix}table-striped-color: var(--kt-table-striped-color);
-	--#{$prefix}table-striped-bg: var(--kt-table-striped-bg);
-	--#{$prefix}table-active-color: var(--kt-table-active-color);
-	--#{$prefix}table-active-bg: var(--kt-table-active-bg);
-	--#{$prefix}table-hover-color: var(--kt-table-hover-color);
-	--#{$prefix}table-hover-bg: var(--kt-table-hover-bg);
-
+.table:not(.table-bordered) {
 	// Fix for BS 5.1.2 update
 	& > :not(:first-child) {
     	border-color: transparent;
@@ -82,7 +71,7 @@
 		tr {
 			border-bottom-width: 1px;
 			border-bottom-style: solid;
-			border-bottom-color: var(--kt-border-color);
+			border-bottom-color: var(--#{$prefix}border-color);
 		}
 
 		tfoot {
@@ -97,7 +86,7 @@
 		tr {
 			border-bottom-width: 1px;
 			border-bottom-style: dashed;
-			border-bottom-color: var(--kt-border-color);
+			border-bottom-color: var(--#{$prefix}border-color);
 		}
 
 		tfoot {
@@ -111,7 +100,7 @@
 	@each $name, $value in $grays {
 		&.table-row-gray-#{$name} {
 			tr { 
-				border-bottom-color: var(--kt-gray-#{$name});
+				border-bottom-color: var(--#{$prefix}gray-#{$name});
 			}
 		}
 	}	
@@ -150,14 +139,14 @@
 .table-sort-asc {
 	&:after {
 		opacity: 1;
-		@include svg-bg-icon(arrow-top, var(--kt-text-muted));
+		@include svg-bg-icon(arrow-top, var(--#{$prefix}text-muted));
 	}
 }
 
 .table-sort-desc {
 	&:after {
 		opacity: 1;
-		@include svg-bg-icon(arrow-bottom, var(--kt-text-muted));
+		@include svg-bg-icon(arrow-bottom, var(--#{$prefix}text-muted));
 	}
 }
 
@@ -168,9 +157,9 @@
 	top: 50%;
 	left: 50%;
 	@include border-radius($border-radius);
-	box-shadow: var(--kt-table-loading-message-box-shadow);
-	background-color: var(--kt-table-loading-message-bg);
-	color: var(--kt-table-loading-message-color);
+	box-shadow: var(--#{$prefix}table-loading-message-box-shadow);
+	background-color: $table-loading-message-bg;
+	color: $table-loading-message-color;
 	font-weight: $font-weight-bold;
 	margin: 0 !important;
 	width: auto;

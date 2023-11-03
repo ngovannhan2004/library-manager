@@ -64,13 +64,13 @@ var KTChartsWidget31 = (function () {
 				centerY: am5.p50,
 				fontWeight: "400",
 				fontSize: 11,
-				fill: am5.color(KTUtil.getCssVariableValue("--kt-gray-800")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-800")),
 			});
 
 			xRenderer.grid.template.setAll({
 				location: 0.5,
 				strokeDasharray: [2, 2],
-				stroke: KTUtil.getCssVariableValue('--kt-gray-400')
+				stroke: KTUtil.getCssVariableValue('--bs-gray-400')
 			});
 
 			var xAxis = chart.xAxes.push(
@@ -88,7 +88,7 @@ var KTChartsWidget31 = (function () {
 			yRenderer.labels.template.setAll({
 				fontWeight: "500",
 				fontSize: 12,
-				fill: am5.color(KTUtil.getCssVariableValue("--kt-gray-700")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-700")),
 			});
 
 			var yAxis = chart.yAxes.push(
@@ -99,7 +99,7 @@ var KTChartsWidget31 = (function () {
 
 			yRenderer.grid.template.setAll({
 				strokeDasharray: [2, 2],
-				stroke: KTUtil.getCssVariableValue('--kt-gray-400')				
+				stroke: KTUtil.getCssVariableValue('--bs-gray-400')				
 			});
 
 			// Create series
@@ -111,7 +111,7 @@ var KTChartsWidget31 = (function () {
 					yAxis: yAxis,
 					valueYField: "value1",
 					categoryXField: "name",
-					fill: am5.color(KTUtil.getCssVariableValue("--kt-primary")),
+					fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 				})
 			);
 
@@ -121,7 +121,7 @@ var KTChartsWidget31 = (function () {
 
 			series1.fills.template.setAll({
 				visible: true,
-				fill: am5.color(KTUtil.getCssVariableValue("--kt-primary")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 				fillOpacity: 0.5,
 			});
 
@@ -136,7 +136,7 @@ var KTChartsWidget31 = (function () {
 					tooltip: am5.Tooltip.new(root, {
 						labelText: "Revenue: {value1}\nExpense:{value2}",
 					}),
-					fill: am5.color(KTUtil.getCssVariableValue("--kt-success")),
+					fill: am5.color(KTUtil.getCssVariableValue("--bs-success")),
 				})
 			);
 
@@ -146,7 +146,7 @@ var KTChartsWidget31 = (function () {
 
 			series2.fills.template.setAll({
 				visible: true,
-				fill: am5.color(KTUtil.getCssVariableValue("--kt-primary")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-primary")),
 				fillOpacity: 0.5,
 			});
 
@@ -162,7 +162,7 @@ var KTChartsWidget31 = (function () {
 			legend.labels.template.setAll({
 				fontWeight: "600",
 				fontSize: 13,
-				fill: am5.color(KTUtil.getCssVariableValue("--kt-gray-700")),
+				fill: am5.color(KTUtil.getCssVariableValue("--bs-gray-700")),
 			});
 
 			// Set data

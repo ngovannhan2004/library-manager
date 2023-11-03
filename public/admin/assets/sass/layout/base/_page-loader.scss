@@ -2,7 +2,7 @@
 // Page loader
 //
 
-// CSS3 Transitions only after pages load(data-kt-app-pages-loading="on" attribute added to body tag and removed with JS on pages loaded)
+// CSS3 Transitions only after page load(data-kt-app-page-loading="on" attribute added to body tag and removed with JS on page loaded)
 [data-kt-app-page-loading="on"] {
 	overflow: hidden;
 }
@@ -13,8 +13,8 @@
 
 // Base
 .app-page-loader {
-	background: var(--kt-body-bg);
-	color: var(--kt-body-color);
+	background: var(--#{$prefix}body-bg);
+	color: var(--#{$prefix}body-color);
 	position: fixed;
 	top: 0;
 	bottom: 0;

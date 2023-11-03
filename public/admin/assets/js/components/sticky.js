@@ -1,5 +1,7 @@
 "use strict";
 
+var KTStickyHandlersInitialized = false;
+
 // Class definition
 var KTSticky = function(element, options) {
     ////////////////////////////
@@ -15,6 +17,7 @@ var KTSticky = function(element, options) {
     var defaultOptions = {
         offset: 200,
         reverse: false,
+        release: null,
         animation: true,
         animationSpeed: '0.3s',
         animationClass: 'animation-slide-in-down'
@@ -57,6 +60,7 @@ var KTSticky = function(element, options) {
 
     var _scroll = function(e) {
         var offset = _getOption('offset');
+        var release = _getOption('release');
         var reverse = _getOption('reverse');
         var st;
         var attrName;
@@ -64,15 +68,20 @@ var KTSticky = function(element, options) {
 
         // Exit if false
         if ( offset === false ) {
+            _disable();
             return;
         }
 
         offset = parseInt(offset);
+        release = release ? document.querySelector(release) : null;
+
         st = KTUtil.getScrollTop();
         diff = document.documentElement.scrollHeight - window.innerHeight - KTUtil.getScrollTop();
+        
+        var proceed = (!release || (release.offsetTop - release.clientHeight) > st);
 
         if ( reverse === true ) {  // Release on reverse scroll mode
-            if ( st > offset) {
+            if ( st > offset && proceed ) {
                 if ( document.body.hasAttribute(the.attributeName) === false) {
                     
                     if (_enable() === false) {
@@ -81,6 +90,7 @@ var KTSticky = function(element, options) {
 
                     document.body.setAttribute(the.attributeName, 'on');
                     document.body.setAttribute(the.attributeName2, 'on');
+                    the.element.setAttribute("data-kt-sticky-enabled", "true");
                 }
 
                 if ( the.eventTriggerState === true ) {
@@ -94,6 +104,7 @@ var KTSticky = function(element, options) {
                     _disable();
                     document.body.removeAttribute(the.attributeName);
                     document.body.removeAttribute(the.attributeName2);
+                    the.element.removeAttribute("data-kt-sticky-enabled");
                 }
 
                 if ( the.eventTriggerState === false ) {
@@ -105,7 +116,7 @@ var KTSticky = function(element, options) {
 
             the.lastScrollTop = st;
         } else { // Classic scroll mode
-            if ( st > offset) {
+            if ( st > offset && proceed ) {
                 if ( document.body.hasAttribute(the.attributeName) === false) {
                     
                     if (_enable() === false) {
@@ -114,6 +125,7 @@ var KTSticky = function(element, options) {
                     
                     document.body.setAttribute(the.attributeName, 'on');
                     document.body.setAttribute(the.attributeName2, 'on');
+                    the.element.setAttribute("data-kt-sticky-enabled", "true");
                 }
 
                 if ( the.eventTriggerState === true ) {
@@ -126,6 +138,7 @@ var KTSticky = function(element, options) {
                     _disable();
                     document.body.removeAttribute(the.attributeName);
                     document.body.removeAttribute(the.attributeName2);
+                    the.element.removeAttribute("data-kt-sticky-enabled");
                 }
 
                 if ( the.eventTriggerState === false ) {
@@ -135,6 +148,14 @@ var KTSticky = function(element, options) {
                 }
             }
         }      
+
+        if (release) {
+            if ( release.offsetTop - release.clientHeight > st ) {
+                the.element.setAttribute('data-kt-sticky-released', 'true');
+            } else {
+                the.element.removeAttribute('data-kt-sticky-released');
+            }
+        } 
     }
 
     var _enable = function(update) {
@@ -170,7 +191,7 @@ var KTSticky = function(element, options) {
             KTUtil.css(the.element, 'position', 'fixed');
         }
 
-        if ( top > 0 ) {
+        if ( top >= 0 ) {
             KTUtil.css(the.element, 'top', String(top) + 'px');
         }
 
@@ -189,7 +210,7 @@ var KTSticky = function(element, options) {
             if ( String(left).toLowerCase() === 'auto' ) {
                 var offsetLeft = KTUtil.offset(the.element).left;
 
-                if ( offsetLeft > 0 ) {
+                if ( offsetLeft >= 0 ) {
                     KTUtil.css(the.element, 'left', String(offsetLeft) + 'px');
                 }
             } else {
@@ -376,15 +397,12 @@ KTSticky.handleResize = function() {
 // Global initialization
 KTSticky.init = function() {
     KTSticky.createInstances();
-    KTSticky.handleResize();
-};
 
-// On document ready
-if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', KTSticky.init);
-} else {
-    KTSticky.init();
-}
+    if (KTStickyHandlersInitialized === false) {
+        KTSticky.handleResize();
+        KTStickyHandlersInitialized = true;
+    }    
+};
 
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {

@@ -15,13 +15,13 @@ var KTChartsWidget1 = function () {
             return;
         }
 
-        var negativeColor = element.hasAttribute('data-kt-negative-color') ? element.getAttribute('data-kt-negative-color') : KTUtil.getCssVariableValue('--kt-success');
+        var negativeColor = element.hasAttribute('data-kt-negative-color') ? element.getAttribute('data-kt-negative-color') : KTUtil.getCssVariableValue('--bs-success');
 
         var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
 
-        var baseColor = KTUtil.getCssVariableValue('--kt-primary');
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
 
         var options = {
             series: [{

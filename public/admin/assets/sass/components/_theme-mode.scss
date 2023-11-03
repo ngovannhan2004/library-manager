@@ -8,7 +8,7 @@
 }
 
 // Light mode
-@include theme-light() {
+@include color-mode(light) {
 	.theme-dark-show {
 		display: none !important;		
 	}
@@ -18,12 +18,12 @@
 	}
 
 	.theme-light-bg-body {
-		background-color: var(--kt-body-bg) !important;	
+		background-color: var(--#{$prefix}body-bg) !important;	
 	}
 }
 
 // Dark mode
-@include theme-dark() {
+@include color-mode(dark) {
 	.theme-light-show {
 		display: none !important;		
 	}
@@ -33,6 +33,6 @@
 	}
 
 	.theme-dark-bg-body {
-		background-color: var(--kt-body-bg) !important;	
+		background-color: var(--#{$prefix}body-bg) !important;	
 	}
 }

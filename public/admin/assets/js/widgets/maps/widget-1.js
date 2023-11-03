@@ -52,15 +52,15 @@ var KTMapsWidget1 = (function () {
                 tooltipText: "{name}",
                 toggleKey: "active",
                 interactive: true,
-				fill: am5.color(KTUtil.getCssVariableValue('--kt-gray-300')),
+				fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-300')),
             });
 
             polygonSeries.mapPolygons.template.states.create("hover", {
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-success')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
             });
 
             polygonSeries.mapPolygons.template.states.create("active", {
-                fill: am5.color(KTUtil.getCssVariableValue('--kt-success')),
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
             });
 
             // Highlighted Series
@@ -84,7 +84,7 @@ var KTMapsWidget1 = (function () {
 
             polygonSeriesHighlighted.mapPolygons.template.set(
                 "fill",
-				am5.color(KTUtil.getCssVariableValue('--kt-primary')),
+				am5.color(KTUtil.getCssVariableValue('--bs-primary')),
             );
 
             polygonSeriesHighlighted.mapPolygons.template.states.create("hover", {

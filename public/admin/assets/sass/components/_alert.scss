@@ -4,12 +4,12 @@
 	
 @each $name, $value in $theme-colors {
 	.alert-#{$name} {
-		color: var(--kt-#{$name});
-		border-color: var(--kt-#{$name});
-		background-color: var(--kt-#{$name}-light);
+		color: var(--#{$prefix}#{$name});
+		border-color: var(--#{$prefix}#{$name});
+		background-color: var(--#{$prefix}#{$name}-light);
 
 		.alert-link {
-    		color: var(--kt-#{$name});
+    		color: var(--#{$prefix}#{$name});
   		}
 	}
 }

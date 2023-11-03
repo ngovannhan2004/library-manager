@@ -46,6 +46,36 @@ var KTLayoutSearch = function() {
         }, 1500);
     }
 
+    var processsAjax = function(search) {
+        // Hide recently viewed
+        mainElement.classList.add('d-none');
+
+        // Learn more: https://axios-http.com/docs/intro
+        axios.post('/search.php', {
+            query: searchObject.getQuery()
+        })
+        .then(function (response) {
+            // Populate results
+            resultsElement.innerHTML = response;
+            // Show results
+            resultsElement.classList.remove('d-none');
+            // Hide empty message 
+            emptyElement.classList.add('d-none');
+
+            // Complete search
+            search.complete();
+        })
+        .catch(function (error) {
+            // Hide results
+            resultsElement.classList.add('d-none');
+            // Show empty message 
+            emptyElement.classList.remove('d-none');
+
+            // Complete search
+            search.complete();
+        });
+    }
+
     var clear = function(search) {
         // Show recently viewed
         mainElement.classList.remove('d-none');
@@ -57,35 +87,38 @@ var KTLayoutSearch = function() {
 
     var handlePreferences = function() {
         // Preference show handler
-        preferencesShowElement.addEventListener('click', function() {
-            wrapperElement.classList.add('d-none');
-            preferencesElement.classList.remove('d-none');
-        });
+        if (preferencesShowElement) { 
+            preferencesShowElement.addEventListener('click', function() {
+                wrapperElement.classList.add('d-none');
+                preferencesElement.classList.remove('d-none');
+            });
+        }
 
         // Preference dismiss handler
-        preferencesDismissElement.addEventListener('click', function() {
-            wrapperElement.classList.remove('d-none');
-            preferencesElement.classList.add('d-none');
-        });
+        if (preferencesDismissElement) { 
+            preferencesDismissElement.addEventListener('click', function() {
+                wrapperElement.classList.remove('d-none');
+                preferencesElement.classList.add('d-none');
+            });
+        }
     }
 
     var handleAdvancedOptionsForm = function() {
         // Show
-        advancedOptionsFormShowElement.addEventListener('click', function() {
-            wrapperElement.classList.add('d-none');
-            advancedOptionsFormElement.classList.remove('d-none');
-        });
+        if (advancedOptionsFormShowElement) {            
+            advancedOptionsFormShowElement.addEventListener('click', function() {
+                wrapperElement.classList.add('d-none');
+                advancedOptionsFormElement.classList.remove('d-none');
+            });
+        }        
 
         // Cancel
-        advancedOptionsFormCancelElement.addEventListener('click', function() {
-            wrapperElement.classList.remove('d-none');
-            advancedOptionsFormElement.classList.add('d-none');
-        });
-
-        // Search
-        advancedOptionsFormSearchElement.addEventListener('click', function() {
-            
-        });
+        if (advancedOptionsFormCancelElement) {           
+            advancedOptionsFormCancelElement.addEventListener('click', function() {
+                wrapperElement.classList.remove('d-none');
+                advancedOptionsFormElement.classList.add('d-none');
+            });
+        }
     }
 
     // Public methods
@@ -116,15 +149,23 @@ var KTLayoutSearch = function() {
             // Initialize search handler
             searchObject = new KTSearch(element);
 
-            // Search handler
+            // Demo search handler
             searchObject.on('kt.search.process', processs);
+
+            // Ajax search handler
+            //searchObject.on('kt.search.process', processsAjax);
 
             // Clear handler
             searchObject.on('kt.search.clear', clear);
 
             // Custom handlers
-            handlePreferences();
-            handleAdvancedOptionsForm();            
+            if (preferencesElement) {
+                handlePreferences();
+            }            
+
+            if (advancedOptionsFormElement) {
+                handleAdvancedOptionsForm();
+            }                        
 		}
 	};
 }();

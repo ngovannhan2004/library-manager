@@ -283,13 +283,6 @@ KTDialer.init = function() {
     KTDialer.createInstances();
 };
 
-// On document ready
-if (document.readyState === 'loading') {
-   document.addEventListener('DOMContentLoaded', KTDialer.init);
-} else {
-    KTDialer.init();
-}
-
 // Webpack support
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = KTDialer;

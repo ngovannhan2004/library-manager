@@ -13,9 +13,9 @@ var KTCardsWidget1 = function () {
         var color = element.getAttribute('data-kt-chart-color');
         
         var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-500');         
-        var baseColor = KTUtil.isHexColor(color) ? color : KTUtil.getCssVariableValue('--kt-' + color);
-        var secondaryColor = KTUtil.getCssVariableValue('--kt-gray-300');        
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');         
+        var baseColor = KTUtil.isHexColor(color) ? color : KTUtil.getCssVariableValue('--bs-' + color);
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');        
 
         var options = {
             series: [{

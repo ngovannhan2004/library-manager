@@ -10,6 +10,11 @@ $utilities: map-merge(
             responsive: true,
             values: static relative absolute fixed sticky
         ),
+        "overflow": (
+            property: overflow,
+            responsive: true,
+            values: auto hidden visible scroll,
+        ),
         "opacity": (
             property: opacity,
             class: opacity,

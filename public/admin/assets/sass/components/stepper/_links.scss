@@ -28,7 +28,7 @@
 			}           
 
             .stepper-title {
-                color: var(--kt-dark);		
+                color: var(--#{$prefix}dark);		
                 font-weight: 600;
                 font-size: 1.25rem; 
             }             
@@ -38,18 +38,18 @@
 				transition: $transition-link;
 				
 				.stepper-title {
-					color: var(--kt-primary);					 
+					color: var(--#{$prefix}primary);					 
 				}               
                 
 				&:after {					
-					background-color: var(--kt-primary);
+					background-color: var(--#{$prefix}primary);
 				}				                              
 			} 
 			
 			&.current.mark-completed:last-child,
 			&.completed {
 				.stepper-title {
-					color: var(--kt-gray-400);
+					color: var(--#{$prefix}gray-400);
 				}  			
 			}
         }

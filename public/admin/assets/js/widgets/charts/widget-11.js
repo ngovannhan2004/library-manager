@@ -26,9 +26,9 @@ var KTChartsWidget11 = function () {
             return;
         }        
         
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
-        var baseColor = KTUtil.getCssVariableValue('--kt-success');         
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-success');         
 
         var options = {
             series: [{

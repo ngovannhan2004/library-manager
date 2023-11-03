@@ -7,35 +7,35 @@
     .menu-#{$name} {
         .menu-item {
             //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-            @include menu-link-default-state( var(--kt-#{$name}), var(--kt-#{$name}), var(--kt-#{$name}), var(--kt-#{$name}), null );
+            @include menu-link-default-state( var(--#{$prefix}#{$name}), var(--#{$prefix}#{$name}), var(--#{$prefix}#{$name}), var(--#{$prefix}#{$name}), null );
         }
     }
 
     .menu-title-#{$name} {
         .menu-item {
             //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-            @include menu-link-default-state( var(--kt-text-#{$name}), null, null, null, null );
+            @include menu-link-default-state( var(--#{$prefix}text-#{$name}), null, null, null, null );
         }
     }
 
     .menu-icon-#{$name} {
         .menu-item {
             //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-            @include menu-link-default-state( null, var(--kt-text-#{$name}), null, null, null );
+            @include menu-link-default-state( null, var(--#{$prefix}text-#{$name}), null, null, null );
         }
     }
 
     .menu-bullet-#{$name} {
         .menu-item {
             //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-            @include menu-link-default-state( null, null, var(--kt-text-#{$name}), null, null );
+            @include menu-link-default-state( null, null, var(--#{$prefix}text-#{$name}), null, null );
         }
     }
 
     .menu-arrow-#{$name} {
         .menu-item {
             //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-            @include menu-link-default-state( null, null, null, var(--kt-text-#{$name}), null );
+            @include menu-link-default-state( null, null, null, var(--#{$prefix}text-#{$name}), null );
         }
     }
 }
@@ -44,11 +44,11 @@
 .menu-hover-bg {
     .menu-item {
         @include menu-link-hover-state( 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-bg-color-hover) 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-bg-color-hover) 
         );
     }
 }
@@ -56,11 +56,11 @@
 .menu-here-bg {
     .menu-item {
         @include menu-link-here-state( 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-bg-color-here) 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-bg-color-here) 
         );
     }
 }
@@ -68,11 +68,11 @@
 .menu-root-here-bg {
     > .menu-item {
         @include menu-link-here-state( 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-bg-color-here) 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-bg-color-here) 
         );
     }
 }
@@ -82,11 +82,11 @@
     .menu-root-here-bg-desktop {
         > .menu-item {
             @include menu-link-here-state( 
-                var(--kt-menu-link-color-here), 
-                var(--kt-menu-link-color-here), 
-                var(--kt-menu-link-color-here), 
-                var(--kt-menu-link-color-here), 
-                var(--kt-menu-link-bg-color-here) 
+                var(--#{$prefix}menu-link-color-here), 
+                var(--#{$prefix}menu-link-color-here), 
+                var(--#{$prefix}menu-link-color-here), 
+                var(--#{$prefix}menu-link-color-here), 
+                var(--#{$prefix}menu-link-bg-color-here) 
             );
         }
     }
@@ -95,11 +95,11 @@
 .menu-show-bg {
     .menu-item {
         @include menu-link-show-state( 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-bg-color-show) 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-bg-color-show) 
         );
     }
 }
@@ -107,11 +107,11 @@
 .menu-active-bg {
     .menu-item {
         @include menu-link-active-state( 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-bg-color-active) 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-bg-color-active) 
         );
     }
 }
@@ -119,35 +119,35 @@
 .menu-state-bg {
     .menu-item {
         @include menu-link-hover-state( 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-bg-color-hover) 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-bg-color-hover) 
         );
 
         @include menu-link-here-state( 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-bg-color-here) 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-bg-color-here) 
         );
 
         @include menu-link-show-state( 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-bg-color-show) 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-bg-color-show) 
         );
 
         @include menu-link-active-state( 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-bg-color-active) 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-bg-color-active) 
         );
     }
 }
@@ -155,34 +155,34 @@
 .menu-state-color {
     .menu-item {
         @include menu-link-hover-state( 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
-            var(--kt-menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
+            var(--#{$prefix}menu-link-color-hover), 
             null
         );
 
         @include menu-link-here-state( 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
-            var(--kt-menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
+            var(--#{$prefix}menu-link-color-here), 
             null
         );
 
         @include menu-link-show-state( 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
-            var(--kt-menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
+            var(--#{$prefix}menu-link-color-show), 
             null
         );
 
         @include menu-link-active-state( 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
-            var(--kt-menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
+            var(--#{$prefix}menu-link-color-active), 
             null
         );
     }
@@ -192,11 +192,11 @@
 .menu-hover-bg-primary {
     .menu-item {
         @include menu-link-hover-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary) 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary) 
         );
     }
 }
@@ -204,11 +204,11 @@
 .menu-show-bg-primary {
     .menu-item {
         @include menu-link-show-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary) 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary) 
         );
     }
 }
@@ -216,11 +216,11 @@
 .menu-here-bg-primary {
     .menu-item {
         @include menu-link-here-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary)
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary)
         );
     }
 }
@@ -228,11 +228,11 @@
 .menu-active-bg-primary {
     .menu-item {
         @include menu-link-active-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary)
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary)
         );
     }
 }
@@ -240,43 +240,43 @@
 .menu-state-bg-primary {
     .menu-item {
         @include menu-link-hover-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary) 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary) 
         );
 
         @include menu-link-show-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary) 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary) 
         );
 
         @include menu-link-here-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary)
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary)
         );
 
         @include menu-link-active-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary)
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary)
         );
 
         @include menu-link-show-state( 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary-inverse), 
-            var(--kt-primary) 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary-inverse), 
+            var(--#{$prefix}primary) 
         );
     }
 }
@@ -284,111 +284,111 @@
 // Light primary background states
 .menu-show-bg-light-primary {
     .menu-item {
-        @include menu-link-show-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
+        @include menu-link-show-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
     }
 }
 
 .menu-here-bg-light-primary {
     .menu-item {
-        @include menu-link-here-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
+        @include menu-link-here-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
     }
 }
 
 .menu-hover-bg-light-primary {
     .menu-item {
-        @include menu-link-hover-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
+        @include menu-link-hover-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
     }
 }
 
 .menu-active-bg-light-primary {
     .menu-item {
-        @include menu-link-active-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
+        @include menu-link-active-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
     }
 }
 
 .menu-state-bg-light-primary {
     .menu-item {
-        @include menu-link-show-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
-        @include menu-link-here-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
-        @include menu-link-hover-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
-        @include menu-link-active-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary-light) );
+        @include menu-link-show-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
+        @include menu-link-here-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
+        @include menu-link-hover-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
+        @include menu-link-active-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary-light) );
     }
 }
 
 // Primary color states
 .menu-hover-primary {
     .menu-item {
-        @include menu-link-hover-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
+        @include menu-link-hover-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
     }
 }
 
 .menu-show-primary {
     .menu-item {
-        @include menu-link-show-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
+        @include menu-link-show-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
     }
 }
 
 .menu-here-primary {
     .menu-item {
-        @include menu-link-here-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
+        @include menu-link-here-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
     }
 }
 
 .menu-active-primary {
     .menu-item {
-        @include menu-link-active-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
+        @include menu-link-active-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
     }
 }
 
 .menu-state-primary {
     .menu-item {
-        @include menu-link-hover-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
-        @include menu-link-show-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
-        @include menu-link-here-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
-        @include menu-link-active-state( var(--kt-primary), var(--kt-primary), var(--kt-primary), var(--kt-primary), null );
+        @include menu-link-hover-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
+        @include menu-link-show-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
+        @include menu-link-here-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
+        @include menu-link-active-state( var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), var(--#{$prefix}primary), null );
     }
 }
 
 .menu-state-dark {
     .menu-item {
-        @include menu-link-hover-state( var(--kt-dark), var(--kt-dark), var(--kt-dark), var(--kt-dark), null );
-        @include menu-link-show-state( var(--kt-dark), var(--kt-dark), var(--kt-dark), var(--kt-dark), null );
-        @include menu-link-here-state( var(--kt-dark), var(--kt-dark), var(--kt-dark), var(--kt-dark), null );
-        @include menu-link-active-state( var(--kt-dark), var(--kt-dark), var(--kt-dark), var(--kt-dark), null );
+        @include menu-link-hover-state( var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), null );
+        @include menu-link-show-state( var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), null );
+        @include menu-link-here-state( var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), null );
+        @include menu-link-active-state( var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), var(--#{$prefix}dark), null );
     }
 }
 
 // Primary title color states
 .menu-hover-title-primary {
     .menu-item {
-        @include menu-link-hover-state( var(--kt-primary), null, null, null, null );
+        @include menu-link-hover-state( var(--#{$prefix}primary), null, null, null, null );
     }
 }
 
 .menu-here-title-primary {
     .menu-item {
-        @include menu-link-here-state( var(--kt-primary), null, null, null, null );
+        @include menu-link-here-state( var(--#{$prefix}primary), null, null, null, null );
     }
 }
 
 .menu-show-title-primary {
     .menu-item {
-        @include menu-link-show-state( var(--kt-primary), null, null, null, null );
+        @include menu-link-show-state( var(--#{$prefix}primary), null, null, null, null );
     }
 }
 
 .menu-active-title-primary {
     .menu-item {
-        @include menu-link-active-state( var(--kt-primary), null, null, null, null );
+        @include menu-link-active-state( var(--#{$prefix}primary), null, null, null, null );
     }
 }
 
 .menu-state-title-primary {
     .menu-item {
-        @include menu-link-hover-state( var(--kt-primary), null, null, null, null );
-        @include menu-link-here-state( var(--kt-primary), null, null, null, null );
-        @include menu-link-show-state( var(--kt-primary), null, null, null, null );
-        @include menu-link-active-state( var(--kt-primary), null, null, null, null );
+        @include menu-link-hover-state( var(--#{$prefix}primary), null, null, null, null );
+        @include menu-link-here-state( var(--#{$prefix}primary), null, null, null, null );
+        @include menu-link-show-state( var(--#{$prefix}primary), null, null, null, null );
+        @include menu-link-active-state( var(--#{$prefix}primary), null, null, null, null );
     }
 }
 
@@ -396,38 +396,38 @@
 .menu-hover-icon-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-hover-state( null, var(--kt-primary), null, null, null );
+        @include menu-link-hover-state( null, var(--#{$prefix}primary), null, null, null );
     }
 }
 
 .menu-here-icon-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-here-state( null, var(--kt-primary), null, null, null );
+        @include menu-link-here-state( null, var(--#{$prefix}primary), null, null, null );
     }
 }
 
 .menu-show-icon-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-show-state( null, var(--kt-primary), null, null, null );
+        @include menu-link-show-state( null, var(--#{$prefix}primary), null, null, null );
     }
 }
 
 .menu-active-icon-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-active-state( null, var(--kt-primary), null, null, null );
+        @include menu-link-active-state( null, var(--#{$prefix}primary), null, null, null );
     }
 }
 
 .menu-state-icon-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-hover-state( null, var(--kt-primary), null, null, null );
-        @include menu-link-here-state( null, var(--kt-primary), null, null, null );
-        @include menu-link-show-state( null, var(--kt-primary), null, null, null );
-        @include menu-link-active-state( null, var(--kt-primary), null, null, null );
+        @include menu-link-hover-state( null, var(--#{$prefix}primary), null, null, null );
+        @include menu-link-here-state( null, var(--#{$prefix}primary), null, null, null );
+        @include menu-link-show-state( null, var(--#{$prefix}primary), null, null, null );
+        @include menu-link-active-state( null, var(--#{$prefix}primary), null, null, null );
     }
 }
 
@@ -435,38 +435,38 @@
 .menu-hover-bullet-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-hover-state( null, null, var(--kt-primary), null, null );
+        @include menu-link-hover-state( null, null, var(--#{$prefix}primary), null, null );
     }
 }
 
 .menu-show-bullet-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-show-state( null, null, var(--kt-primary), null, null );
+        @include menu-link-show-state( null, null, var(--#{$prefix}primary), null, null );
     }
 }
 
 .menu-here-bullet-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-here-state( null, null, var(--kt-primary), null, null );
+        @include menu-link-here-state( null, null, var(--#{$prefix}primary), null, null );
     }
 }
 
 .menu-active-bullet-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-active-state( null, null, var(--kt-primary), null, null );
+        @include menu-link-active-state( null, null, var(--#{$prefix}primary), null, null );
     }
 }
 
 .menu-state-bullet-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-hover-state( null, null, var(--kt-primary), null, null );
-        @include menu-link-here-state( null, null, var(--kt-primary), null, null );
-        @include menu-link-show-state( null, null, var(--kt-primary), null, null );
-        @include menu-link-active-state( null, null, var(--kt-primary), null, null );
+        @include menu-link-hover-state( null, null, var(--#{$prefix}primary), null, null );
+        @include menu-link-here-state( null, null, var(--#{$prefix}primary), null, null );
+        @include menu-link-show-state( null, null, var(--#{$prefix}primary), null, null );
+        @include menu-link-active-state( null, null, var(--#{$prefix}primary), null, null );
     }
 }
 
@@ -474,37 +474,37 @@
 .menu-hover-arrow-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-hover-state( null, null, null, var(--kt-primary), null );
+        @include menu-link-hover-state( null, null, null, var(--#{$prefix}primary), null );
     }
 }
 
 .menu-here-arrow-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-here-state( null, null, null, var(--kt-primary), null );
+        @include menu-link-here-state( null, null, null, var(--#{$prefix}primary), null );
     }
 }
 
 .menu-show-arrow-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-show-state( null, null, null, var(--kt-primary), null );
+        @include menu-link-show-state( null, null, null, var(--#{$prefix}primary), null );
     }
 }
 
 .menu-active-arrow-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-active-state( null, null, null, var(--kt-primary), null );
+        @include menu-link-active-state( null, null, null, var(--#{$prefix}primary), null );
     }
 }
 
 .menu-state-arrow-primary {
     .menu-item {
         //$title-color, $icon-color, $bullet-color, $arrow-color, $bg-color
-        @include menu-link-hover-state( null, null, null, var(--kt-primary), null );
-        @include menu-link-here-state( null, null, null, var(--kt-primary), null );
-        @include menu-link-show-state( null, null, null, var(--kt-primary), null );
-        @include menu-link-active-state( null, null, null, var(--kt-primary), null );
+        @include menu-link-hover-state( null, null, null, var(--#{$prefix}primary), null );
+        @include menu-link-here-state( null, null, null, var(--#{$prefix}primary), null );
+        @include menu-link-show-state( null, null, null, var(--#{$prefix}primary), null );
+        @include menu-link-active-state( null, null, null, var(--#{$prefix}primary), null );
     }
 }

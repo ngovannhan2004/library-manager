@@ -3,10 +3,11 @@
 //
 
 .fv-plugins-message-container {
+    --input-invalid-color: var(--#{$prefix}danger);
     margin-top: 0.3rem;
 
     .fv-help-block {
-        color: var(--kt-danger);
+        color: var(--#{$prefix}danger);
         font-size: 1rem;
         font-weight: $font-weight-normal;
     }

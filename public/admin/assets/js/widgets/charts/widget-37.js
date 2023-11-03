@@ -33,9 +33,9 @@ var KTChartsWidget37 = function () {
         var height = parseInt(KTUtil.css(element, 'height'));
         var color = element.getAttribute('data-kt-chart-color');         
         
-        var labelColor = KTUtil.getCssVariableValue('--kt-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');
-        var baseColor = KTUtil.getCssVariableValue('--kt-' + color);    
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + color);    
 
         var options = {
             series: [{

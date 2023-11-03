@@ -21,7 +21,7 @@ var KTChartsWidget8 = function () {
         }
 
         var height = parseInt(KTUtil.css(element, 'height'));    
-        var borderColor = KTUtil.getCssVariableValue('--kt-border-dashed-color');    
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');    
 
         var options = {
             series: [
@@ -83,7 +83,7 @@ var KTChartsWidget8 = function () {
                     show: true,
                     trim: true,
                     style: {
-                        colors: KTUtil.getCssVariableValue('--kt-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }
                 }
@@ -94,7 +94,7 @@ var KTChartsWidget8 = function () {
                 max: 700,
                 labels: {
                     style: {
-                        colors: KTUtil.getCssVariableValue('--kt-gray-500'),
+                        colors: KTUtil.getCssVariableValue('--bs-gray-500'),
                         fontSize: '13px'
                     }
                 }               
@@ -121,17 +121,17 @@ var KTChartsWidget8 = function () {
                 show: true,
                 position: 'front',
                 stroke: {
-                    color: KTUtil.getCssVariableValue('--kt-border-dashed-color'),
+                    color: KTUtil.getCssVariableValue('--bs-border-dashed-color'),
                     width: 1,
                     dashArray: 0,
                 }
             },           
             colors: [
-                KTUtil.getCssVariableValue('--kt-primary'),
-                KTUtil.getCssVariableValue('--kt-success'),   
-                KTUtil.getCssVariableValue('--kt-warning'),
-                KTUtil.getCssVariableValue('--kt-danger'),
-                KTUtil.getCssVariableValue('--kt-info'),
+                KTUtil.getCssVariableValue('--bs-primary'),
+                KTUtil.getCssVariableValue('--bs-success'),   
+                KTUtil.getCssVariableValue('--bs-warning'),
+                KTUtil.getCssVariableValue('--bs-danger'),
+                KTUtil.getCssVariableValue('--bs-info'),
                 '#43CED7'
             ],
             fill: {
