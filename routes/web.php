@@ -34,13 +34,6 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
     Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('admin.users.delete');
 });
-Route::group(['prefix' => 'dausach'], function () {
-    Route::get('/', [DausachController::class, 'index'])->name('admin.dausachs.index');
-    Route::get('/create', [DausachController::class, 'create'])->name('admin.dausachs.create');
-    Route::post('/store', [DausachController::class, 'store'])->name('admin.dausachs.store');
-    Route::get('/edit/{id}', [DausachController::class, 'edit'])->name('admin.dausachs.edit');
-    Route::post('/update/{id}', [DausachController::class, 'update'])->name('admin.dausachs.update');
-    Route::get('/delete/{id}', [DausachController::class, 'destroy'])->name('admin.dausachs.delete');
-});
+
 
 
