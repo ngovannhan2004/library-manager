@@ -1531,7 +1531,7 @@ function requireCjs$$ () {
 	 * This plugin adds ARIA attributes based on the field validity.
 	 * The list include:
 	 *  - `aria-invalid`, `aria-describedby` for field element
-	 *  - `aria-hidden`, `role` for associated message element
+	 *  - `aria-hidden`, `author` for associated message element
 	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
 	 */
 	var Aria = /** @class */ (function (_super) {

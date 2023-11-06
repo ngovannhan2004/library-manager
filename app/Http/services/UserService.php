@@ -31,7 +31,7 @@ class UserService
             'password' => Hash::make($data['password']),
             'namsinh' => $data->namsinh,
             'sdt' => $data->sdt,
-            'role' => $data->role,
+            'author' => $data->role,
             'gender' => $data->gender
 
         ]);
@@ -45,7 +45,7 @@ class UserService
             'password' => Hash::make($request['password']),
             'namsinh' => $request->namsinh,
             'sdt' => $request->sdt,
-            'role' => $request->role,
+            'author' => $request->role,
             'gender' => $request->gender
 
         ]);
@@ -61,7 +61,7 @@ class UserService
             'password' => Hash::make($request['password']),
             'namsinh' => $request->namsinh,
             'sdt' => $request->sdt,
-           'role' => $request->role,
+           'author' => $request->role,
             'gender' => $request->gender
         ]);
         return $user;

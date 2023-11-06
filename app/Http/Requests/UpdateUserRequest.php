@@ -37,7 +37,7 @@ class UpdateUserRequest extends FormRequest
             'email.unique' => 'Email này đã tồn tại.',
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
-            'role.required' => 'Vui lòng chọn quyền.',
+            'author.required' => 'Vui lòng chọn quyền.',
         ];
     }
 }

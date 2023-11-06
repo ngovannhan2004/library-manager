@@ -4,7 +4,7 @@ var lib$B = {exports: {}};
 
 var index_min$B = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -1401,7 +1401,7 @@ var lib$A = {exports: {}};
 
 var index_min$A = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -1531,7 +1531,7 @@ var lib$z = {exports: {}};
 
 var index_min$z = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -1600,7 +1600,7 @@ function requireCjs$z () {
 	 * This plugin adds ARIA attributes based on the field validity.
 	 * The list include:
 	 *  - `aria-invalid`, `aria-describedby` for field element
-	 *  - `aria-hidden`, `role` for associated message element
+	 *  - `aria-hidden`, `author` for associated message element
 	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
 	 */
 	var Aria = /** @class */ (function (_super) {
@@ -1686,7 +1686,7 @@ var lib$y = {exports: {}};
 
 var index_min$y = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -2018,7 +2018,7 @@ var lib$x = {exports: {}};
 
 var index_min$x = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -2134,7 +2134,7 @@ var lib$w = {exports: {}};
 
 var index_min$w = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -2251,7 +2251,7 @@ var lib$v = {exports: {}};
 
 var index_min$v = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -2367,7 +2367,7 @@ var lib$u = {exports: {}};
 
 var index_min$u = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -2539,7 +2539,7 @@ var lib$s = {exports: {}};
 
 var index_min$s = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -2865,7 +2865,7 @@ if (process.env.NODE_ENV === 'production') {
 
 var libExports$t = lib$s.exports;
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -3183,7 +3183,7 @@ var lib$r = {exports: {}};
 
 var index_min$r = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -3454,7 +3454,7 @@ var lib$q = {exports: {}};
 
 var index_min$q = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -3642,7 +3642,7 @@ var lib$p = {exports: {}};
 
 var index_min$p = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -3827,7 +3827,7 @@ var lib$o = {exports: {}};
 
 var index_min$o = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -4067,7 +4067,7 @@ var lib$n = {exports: {}};
 
 var index_min$n = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -4308,7 +4308,7 @@ var lib$m = {exports: {}};
 
 var index_min$m = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -4397,7 +4397,7 @@ var lib$l = {exports: {}};
 
 var index_min$l = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -4463,7 +4463,7 @@ var lib$k = {exports: {}};
 
 var index_min$k = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -4531,7 +4531,7 @@ var lib$j = {exports: {}};
 
 var index_min$j = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -4617,7 +4617,7 @@ var lib$i = {exports: {}};
 
 var index_min$i = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -4874,7 +4874,7 @@ var lib$h = {exports: {}};
 
 var index_min$h = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5185,7 +5185,7 @@ var lib$g = {exports: {}};
 
 var index_min$g = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5252,7 +5252,7 @@ var lib$f = {exports: {}};
 
 var index_min$f = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5317,7 +5317,7 @@ var lib$e = {exports: {}};
 
 var index_min$e = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5442,7 +5442,7 @@ var lib$d = {exports: {}};
 
 var index_min$d = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5642,7 +5642,7 @@ var lib$c = {exports: {}};
 
 var index_min$c = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5720,7 +5720,7 @@ var lib$b = {exports: {}};
 
 var index_min$b = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5787,7 +5787,7 @@ var lib$a = {exports: {}};
 
 var index_min$a = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5876,7 +5876,7 @@ var lib$9 = {exports: {}};
 
 var index_min$9 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -5970,7 +5970,7 @@ var lib$8 = {exports: {}};
 
 var index_min$8 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6048,7 +6048,7 @@ var lib$7 = {exports: {}};
 
 var index_min$7 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6114,7 +6114,7 @@ var lib$6 = {exports: {}};
 
 var index_min$6 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6210,7 +6210,7 @@ var lib$5 = {exports: {}};
 
 var index_min$5 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6303,7 +6303,7 @@ var lib$4 = {exports: {}};
 
 var index_min$4 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6379,7 +6379,7 @@ var lib$3 = {exports: {}};
 
 var index_min$3 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6488,7 +6488,7 @@ var lib$2 = {exports: {}};
 
 var index_min$2 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6571,7 +6571,7 @@ var lib$1 = {exports: {}};
 
 var index_min$1 = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
@@ -6691,7 +6691,7 @@ var lib = {exports: {}};
 
 var index_min = {};
 
-/** 
+/**
  * FormValidation (https://formvalidation.io)
  * The best validation library for JavaScript
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>

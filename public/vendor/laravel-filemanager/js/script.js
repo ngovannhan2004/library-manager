@@ -387,7 +387,7 @@ function generatePaginationHTML(el, args) {
 }
 
 function createPagination(paginationSetting) {
-  var el = $('<ul class="pagination" role="navigation"></ul>');
+  var el = $('<ul class="pagination" author="navigation"></ul>');
 
   var currentPage = paginationSetting.current_page;
   var pageRange = 5;

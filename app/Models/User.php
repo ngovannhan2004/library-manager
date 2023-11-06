@@ -24,7 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'author',
         'namsinh',
         'sdt',
         'gender',
@@ -82,7 +82,13 @@ class User extends Authenticatable
         if ($this->isAdmin()){
             return true;
         }
-
+        $permissions = $this->getParent();
+        foreach ($permissions as $permission){
+            if($permission == $value){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

@@ -13,7 +13,7 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'permission-category';
+        $menu_parent = 'publishing_company-category';
         $menu_child = 'edit';
     @endphp
 @endsection

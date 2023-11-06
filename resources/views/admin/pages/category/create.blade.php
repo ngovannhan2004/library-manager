@@ -29,7 +29,7 @@
     Create Category
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.categories.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('admin.categories.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-list"></i> List Category
     </a>
 @endsection
@@ -41,12 +41,12 @@
         @csrf
 
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Name Category</label>
-            <input name="name" type="text" class="form-control form-control-solid"
-                   placeholder="Enter name category" {{old('name')}}>
+            <label for="name" class="required form-label">Name</label>
+            <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
+                   value="{{ old('name') }}">
         </div>
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Parent Category</label>
+            <label for="" class="required form-label">Parent_id</label>
             <select class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1" name="parent_id">
                 <option value="0">None</option>
@@ -55,19 +55,19 @@
                 @endforeach
             </select>
         </div>
+{{--        <div class="mb-10">--}}
+{{--            <label for="exampleFormControlInput1" class="required form-label">Status</label>--}}
+{{--            <select class="form-select form-select-solid" data-control="select2"--}}
+{{--                    data-placeholder="Select status" data-select2-id="1" name="status">--}}
+{{--                <option></option>--}}
+{{--                <option value="1">Active</option>--}}
+{{--                <option value="0">Inactive</option>--}}
+{{--                <option value="2">Pending</option>--}}
+{{--                <option value="3">Delete</option>--}}
+{{--            </select>--}}
+{{--        </div>--}}
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Status</label>
-            <select class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select status" data-select2-id="1" name="status">
-                <option></option>
-                <option value="1">Active</option>
-                <option value="0">Inactive</option>
-                <option value="2">Pending</option>
-                <option value="3">Delete</option>
-            </select>
-        </div>
-        <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Name Category</label>
+            <label for="description" class="required form-label">Description</label>
             <textarea name="description" id="" cols="20" rows="10"
                       class="form-control form-control-solid">{{old('description')}}</textarea>
         </div>

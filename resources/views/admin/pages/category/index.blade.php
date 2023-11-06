@@ -50,13 +50,11 @@
                                data-kt-check-target="#kt_datatable_horizontal_scroll .form-check-input" value="1">
                     </div>
                 </th>
-                <th class="min-w-50">#</th>
-                <th class="min-w-200px">Name Category</th>
+                <th class="min-w-50"></th>
+                <th class="min-w-200px">Name </th>
                 <th class="min-w-150px">Slug</th>
                 <th class="min-w-200px">Description</th>
-                <th class="min-w-200px">Parent Category</th>
-                <th class="min-w-200px">Count Blog</th>
-                <th class="min-w-100px">Status</th>
+                <th class="min-w-200px">Parent_id</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -73,17 +71,6 @@
                     <td>{{$category->slug}}</td>
                     <td>{{$category->description}}</td>
                     <td>{{$category->parent_id}}</td>
-                    <td>{{$category->blogs->count()}}</td>
-                    <td>
-                        @if($category->status == 1)
-                            <span class="badge badge-success">Active</span>
-                        @elseif($category->status == 0)
-                            <span class="badge badge-info">Inactive</span>
-                        @elseif($category->status == 2)
-                            <span class="badge badge-warning">Pending</span>
-                        @elseif($category->status == 3)
-                            <span class="badge badge-danger">Delete</span>
-                    @endif
                     <td>
                         <a href="{{route('admin.categories.edit', $category->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
@@ -109,7 +96,7 @@
     </div>
 @endsection
 @section('footer_card')
-    {{$categories->links()}}
+{{--    {{$categories->links()}}--}}
 
 @endsection
 @section('content_layout')

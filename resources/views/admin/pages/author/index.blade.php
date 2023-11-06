@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    List Role - Admin - {{ config('app.name') }}
+    List Author - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
-    Nam 077
+    {{auth()->user()->name}}
 @endsection
 @section('css_custom')
     <link href="{{asset('/admin/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet"
@@ -12,16 +12,10 @@
 @endsection
 @section('js_custom')
     <script src="{{asset('/admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script !src="">
-        $("#kt_datatable_horizontal_scroll").DataTable({
-            dom: 'Bfrtip',
-            order: [],
-        });
-    </script>
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'role';
+        $menu_parent = 'author';
         $menu_child = 'index';
     @endphp
 @endsection
@@ -32,12 +26,12 @@
     List Role
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.roles.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-plus"></i> Add Role
+    <a href="{{route('admin.authors.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-plus"></i> Add Auhor
     </a>
 @endsection
 @section('title_card')
-    List Role
+    List Author
 @endsection
 @section('content_card')
     <div class="table-responsive">
@@ -50,38 +44,42 @@
                                data-kt-check-target="#kt_datatable_horizontal_scroll .form-check-input" value="1">
                     </div>
                 </th>
-                <th class="min-w-50">#</th>
-                <th class="min-w-200px">Name Role</th>
-                <th class="min-w-150px">Slug</th>
-                <th class="min-w-200px">Description</th>
+                <th class="min-w-50"></th>
+                <th class="min-w-200px">Name </th>
+                <th class="min-w-200px">Email</th>
+                <th class="min-w-150px">Phone</th>
+                <th class="min-w-150px">Address</th>
+                <th class="min-w-100px">Gender</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($roles as $role)
+            @foreach($authors as $author)
                 <tr>
                     <td>
                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
-                    <td>{{$role->id}}</td>
-                    <td>{{$role->name}}</td>
-                    <td>{{$role->slug}}</td>
-                    <td>{{$role->description}}</td>
+                    <td>{{$author->id}}</td>
+                    <td>{{$author->name}}</td>
+                    <td>{{$author->email}}</td>
+                    <td>{{$author->phone}}</td>
+                    <td>{{$author->address}}</td>
+                    <td>{{$author->gender}}</td>
 
                     <td>
-                        <a href="{{route('admin.roles.edit',$role->id)}}"
+                        <a href="{{route('admin.authors.edit',$author->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
-                        @if($role->deleted_at == null)
-                            <a href="{{route('admin.roles.delete',$role->id)}}"
+                        @if($author->deleted_at == null)
+                            <a href="{{route('admin.authors.delete',$author->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
                                 <i class="fa fa-trash"></i>
                             </a>
                         @else
-                            <a href="{{route('admin.roles.restore',$role->id)}}"
+                            <a href="{{route('admin.authors.restore',$author->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
                                 <i class="fa fa-undo"></i>
                             </a>
@@ -95,7 +93,7 @@
     </div>
 @endsection
 @section('footer_card')
-    {{$roles->links()}}
+{{--    {{$roles->links()}}--}}
 
 @endsection
 @section('content_layout')
