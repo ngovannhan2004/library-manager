@@ -35,12 +35,12 @@
     <form action="{{route('admin.categories.update', $category->id)}}" method="post" class="form-control-sm">
         @csrf
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Name Category</label>
+            <label for="exampleFormControlInput1" class="required form-label">Name </label>
             <input name="name" value="{{$category -> name}}" type="text" class="form-control form-control-solid"
                    placeholder="Enter name category" {{old('name')}}>
         </div>
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Parent Category</label>
+            <label for="exampleFormControlInput1" class="required form-label">Parent_id</label>
             <select class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1" name="parent_id">
                 <option></option>
@@ -51,8 +51,8 @@
             </select>
         </div>
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Name Category</label>
-            <textarea name="description" id="" cols="20" rows="10" class="form-control form-control-solid">{{$category -> name}}</textarea>
+            <label for="exampleFormControlInput1" class="required form-label">Description</label>
+            <textarea name="description" id="" cols="20" rows="10" class="form-control form-control-solid">{{$category -> description}}</textarea>
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

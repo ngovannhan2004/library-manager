@@ -21,7 +21,7 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'permission';
+        $menu_parent = 'publishing_company';
         $menu_child = 'index';
     @endphp
 @endsection

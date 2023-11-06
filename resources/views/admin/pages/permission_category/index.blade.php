@@ -21,7 +21,7 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'permission-category';
+        $menu_parent = 'publishing_company-category';
         $menu_child = 'index';
     @endphp
 @endsection
@@ -32,7 +32,7 @@
     List Permission Category
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.permission-categories.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('admin.publishing_company-categories.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-plus"></i> Add Permission Category
     </a>
 @endsection
@@ -71,17 +71,17 @@
                     <td>{{$permissionCategory->description}}</td>
 
                     <td>
-                        <a href="{{route('admin.permission-categories.edit', $permissionCategory->id)}}"
+                        <a href="{{route('admin.publishing_company-categories.edit', $permissionCategory->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
                         @if($permissionCategory->deleted_at == null)
-                            <a href="{{route('admin.permission-categories.delete', $permissionCategory->id)}}"
+                            <a href="{{route('admin.publishing_company-categories.delete', $permissionCategory->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
                                 <i class="fa fa-trash"></i>
                             </a>
                         @else
-                            <a href="{{route('admin.permission-categories.restore', $permissionCategory->id)}}"
+                            <a href="{{route('admin.publishing_company-categories.restore', $permissionCategory->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
                                 <i class="fa fa-undo"></i>
                             </a>

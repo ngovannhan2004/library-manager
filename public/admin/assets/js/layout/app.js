@@ -80,7 +80,7 @@ var KTApp = function () {
         }
 
         if (options['dismiss'] === true) {
-            options['template'] = '<div class="popover" role="tooltip"><div class="popover-arrow"></div><span class="popover-dismiss btn btn-icon"></span><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
+            options['template'] = '<div class="popover" author="tooltip"><div class="popover-arrow"></div><span class="popover-dismiss btn btn-icon"></span><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
         }
 
         // Initialize popover

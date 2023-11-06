@@ -18,7 +18,7 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'permission-category';
+        $menu_parent = 'publishing_company-category';
         $menu_child = 'create';
     @endphp
 @endsection
@@ -29,7 +29,7 @@
     Create Permission Category
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.permission-categories.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('admin.publishing_company-categories.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-list"></i> List Permission Category
     </a>
 @endsection
@@ -37,7 +37,7 @@
     Create Permission Category
 @endsection
 @section('content_card')
-    <form action="{{route('admin.permission-categories.store')}}" method="post" class="form-control-sm">
+    <form action="{{route('admin.publishing_company-categories.store')}}" method="post" class="form-control-sm">
         @csrf
 
         <div class="mb-10">
