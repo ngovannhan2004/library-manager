@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Create Category - Admin - {{ config('app.name') }}
+    Create Publishing Company - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
-    Nam 077
+    {{auth()->user()->name}}
 @endsection
 @section('css_custom')
     <link href="{{asset('/admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css"/>
@@ -13,47 +13,47 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'category';
+        $menu_parent = 'publishing_company';
         $menu_child = 'edit';
     @endphp
 @endsection
 @section('title_component')
-    Category
+    Publishing Company
 @endsection
 @section('title_layout')
-    Create Category
+    Create Publishing Company
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.categories.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Category
+    <a href="{{route('admin.publishing_companies.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> List Publishing Company
     </a>
 @endsection
 @section('title_card')
     Create Category
 @endsection
 @section('content_card')
-    <form action="{{route('admin.categories.update', $category->id)}}" method="post" class="form-control-sm">
+    <form action="{{route('admin.publishing_companies.update', $publishing_company->id)}}" method="post" class="form-control-sm">
         @csrf
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Name Category</label>
-            <input name="name" value="{{$category -> name}}" type="text" class="form-control form-control-solid"
-                   placeholder="Enter name category" {{old('name')}}>
+            <label for="exampleFormControlInput1" class="required form-label">Name</label>
+            <input type="text" name="name" id="exampleFormControlInput1" class="form-control" value="{{ $publishing_company->name }}">
         </div>
+
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Parent Category</label>
-            <select class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" data-select2-id="1" name="parent_id">
-                <option></option>
-                <option value="0">None</option>
-                @foreach($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
-                @endforeach
-            </select>
+            <label for="exampleFormControlInput2" class="required form-label">Address</label>
+            <input type="text" name="address" id="exampleFormControlInput2" class="form-control" value="{{ $publishing_company->address }}">
         </div>
+
         <div class="mb-10">
-            <label for="exampleFormControlInput1" class="required form-label">Name Category</label>
-            <textarea name="description" id="" cols="20" rows="10" class="form-control form-control-solid">{{$category -> name}}</textarea>
+            <label for="exampleFormControlInput3" class="required form-label">Phone</label>
+            <input type="text" name="phone" id="exampleFormControlInput3" class="form-control" value="{{ $publishing_company->phone}}">
         </div>
+
+        <div class="mb-10">
+            <label for="exampleFormControlInput4" class="required form-label">Email</label>
+            <input type="email" name="email" id="exampleFormControlInput4" class="form-control" value="{{ $publishing_company->email }}">
+        </div>
+
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
                 <i class="fa fa-save"></i> Save

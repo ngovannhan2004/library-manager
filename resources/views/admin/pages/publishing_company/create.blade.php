@@ -29,7 +29,7 @@
     Create PublishingCompany
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.publishing_companies.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('admin.publishing_companies.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-list"></i> List PublishingCompany
     </a>
 @endsection
@@ -60,14 +60,6 @@
             <input type="email" name="email" id="exampleFormControlInput4" class="form-control" value="{{ old('email') }}">
         </div>
 
-        <div class="mb-10">
-            <label for="gender" class="required form-label">Gender</label>
-            <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" {{ old('gender') === 'Nam' ? 'selected' : '' }}>Nam</option>
-                <option value="Nữ" {{ old('gender') === 'Nữ' ? 'selected' : '' }}>Nữ</option>
-                <option value="Khác" {{ old('gender') === 'Khác' ? 'selected' : '' }}>Khác</option>
-            </select>
-        </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
                 <i class="fa fa-save"></i> Save

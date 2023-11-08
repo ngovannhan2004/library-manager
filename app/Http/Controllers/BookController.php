@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
+use App\Http\Services\BookService;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -10,9 +12,17 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    private BookService $bookService;
+
+    public function __construct(BookService $bookService)
+    {
+        $this->bookService = $bookService;
+    }
     public function index()
     {
-        //
+        $books = $this->bookService->getAll();
+        return view('admin.pages.book.index', compact('books'));
     }
 
     /**
@@ -20,15 +30,16 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $books = $this->bookService->getAll();
+        return view('admin.pages.book.create', compact('books'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        //
+
     }
 
     /**
