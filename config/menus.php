@@ -137,7 +137,28 @@ return [
             ]
 
         ],
-    ],
+    ],    [
+        'title' => 'Payment Slip',
+        'name' => 'payment-slip',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.payment_slips.index',
+        'children' => [
+            [
+                'title' => 'List Payment Slip',
+                'name' => 'index',
+                'route' => 'admin.payment_slips.index',
+            ],
+            [
+                'title' => 'Create Payment Slip',
+                'name' => 'create',
+                'route' => 'admin.payment_slips.create',
+            ],
+            [
+                'title' => 'Edit Payment Slip',
+                'name' => 'edit',
+            ]
 
+        ],
+    ],
 
 ];

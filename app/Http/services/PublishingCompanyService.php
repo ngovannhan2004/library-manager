@@ -37,11 +37,9 @@ class PublishingCompanyService implements DAOInterface
     {
         return$this->publishingCompany->create([
             'name' => $request->name,
-            'slug' => Str::slug($request->name),
             'address' => $request->address ?? null,
             'phone' => $request->phone ?? null,
             'email' => $request->email ?? null,
-            'gender' => $request->gender ?? null,
         ]);
     }
 
@@ -50,11 +48,9 @@ class PublishingCompanyService implements DAOInterface
         $publishingCompany = $this->publishingCompany->find($id);
         $publishingCompany->update([
             'name' => $request->name,
-            'slug' => Str::slug($request->name),
             'address' => $request->address ?? null,
             'phone' => $request->phone ?? null,
             'email' => $request->email ?? null,
-            'gender' => $request->gender ?? null,
         ]);
         return $publishingCompany;
     }
@@ -67,6 +63,5 @@ class PublishingCompanyService implements DAOInterface
 
     function search($value)
     {
-        // TODO: Implement search() method.
     }
 }

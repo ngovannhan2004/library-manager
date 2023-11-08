@@ -10,15 +10,11 @@ use Laravel\Sanctum\HasApiTokens;
 
 class PublishingCompany extends Model
 {
-    use SoftDeletes;
-    use HasApiTokens, HasFactory, Notifiable;
     use HasFactory;
     protected $fillable = [
         'name',
         'address',
         'phone',
         'email',
-        'gender',
-
     ];
 }

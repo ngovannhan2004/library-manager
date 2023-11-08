@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DausachController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentSlipController;
 use App\Http\Controllers\PublishingCompanyController;
 use App\Http\Controllers\ReadersController;
 use App\Http\Controllers\StatusController;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('admin.layouts.main');
+    return view('admin.pages.auth.login');
 })->name('home');
 Route::get('/admin/login', [HomeController::class,'login'])->name('admin.auth.login');
 Route::post('/admin/login-post', [HomeController::class, 'loginPost'])->name('admin.auth.login-post');
@@ -85,4 +86,14 @@ Route::group(['prefix' => 'readers'], function () {
     Route::post('/update/{id}', [ReadersController::class, 'update'])->name('admin.readers.update');
     Route::get('/delete/{id}', [ReadersController::class, 'destroy'])->name('admin.readers.delete');
     Route::get('/restore/{id}', [ReadersController::class, 'restore'])->name('admin.readers.restore');
+});
+
+Route::group(['prefix' => 'payment-slip'], function () {
+    Route::get('/', [PaymentSlipController::class, 'index'])->name('admin.payment_slips.index');
+    Route::get('/create', [PaymentSlipController::class, 'create'])->name('admin.payment_slips.create');
+    Route::post('/store', [PaymentSlipController::class, 'store'])->name('admin.payment_slips.store');
+    Route::get('/edit/{id}', [PaymentSlipController::class, 'edit'])->name('admin.payment_slips.edit');
+    Route::post('/update/{id}', [PaymentSlipController::class, 'update'])->name('admin.payment_slips.update');
+    Route::get('/delete/{id}', [PaymentSlipController::class, 'destroy'])->name('admin.payment_slips.delete');
+    Route::get('/restore/{id}', [PaymentSlipController::class, 'restore'])->name('admin.payment_slips.restore');
 });

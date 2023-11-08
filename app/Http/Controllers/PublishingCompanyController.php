@@ -24,8 +24,8 @@ class PublishingCompanyController extends Controller
 
     public function index()
     {
-        $publishing__companies= $this->publishingCompanyService->getAll();
-        return view('admin.pages.publishing_company.index', compact('publishing__companies'));
+        $publishing_companies= $this->publishingCompanyService->getAll();
+        return view('admin.pages.publishing_company.index', compact('publishing_companies'));
 
     }
 
@@ -34,8 +34,8 @@ class PublishingCompanyController extends Controller
      */
     public function create()
     {
-        $publishing__companies = $this->publishingCompanyService->getAll();
-        return view('admin.pages.publishing_company.create', compact('publishing__companies'));
+        $publishing_companies = $this->publishingCompanyService->getAll();
+        return view('admin.pages.publishing_company.create', compact('publishing_companies'));
     }
 
     /**
@@ -60,9 +60,9 @@ class PublishingCompanyController extends Controller
      */
     public function edit($id)
     {
-        $publishing__company = $this->publishingCompanyService->getById($id);
-        $publishing__companies = $this->publishingCompanyService->getAll();
-        return view('admin.pages.publishing_company.edit', compact('publishing__company', 'publishing__companies'));
+        $publishing_company = $this->publishingCompanyService->getById($id);
+        $publishing_companies = $this->publishingCompanyService->getAll();
+        return view('admin.pages.publishing_company.edit', compact('publishing_company', 'publishing_companies'));
     }
 
     /**
