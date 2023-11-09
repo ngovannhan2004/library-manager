@@ -50,7 +50,7 @@
                                data-kt-check-target="#kt_datatable_horizontal_scroll .form-check-input" value="1">
                     </div>
                 </th>
-                <th class="min-w-50"></th>
+                <th class="min-w-50">ID</th>
                 <th class="min-w-200px">Name </th>
                 <th class="min-w-150px">Slug</th>
                 <th class="min-w-200px">Description</th>
@@ -66,6 +66,7 @@
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
+
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
                     <td>{{$category->slug}}</td>

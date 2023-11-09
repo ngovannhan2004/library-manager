@@ -55,17 +55,6 @@
                 @endforeach
             </select>
         </div>
-{{--        <div class="mb-10">--}}
-{{--            <label for="exampleFormControlInput1" class="required form-label">Status</label>--}}
-{{--            <select class="form-select form-select-solid" data-control="select2"--}}
-{{--                    data-placeholder="Select status" data-select2-id="1" name="status">--}}
-{{--                <option></option>--}}
-{{--                <option value="1">Active</option>--}}
-{{--                <option value="0">Inactive</option>--}}
-{{--                <option value="2">Pending</option>--}}
-{{--                <option value="3">Delete</option>--}}
-{{--            </select>--}}
-{{--        </div>--}}
         <div class="mb-10">
             <label for="description" class="required form-label">Description</label>
             <textarea name="description" id="" cols="20" rows="10"
