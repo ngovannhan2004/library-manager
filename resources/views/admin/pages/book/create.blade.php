@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Create User - Admin - {{ config('app.name') }}
+    Create Book - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{auth()->user()->name}}
@@ -14,87 +14,100 @@
 @endsection
 @section('js_custom')
 
-    <script>
-        new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization"), {
-            localization: {
-                locale: "de",
-                startOfTheWeek: 1,
-                format: "dd/MM/yyyy"
-            }
-        });
-    </script>
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'user';
+        $menu_parent = 'book';
         $menu_child = 'create';
     @endphp
 @endsection
 @section('title_component')
-    User
+    Create Book
 @endsection
 @section('title_layout')
-    Create User
+    Create Book
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.users.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List User
+    <a href="{{route('admin.books.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> List Book
     </a>
 @endsection
 @section('title_card')
-    Create User
+    Create Book
 @endsection
 @section('content_card')
-    <form action="{{ route('admin.users.store') }}" method="post" class="form-control-sm">
+
+    @if ($errors->any())
+        <div class="alert alert-danger mt-3" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{ route('admin.books.store') }}" method="post" class="form-control-sm">
         @csrf
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
             <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
                    value="{{ old('name') }}">
-        </div>
-        <div class="mb-10">
-            <label for="email" class="required form-label">Email</label>
-            <input name="email" type="text" class="form-control form-control-solid" placeholder="Nhập email"
-                   value="{{ old('email') }}">
-        </div>
-        <div class="mb-10">
-            <label for="password" class="required form-label">Mật khẩu</label>
-            <input name="password" type="password" class="form-control form-control-solid" placeholder="Nhập mật khẩu"
-                   value="{{ old('password') }}">
-        </div>
-        <div class="mb-10">
-            <label for="namsinh" class="required form-label">Năm sinh</label>
-            <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
-                 data-td-target-toggle="nearest">
-                <input type="text" class="form-control" name="namsinh" data-td-target="#kt_td_picker_localization"/>
-                <span class="input-group-text" data-td-target="#kt_td_picker_localization"
-                      data-td-toggle="datetimepicker">
-        <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
-    </span>
-            </div>
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
-            <label for="gender" class="required form-label">Gender</label>
-            <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" {{ old('gender') === 'Nam' ? 'selected' : '' }}>Nam</option>
-                <option value="Nữ" {{ old('gender') === 'Nữ' ? 'selected' : '' }}>Nữ</option>
-                <option value="Khác" {{ old('gender') === 'Khác' ? 'selected' : '' }}>Khác</option>
+            <label for="category_id" class="required form-label">Category</label>
+            <select name="category_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
             </select>
+            @error('category_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
-            <label for="sdt" class="required form-label">Số Điện Thoại</label>
-            <input name="sdt" type="text" class="form-control form-control-solid" placeholder="Nhập số điện thoại"
-                   value="{{ old('sdt') }}">
+            <label for="publisher_id" class="required form-label">Publishing Companies</label>
+            <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select Publishing">
+                @foreach($publishingCompanies as $publishingCompany)
+                    <option value="{{ $publishingCompany->id }}">{{ $publishingCompany->name }}</option>
+                @endforeach
+            </select>
+
+            @error('publisher_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
-            <label for="role" class="required form-label">Role</label>
-            <select name="role" class="form-control form-control-solid">
-                <option value="admin" {{ old('author') === 'admin' ? 'selected' : '' }}>Admin</option>
-                <option value="user" {{ old('author') === 'user' ? 'selected' : '' }}>User</option>
+            <label for="statuses_id" class="required form-label">Status</label>
+            <select name="condition_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select Status">
+                @foreach($conditions as $condition)
+                    <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                @endforeach
             </select>
+            @error('statuses_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
+        <div class="mb-10">
+            <label for="author_ids" class="required form-label">Author</label>
+            <select name="author_ids[]" class="form-select form-select-solid" data-control="select2" multiple
+                    data-placeholder="Select Authors">
+                @foreach($authors as $author)
+                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                @endforeach
+            </select>
+            @error('author_ids')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
                 <i class="fa fa-save"></i> Lưu

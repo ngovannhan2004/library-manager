@@ -28,6 +28,7 @@ class User extends Authenticatable
         'namsinh',
         'sdt',
         'gender',
+        'role',
 
     ];
 
@@ -52,43 +53,29 @@ class User extends Authenticatable
     ];
 
 
-
     public function details(): BelongsTo
     {
         return $this->belongsTo(UserDetail::class, 'id_user');
     }
 
 
-
     public function isAdmin()
     {
         return $this->role == 'admin';
     }
-    public function getParent()
-    {
-        $permissions = $this->permissions();
-        $parent = [];
-        foreach ($permissions as $permission){
 
-            $parent_name = strtolower($permission->permissionCategory->slug);
-            if(!in_array($parent_name,$parent)){
-                $parent[] = $parent_name;
-            }
-        }
-        return $parent;
-    }
     public function checkAllow($value)
     {
-        if ($this->isAdmin()){
+        if ($this->isAdmin()) {
             return true;
         }
-        $permissions = $this->getParent();
-        foreach ($permissions as $permission){
-            if($permission == $value){
-                return true;
-            }
-        }
-        return false;
+
     }
+
+    public function loanSlips()
+    {
+        return $this->hasMany(LoanSlip::class, 'reader_id');
+    }
+
 
 }

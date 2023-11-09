@@ -5,7 +5,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +17,7 @@
             align-items: center;
             min-height: 100vh;
             width: 100%;
-            background: url("{{asset('login.jpg')}}") no-repeat;
+            background: url("<?php echo e(asset('/admin/assets/css/login.jpg')); ?>")  no-repeat;
             background-position: center;
             background-size: cover;
         }
@@ -128,39 +127,40 @@
 </head>
 <body>
 <section>
-<div class="form-box">
-    <div class="form-value">
-        <form action="{{route('admin.auth.login-post')}}" method="post">
-            <h2>Login</h2>
-            @csrf
-            <div class="inputbox">
-                <ion-icon name="mail-outline"></ion-icon>
-                <input type="email" name="email" required>
-                <label for=" ">Email</label>
-            </div>
-            <div class="inputbox">
-                <ion-icon name="lock-closed-outline"></ion-icon>
-                <input type="password" name="password" required>
-                <label for=" ">Password</label>
-            </div>
-            <div class="forget">
-                <label>
-                    <input type="checkbox">
-                    <span>Remember me</span>
-                </label>
-                <a href="#">Forgot password?</a>
-            </div>
-            <button type="submit">Login</button>
-            <div class="register">
-                <p>Don't have an account?
-                    <a href="#">Register</a>
-                </p>
-            </div>
-        </form>
+    <div class="form-box">
+        <div class="form-value">
+            <form action="<?php echo e(route('admin.auth.login-post')); ?>" method="post">
+                <h2>Login</h2>
+                <?php echo csrf_field(); ?>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" name="email" required>
+                    <label for=" ">Email</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" name="password" required>
+                    <label for=" ">Password</label>
+                </div>
+                <div class="forget">
+                    <label>
+                        <input type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" name="submit" value="submit">Login</button>
+                <div class="register">
+                    <p>Don't have an account?
+                        <a href="<?php echo e(route('admin.auth.register')); ?>">Register</a>
+                    </p>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </section>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+<?php /**PATH F:\web\library\resources\views/admin/pages/auth/login.blade.php ENDPATH**/ ?>

@@ -684,10 +684,10 @@ var Core = /** @class */ (function () {
         return this.plugins[name];
     };
     /**
-     * Update the field status
+     * Update the field condition
      *
      * @param {string} field The field name
-     * @param {string} status The new status
+     * @param {string} status The new condition
      * @param {string} [validator] The validator name. If it isn't specified, all validators will be updated
      * @return {Core}
      */
@@ -725,11 +725,11 @@ var Core = /** @class */ (function () {
         return this;
     };
     /**
-     * Update the element status
+     * Update the element condition
      *
      * @param {string} field The field name
      * @param {HTMLElement} ele The field element
-     * @param {string} status The new status
+     * @param {string} status The new condition
      * @param {string} [validator] The validator name. If it isn't specified, all validators will be updated
      * @return {Core}
      */

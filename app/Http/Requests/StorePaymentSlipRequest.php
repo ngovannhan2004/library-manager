@@ -20,9 +20,20 @@ class StorePaymentSlipRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
+
+
+
+
+        ];
+    }
+    public function messages()
+    {
+        return [
+//            'borrowed_days.required' => 'Vui lòng nhap ngay muon',
+//            'returned_days.required' => 'Vui lòng nhap ngay tra',
 
         ];
     }

@@ -1,6 +1,6 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@form-validation/core'), require('@form-validation/plugin-field-status')) :
-    typeof define === 'function' && define.amd ? define(['@form-validation/core', '@form-validation/plugin-field-status'], factory) :
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@form-validation/core'), require('@form-validation/plugin-field-condition')) :
+    typeof define === 'function' && define.amd ? define(['@form-validation/core', '@form-validation/plugin-field-condition'], factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.AutoFocus = factory(global.FormValidation, global.FormValidation.plugins)));
 })(this, (function (core, pluginFieldStatus) { 'use strict';
 

@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreStatusRequest;
-use App\Http\Requests\UpdateStatusRequest;
-use App\Http\Services\StatusService;
-use App\Models\Status;
+use App\Http\Requests\StoreConditionRequest;
+use App\Http\Requests\UpdateConditionRequest;
+use App\Http\Services\ConditionService;
+use App\Models\Condition;
 use Illuminate\Http\Request;
 
-class StatusController extends Controller
+class ConditonController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
 
-    private StatusService $statusService;
+    private ConditionService $statusService;
 
-    public function __construct(StatusService $statusService)
+    public function __construct(ConditionService $statusService)
     {
         $this->statusService = $statusService;
     }
     public function index()
     {
-        $statuses = $this->statusService->getAll();
-        return view('admin.pages.status.index', compact('statuses'));
+        $conditions = $this->statusService->getAll();
+        return view('admin.pages.condition.index', compact('conditions'));
 
     }
 
@@ -33,24 +33,24 @@ class StatusController extends Controller
     public function create()
     {
         $statuses = $this->statusService->getAll();
-        return view('admin.pages.status.create', compact('statuses'));
+        return view('admin.pages.condition.create', compact('statuses'));
 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStatusRequest $request)
+    public function store(StoreConditionRequest $request)
     {
         $this->statusService->create($request);
-        return redirect()->route('admin.statuses.index');
+        return redirect()->route('admin.conditions.index');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Status $status)
+    public function show(Condition $status)
     {
         //
     }
@@ -60,18 +60,18 @@ class StatusController extends Controller
      */
     public function edit($id)
     {
-        $statuses = $this->statusService->getAll();
+        $conditions = $this->statusService->getAll();
         $status = $this->statusService->getById($id);
-        return view('admin.pages.status.edit', compact('status', 'statuses'));
+        return view('admin.pages.condition.edit', compact('status', 'conditions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update($id, UpdateStatusRequest $request)
+    public function update($id, UpdateConditionRequest $request)
     {
         $this->statusService->update($id, $request);
-        return redirect()->route('admin.statuses.index');
+        return redirect()->route('admin.conditions.index');
     }
 
     /**
@@ -80,7 +80,7 @@ class StatusController extends Controller
     public function destroy($id)
     {
         $this->statusService->delete($id);
-        return redirect()->route('admin.statuses.index');
+        return redirect()->route('admin.conditions.index');
     }
 
 }

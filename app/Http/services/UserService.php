@@ -23,16 +23,16 @@ class UserService
     }
 
 
-    public function register( $data)
+    public function register($request)
     {
         $userCreate = $this->user->create([
-            'name' => $data->name,
-            'email' => $data->email,
-            'password' => Hash::make($data['password']),
-            'namsinh' => $data->namsinh,
-            'sdt' => $data->sdt,
-            'author' => $data->role,
-            'gender' => $data->gender
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request['password']),
+            'namsinh' => $request->namsinh,
+            'sdt' => $request->sdt,
+            'role' => $request->role,
+            'gender' => $request->gender
 
         ]);
         return $userCreate;
@@ -45,8 +45,8 @@ class UserService
             'password' => Hash::make($request['password']),
             'namsinh' => $request->namsinh,
             'sdt' => $request->sdt,
-            'author' => $request->role,
-            'gender' => $request->gender
+            'gender' => $request->gender,
+            'role' => $request->role
 
         ]);
         return $userCreate;
@@ -61,8 +61,8 @@ class UserService
             'password' => Hash::make($request['password']),
             'namsinh' => $request->namsinh,
             'sdt' => $request->sdt,
-           'author' => $request->role,
-            'gender' => $request->gender
+            'gender' => $request->gender,
+            'role' => $request->role,
         ]);
         return $user;
     }
@@ -121,6 +121,8 @@ class UserService
         }
     return $permissions;
     }
+
+
 
 
 

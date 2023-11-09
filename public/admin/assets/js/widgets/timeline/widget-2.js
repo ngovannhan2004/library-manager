@@ -4,8 +4,8 @@
 var KTTimelineWidget2 = function () {
     // Private methods
     var handleCheckbox = function() {
-        var card = document.querySelector('#kt_timeline_widget_2_card');        
-        
+        var card = document.querySelector('#kt_timeline_widget_2_card');
+
         if (!card) {
             return;
         }
@@ -15,7 +15,7 @@ var KTTimelineWidget2 = function () {
             var check = this.closest('.form-check');
             var tr = this.closest('tr');
             var bullet = tr.querySelector('[data-kt-element="bullet"]');
-            var status = tr.querySelector('[data-kt-element="status"]');
+            var status = tr.querySelector('[data-kt-element="condition"]');
 
             if ( this.checked === true ) {
                 check.classList.add('form-check-success');
@@ -41,9 +41,9 @@ var KTTimelineWidget2 = function () {
 
     // Public methods
     return {
-        init: function () {           
-            handleCheckbox();             
-        }   
+        init: function () {
+            handleCheckbox();
+        }
     }
 }();
 
@@ -58,4 +58,3 @@ KTUtil.onDOMContentLoaded(function() {
 });
 
 
- 

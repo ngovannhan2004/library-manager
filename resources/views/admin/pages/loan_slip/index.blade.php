@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    List User - Admin - {{ config('app.name') }}
+    List Loan Slip - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{auth()->user()->name}}
@@ -21,19 +21,19 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'users';
+        $menu_parent = 'loan slip';
         $menu_child = 'index';
     @endphp
 @endsection
 @section('title_component')
-    User
+    Loan Slip
 @endsection
 @section('title_layout')
-    List User
+    List Loan Slip
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.users.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-plus"></i> Add User
+    <a href="{{route('admin.loan_slips.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-plus"></i> Add Loan Slip
     </a>
 @endsection
 @section('title_card')
@@ -46,42 +46,40 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-150px">Name</th>
-                <th class="min-w-100px">Email</th>
-                <th class="min-w-50px">Gender</th>
-                <th class="min-w-50px">Namsinh</th>
-                <th class="min-w-50px">Sdt</th>
-                <th class="min-w-100px">Role</th>
+                <th class="min-w-150px">Borrowed Days</th>
+                <th class="min-w-150px">Book</th>
+                <th class="min-w-150px">Reader</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($users as $user)
+            @foreach($loan_slips as $loan_slip)
                 <tr>
                     <td>
                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->gender}}</td>
-                    <td>{{$user->namsinh}}</td>
-                    <td>{{$user->sdt}}</td>
-                    <td>{{$user->role}}</td>
+                    <td>{{$loan_slip->id}}</td>
+                    <td>{{$loan_slip->borrowed_days}}</td>
                     <td>
-                        <a href="{{route('admin.users.edit', $user->id)}}"
+                        @foreach($loan_slip->books as $book)
+                            <span class="badge badge-success">{{$book->name}}</span>
+                        @endforeach
+                    </td>
+                    <td>{{$loan_slip->reader->name}}</td>
+                    <td>
+                        <a href="{{route('admin.loan_slips.edit', $loan_slip->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
-                        @if($user->deleted_at == null)
-                            <a href="{{route('admin.users.delete', $user->id)}}"
+                        @if($loan_slip->deleted_at == null)
+                            <a href="{{route('admin.loan_slips.delete', $loan_slip->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
                                 <i class="fa fa-trash"></i>
                             </a>
                         @else
-                            <a href="{{route('admin.users.restore', $user->id)}}"
+                            <a href="{{route('admin.loan_slips.restore', $loan_slip->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
                                 <i class="fa fa-undo"></i>
                             </a>
@@ -95,7 +93,7 @@
     </div>
 @endsection
 @section('footer_card')
-    {{--    {{$users->links()}}--}}
+    {{--    {{$loan_slips->links()}}--}}
 
 @endsection
 @section('content_layout')

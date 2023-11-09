@@ -43,7 +43,7 @@ var KTTablesWidget3 = function () {
         });
     }
 
-    // Handle status filter dropdown
+    // Handle condition filter dropdown
     const handleStatusFilter = () => {
         const select = document.querySelector('[data-kt-table-widget-3="filter_status"]');
 

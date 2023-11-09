@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Create User - Admin - {{ config('app.name') }}
+    Create Loan Slip - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{auth()->user()->name}}
@@ -13,87 +13,90 @@
     <!-- Tempus Dominus Styles -->
 @endsection
 @section('js_custom')
-
     <script>
         new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization"), {
             localization: {
-                locale: "de",
+                locale: "vi",
                 startOfTheWeek: 1,
-                format: "dd/MM/yyyy"
+                format: "yyyy-MM-dd"
             }
         });
     </script>
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'user';
+        $menu_parent = 'loan_slip';
         $menu_child = 'create';
     @endphp
 @endsection
 @section('title_component')
-    User
+    Create Loan Slip
 @endsection
 @section('title_layout')
-    Create User
+    Create Loan Slip
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.users.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List User
+    <a href="{{route('admin.loan_slips.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-list"></i> List Loan Slip
     </a>
 @endsection
 @section('title_card')
-    Create User
+    Create Loan Slip
 @endsection
 @section('content_card')
-    <form action="{{ route('admin.users.store') }}" method="post" class="form-control-sm">
+    @if ($errors->any())
+        <div class="alert alert-danger mt-3" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <form action="{{ route('admin.loan_slips.store') }}" method="post" class="form-control-sm">
         @csrf
         <div class="mb-10">
-            <label for="name" class="required form-label">Name</label>
-            <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
-                   value="{{ old('name') }}">
-        </div>
-        <div class="mb-10">
-            <label for="email" class="required form-label">Email</label>
-            <input name="email" type="text" class="form-control form-control-solid" placeholder="Nhập email"
-                   value="{{ old('email') }}">
-        </div>
-        <div class="mb-10">
-            <label for="password" class="required form-label">Mật khẩu</label>
-            <input name="password" type="password" class="form-control form-control-solid" placeholder="Nhập mật khẩu"
-                   value="{{ old('password') }}">
-        </div>
-        <div class="mb-10">
-            <label for="namsinh" class="required form-label">Năm sinh</label>
+            <label for="borrowed_days" class="required form-label">Borrowed Days</label>
             <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
                  data-td-target-toggle="nearest">
-                <input type="text" class="form-control" name="namsinh" data-td-target="#kt_td_picker_localization"/>
+                <input type="text" class="form-control" name="borrowed_days"
+                       data-td-target="#kt_td_picker_localization"/>
                 <span class="input-group-text" data-td-target="#kt_td_picker_localization"
                       data-td-toggle="datetimepicker">
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
     </span>
             </div>
+
+            @error('borrowed_days')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="mb-10">
-            <label for="gender" class="required form-label">Gender</label>
-            <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" {{ old('gender') === 'Nam' ? 'selected' : '' }}>Nam</option>
-                <option value="Nữ" {{ old('gender') === 'Nữ' ? 'selected' : '' }}>Nữ</option>
-                <option value="Khác" {{ old('gender') === 'Khác' ? 'selected' : '' }}>Khác</option>
-            </select>
-        </div>
 
         <div class="mb-10">
-            <label for="sdt" class="required form-label">Số Điện Thoại</label>
-            <input name="sdt" type="text" class="form-control form-control-solid" placeholder="Nhập số điện thoại"
-                   value="{{ old('sdt') }}">
+            <label for="book_ids" class="required form-label">Book</label>
+            <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
+                    data-placeholder="Select Books">
+                @foreach($books as $book)
+                    <option value="{{ $book->id }}">{{ $book->name }}</option>
+                @endforeach
+            </select>
+
+            @error('book_ids')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
-            <label for="role" class="required form-label">Role</label>
-            <select name="role" class="form-control form-control-solid">
-                <option value="admin" {{ old('author') === 'admin' ? 'selected' : '' }}>Admin</option>
-                <option value="user" {{ old('author') === 'user' ? 'selected' : '' }}>User</option>
+            <label for="reader_id" class="required form-label">Reader</label>
+            <select name="reader_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select Reader">
+                @foreach($readers as $reader)
+                    <option value="{{ $reader->id }}">{{ $reader->name }}</option>
+                @endforeach
             </select>
+            @error('reader_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

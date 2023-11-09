@@ -22,6 +22,7 @@ class PaymentSlipService
     {
         return $this->paymentSlip->all();
     }
+
     public function getById($id)
     {
         return $this->paymentSlip->find($id);
@@ -34,29 +35,28 @@ class PaymentSlipService
 
     public function create($request)
     {
-        $paymentSlip = new PaymentSlip();
-        $paymentSlip->name = $request->name;
-        $paymentSlip->borrowed_days = $request->borrowed_days;
-        $paymentSlip->returnd_days = $request->returnd_days;
-        $paymentSlip->violated = $request->violated;
-        $paymentSlip->save();
-//
-//        $book = $this->bookService->getById($request->book_id);
-//        $book->payment_slips()->attach($paymentSlip);
-//        $reader = $this->readersService->getById($request->reader_id);
-//        $reader->payment_slips()->attach($paymentSlip);
 
+        $paymentSlip = $this->paymentSlip->create([
+            'returned_days' => $request->returned_days,
+            'violated' => $request->violated,
+            'reader_id' => $request->reader_id
+        ]);
+        $paymentSlip->pays()->attach($request->book_ids);
         return $paymentSlip;
+
     }
 
     public function update($id, $request)
     {
         $paymentSlip = $this->paymentSlip->find($id);
-        $paymentSlip->name = $request->name;
-        $paymentSlip->borrowed_days = $request->borrowed_days;
-        $paymentSlip->returnd_days = $request->returnd_days;
-        $paymentSlip->violated = $request->violated;
-        $paymentSlip->save();
+        $paymentSlip->update([
+            'returned_days' => $request->returned_days,
+            'violated' => $request->violated,
+        ]);
+        $paymentSlip->readers()->attach($request->reader_id);
+        $paymentSlip->books()->attach($request->book_ids);
+
+        return $paymentSlip;
     }
 
     public function delete($id)

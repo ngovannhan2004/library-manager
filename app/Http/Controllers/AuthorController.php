@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
 use App\Http\Services\AuthorService;
 use App\Models\Author;
@@ -38,7 +39,7 @@ class AuthorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAuthorRequest $request)
     {
         $this->authorService->create($request);
         return redirect()->route('admin.authors.index')->with('success', 'Thêm tác giả thành công');

@@ -4,26 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PaymentSlip extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'borrowed_days',
-        'returnd_days',
-        'violated'
-    ];
-
     protected $guarded = [];
 
 
-    public function books(){
-        return $this->belongsToMany(Book::class, Borrow::class,'payment_slip_id','book_id');
+    public function pays(): HasMany
+    {
+        return $this->hasMany(Pay::class, 'payment_slip_id');
     }
 
-    public function readers(){
-        return $this->belongsToMany(Readers::class, Borrow::class,'payment_slip_id','reader_id');
+    public function reader(): BelongsTo
+    {
+        return $this->belongsTo(Reader::class, 'reader_id');
     }
+
+
 }

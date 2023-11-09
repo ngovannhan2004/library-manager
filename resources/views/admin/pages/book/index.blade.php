@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    List User - Admin - {{ config('app.name') }}
+    List Book - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{auth()->user()->name}}
@@ -12,32 +12,26 @@
 @endsection
 @section('js_custom')
     <script src="{{asset('/admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script !src="">
-        $("#kt_datatable_horizontal_scroll").DataTable({
-            dom: 'Bfrtip',
-            order: [],
-        });
-    </script>
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'users';
+        $menu_parent = 'books';
         $menu_child = 'index';
     @endphp
 @endsection
 @section('title_component')
-    User
+    Book
 @endsection
 @section('title_layout')
-    List User
+    List Book
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.users.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-plus"></i> Add User
+    <a href="{{route('admin.books.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-plus"></i> Add Book
     </a>
 @endsection
 @section('title_card')
-    List User
+    List Book
 @endsection
 @section('content_card')
     <div class="table-responsive">
@@ -47,41 +41,43 @@
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
                 <th class="min-w-150px">Name</th>
-                <th class="min-w-100px">Email</th>
-                <th class="min-w-50px">Gender</th>
-                <th class="min-w-50px">Namsinh</th>
-                <th class="min-w-50px">Sdt</th>
-                <th class="min-w-100px">Role</th>
+                <th class="min-w-100px">Category</th>
+                <th class="min-w-50px">Condition</th>
+                <th class="min-w-50px">Publishing Companies</th>
+                <th class="min-w-150px">Authors</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($users as $user)
+            @foreach($books as $book)
                 <tr>
                     <td>
                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->gender}}</td>
-                    <td>{{$user->namsinh}}</td>
-                    <td>{{$user->sdt}}</td>
-                    <td>{{$user->role}}</td>
+                    <td>{{$book->id}}</td>
+                    <td>{{$book->name}}</td>
+                    <td>{{$book->category->name}}</td>
+                    <td><span class="badge badge-success">{{$book->condition->name}}</span></td>
+                    <td>{{$book->publishingCompany->name}}</td>
                     <td>
-                        <a href="{{route('admin.users.edit', $user->id)}}"
+                        @foreach($book->authors as $author)
+                            <span class="badge badge-success">{{$author->name}}</span>
+                        @endforeach
+                    </td>
+                    <td>
+                        <a href="{{route('admin.books.edit', $book->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
-                        @if($user->deleted_at == null)
-                            <a href="{{route('admin.users.delete', $user->id)}}"
+                        @if($book->deleted_at == null)
+                            <a href="{{route('admin.books.delete', $book->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
                                 <i class="fa fa-trash"></i>
                             </a>
                         @else
-                            <a href="{{route('admin.users.restore', $user->id)}}"
+                            <a href="{{route('admin.books.restore', $book->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
                                 <i class="fa fa-undo"></i>
                             </a>
@@ -95,7 +91,7 @@
     </div>
 @endsection
 @section('footer_card')
-    {{--    {{$users->links()}}--}}
+    {{--    {{$books->links()}}--}}
 
 @endsection
 @section('content_layout')

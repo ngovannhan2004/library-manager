@@ -13,6 +13,7 @@ class CategoryService implements DAOInterface
     {
         $this->category = $category;
     }
+
     function getAll()
     {
         return $this->category->all();
@@ -30,25 +31,25 @@ class CategoryService implements DAOInterface
 
     function create($request)
     {
-        return$this->category->create([
+        return $this->category->create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
             'description' => $request->description ?? null,
-            'parent_id' => $request->parent_id ?? 0,
+            'parent_id' => $request->parent_id != "None" ? $request->parent_id : null,
         ]);
 
     }
 
     function update($id, $request)
     {
-       $category = $this->category->find($id);
-       $category->update([
-           'name' => $request->name,
-           'slug' => Str::slug($request->name),
-           'description' => $request->description ?? null,
-           'parent_id' => $request->parent_id ?? 0,
-       ]);
-       return $category;
+        $category = $this->category->find($id);
+        $category->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'description' => $request->description ?? null,
+            'parent_id' => $request->parent_id ?? 0,
+        ]);
+        return $category;
     }
 
     function delete($id)
@@ -72,6 +73,7 @@ class CategoryService implements DAOInterface
     {
         // TODO: Implement search() method.
     }
+
     public function restore($id)
     {
         $category = $this->category->withTrashed()->find($id);
@@ -79,7 +81,7 @@ class CategoryService implements DAOInterface
         if ($category && $category->trashed()) {
             $category->restore();
             $category->update([
-                'status' => 1
+                'condition' => 1
             ]);
         }
         $category->restore();

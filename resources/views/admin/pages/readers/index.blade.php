@@ -63,13 +63,15 @@
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
+
                     <td>{{$reader->id}}</td>
                     <td>{{$reader->name}}</td>
                     <td>{{$reader->address}}</td>
                     <td>{{$reader->phone}}</td>
                     <td>{{$reader->email}}</td>
                     <td>{{$reader->gender}}</td>
-                    <td>{{$reader->year_bith}}</td>
+                    <td>{{ $reader->books() ->count() }}</td>
+{{--                    <td>{{$reader->year_bith}}</td>--}}
 
                     <td>
                         <a href="{{route('admin.readers.edit', $reader->id)}}"

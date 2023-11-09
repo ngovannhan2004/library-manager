@@ -103,7 +103,7 @@
                         _this.core.updateFieldStatus(Recaptcha.CAPTCHA_FIELD, 'Invalid');
                     },
                     'expired-callback': function () {
-                        // Update the captcha status when session expires
+                        // Update the captcha condition when session expires
                         _this.captchaStatus = 'NotValidated';
                         _this.core.updateFieldStatus(Recaptcha.CAPTCHA_FIELD, 'NotValidated');
                     },

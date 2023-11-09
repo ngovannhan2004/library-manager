@@ -1,6 +1,8 @@
 <?php
 return [
 
+
+
     [
         'title' => 'User',
         'name' => 'user',
@@ -93,56 +95,85 @@ return [
         ],
     ],
     [
-        'title' => 'Status',
-        'name' => 'status',
+        'title' => 'Condition',
+        'name' => 'condition',
         'icon' => 'fa fa-list',
-        'route' => 'admin.statuses.index',
+        'route' => 'admin.conditions.index',
         'children' => [
             [
-                'title' => 'List Status',
+                'title' => 'List Condition',
                 'name' => 'index',
-                'route' => 'admin.statuses.index',
+                'route' => 'admin.conditions.index',
             ],
             [
-                'title' => 'Create Status',
+                'title' => 'Create Condition',
                 'name' => 'create',
-                'route' => 'admin.statuses.create',
+                'route' => 'admin.conditions.create',
             ],
             [
-                'title' => 'Edit Status',
+                'title' => 'Edit Condition',
                 'name' => 'edit',
             ]
 
         ],
     ],
     [
-        'title' => 'Readers',
+        'title' => 'Reader',
         'name' => 'readers',
         'icon' => 'fa fa-list',
         'route' => 'admin.readers.index',
         'children' => [
             [
-                'title' => 'List Readers',
+                'title' => 'List Reader',
                 'name' => 'index',
                 'route' => 'admin.readers.index',
             ],
             [
-                'title' => 'Create Readers',
+                'title' => 'Create Reader',
                 'name' => 'create',
                 'route' => 'admin.readers.create',
             ],
             [
-                'title' => 'Edit Readers',
+                'title' => 'Edit Reader',
                 'name' => 'edit',
             ]
 
         ],
-    ],    [
+    ],
+    [
+        'title' => 'Book',
+        'name' => 'book',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.books.index',
+        'children' => [
+            [
+                'title' => 'List Book',
+                'name' => 'index',
+                'route' => 'admin.books.index',
+            ],
+            [
+                'title' => 'Create Book',
+                'name' => 'create',
+                'route' => 'admin.books.create',
+            ],
+            [
+                'title' => 'Edit Book',
+                'name' => 'edit',
+            ]
+
+        ],
+    ],
+    [
         'title' => 'Payment Slip',
         'name' => 'payment-slip',
         'icon' => 'fa fa-list',
-        'route' => 'admin.payment_slips.index',
+        'route' => 'admin.books.index',
         'children' => [
+            [
+                'title' => 'Book Back',
+                'name' => 'create',
+                'route' => 'admin.book_backs.index',
+            ],
             [
                 'title' => 'List Payment Slip',
                 'name' => 'index',
@@ -155,6 +186,29 @@ return [
             ],
             [
                 'title' => 'Edit Payment Slip',
+                'name' => 'edit',
+            ]
+
+
+        ],
+    ], [
+        'title' => 'Loan Slip',
+        'name' => 'loan-slip',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.loan_slips.index',
+        'children' => [
+            [
+                'title' => 'List Loan Slip',
+                'name' => 'index',
+                'route' => 'admin.loan_slips.index',
+            ],
+            [
+                'title' => 'Create Loan Slip',
+                'name' => 'create',
+                'route' => 'admin.loan_slips.create',
+            ],
+            [
+                'title' => 'Edit Loan Slip',
                 'name' => 'edit',
             ]
 

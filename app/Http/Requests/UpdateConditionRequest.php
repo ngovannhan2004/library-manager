@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateStatusRequest extends FormRequest
+class UpdateConditionRequest extends FormRequest
 {
 
     public function authorize(): bool

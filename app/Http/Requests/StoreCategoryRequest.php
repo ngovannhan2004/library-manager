@@ -21,11 +21,17 @@ class StoreCategoryRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
-        return [
-
+        $rules = [
+            'name' => 'required|unique:categories|max:255',
+            'description' => 'required',
         ];
+        // neu parent_id co gia tri thi kiem tra xem co phai la category cha khong
+        if ($this->parent_id !== "None") {
+            $rules['parent_id'] = 'numeric|exists:categories,id';
+        }
+        return $rules;
     }
     public function messages()
     {
@@ -33,7 +39,6 @@ class StoreCategoryRequest extends FormRequest
             'name.required' => 'Tên thể loại không được để trống',
             'name.unique' => 'Tên thể loại đã tồn tại',
             'name.max' => 'Tên thể loại không được vượt quá 255 ký tự',
-            'parent_id.required' => 'Thể loại cha không được để trống',
             'parent_id.numeric' => 'Thể loại cha phải là số',
             'description.required' => 'Mô tả không được để trống',
         ];

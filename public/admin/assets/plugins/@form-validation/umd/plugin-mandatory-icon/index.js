@@ -144,7 +144,7 @@
         MandatoryIcon.prototype.onElementNotValidated = function (e) {
             this.updateIconClasses(e.element, 'NotValidated');
         };
-        // Remove the required icon when the field updates its status
+        // Remove the required icon when the field updates its condition
         MandatoryIcon.prototype.updateIconClasses = function (ele, status) {
             var _a;
             var icon = this.icons.get(ele);

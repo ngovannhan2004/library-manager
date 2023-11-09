@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('borrows', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('reader_id');
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('loan_slip_id');
-            $table->foreign('reader_id')->references('id')->on('readers');
+            $table->enum('back', ['true', 'false'])->default('false');
             $table->foreign('book_id')->references('id')->on('books');
             $table->foreign('loan_slip_id')->references('id')->on('loan_slips');
-
-
             $table->timestamps();
         });
     }

@@ -686,10 +686,10 @@ define(['exports'], (function (exports) { 'use strict';
             return this.plugins[name];
         };
         /**
-         * Update the field status
+         * Update the field condition
          *
          * @param {string} field The field name
-         * @param {string} status The new status
+         * @param {string} status The new condition
          * @param {string} [validator] The validator name. If it isn't specified, all validators will be updated
          * @return {Core}
          */
@@ -727,11 +727,11 @@ define(['exports'], (function (exports) { 'use strict';
             return this;
         };
         /**
-         * Update the element status
+         * Update the element condition
          *
          * @param {string} field The field name
          * @param {HTMLElement} ele The field element
-         * @param {string} status The new status
+         * @param {string} status The new condition
          * @param {string} [validator] The validator name. If it isn't specified, all validators will be updated
          * @return {Core}
          */

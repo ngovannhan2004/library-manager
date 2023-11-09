@@ -91,8 +91,8 @@
         <div class="mb-10">
             <label for="role" class="required form-label">Role</label>
             <select name="role" class="form-control form-control-solid">
-                <option value="admin" {{ old('author') === 'admin' ? 'selected' : '' }}>Admin</option>
-                <option value="user" {{ old('author') === 'user' ? 'selected' : '' }}>User</option>
+                <option value="admin" {{ old('') === 'admin' ? 'selected' : '' }}>Admin</option>
+                <option value="user" {{ old('') === 'user' ? 'selected' : '' }}>User</option>
             </select>
         </div>
         <div class="mb-10">
