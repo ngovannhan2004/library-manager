@@ -37,6 +37,28 @@ class BookService
     {
         return $this->book->find($id);
     }
+    public function create($request)
+    {
+        $this->book->create([
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'publisher_id' => $request->publisher_id,
+            'statuses_id' => $request->statuses_id,
+        ]);
+    }
+
+    public function update($request, $id)
+    {
+        $this->book->find($id)->update([
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'publisher_id' => $request->publisher_id,
+            'statuses_id' => $request->statuses_id,
+        ]);
+    }
+
+
+
 
 
 }

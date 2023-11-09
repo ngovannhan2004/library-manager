@@ -1,6 +1,30 @@
 <?php
 return [
 
+
+    [
+        'title' => 'Book',
+        'name' => 'book',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.books.index',
+        'children' => [
+            [
+                'title' => 'List Book',
+                'name' => 'index',
+                'route' => 'admin.books.index',
+            ],
+            [
+                'title' => 'Create Book',
+                'name' => 'create',
+                'route' => 'admin.books.create',
+            ],
+            [
+                'title' => 'Edit Book',
+                'name' => 'edit',
+            ]
+
+        ],
+    ],
     [
         'title' => 'User',
         'name' => 'user',
@@ -137,11 +161,12 @@ return [
             ]
 
         ],
-    ],    [
+    ],
+    [
         'title' => 'Payment Slip',
         'name' => 'payment-slip',
         'icon' => 'fa fa-list',
-        'route' => 'admin.payment_slips.index',
+        'route' => 'admin.books.index',
         'children' => [
             [
                 'title' => 'List Payment Slip',
@@ -155,6 +180,28 @@ return [
             ],
             [
                 'title' => 'Edit Payment Slip',
+                'name' => 'edit',
+            ]
+
+        ],
+    ], [
+        'title' => 'Loan Slip',
+        'name' => 'loan-slip',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.loan_slips.index',
+        'children' => [
+            [
+                'title' => 'List Loan Slip',
+                'name' => 'index',
+                'route' => 'admin.loan_slips.index',
+            ],
+            [
+                'title' => 'Create Loan Slip',
+                'name' => 'create',
+                'route' => 'admin.loan_slips.create',
+            ],
+            [
+                'title' => 'Edit Loan Slip',
                 'name' => 'edit',
             ]
 

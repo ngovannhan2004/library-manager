@@ -23,16 +23,16 @@ class UserService
     }
 
 
-    public function register( $data)
+    public function register($request)
     {
         $userCreate = $this->user->create([
-            'name' => $data->name,
-            'email' => $data->email,
-            'password' => Hash::make($data['password']),
-            'namsinh' => $data->namsinh,
-            'sdt' => $data->sdt,
-            'author' => $data->role,
-            'gender' => $data->gender
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request['password']),
+            'namsinh' => $request->namsinh,
+            'sdt' => $request->sdt,
+            'role' => $request->role,
+            'gender' => $request->gender
 
         ]);
         return $userCreate;

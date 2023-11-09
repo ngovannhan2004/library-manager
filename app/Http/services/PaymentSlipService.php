@@ -34,29 +34,25 @@ class PaymentSlipService
 
     public function create($request)
     {
-        $paymentSlip = new PaymentSlip();
-        $paymentSlip->name = $request->name;
-        $paymentSlip->borrowed_days = $request->borrowed_days;
-        $paymentSlip->returnd_days = $request->returnd_days;
-        $paymentSlip->violated = $request->violated;
-        $paymentSlip->save();
-//
-//        $book = $this->bookService->getById($request->book_id);
-//        $book->payment_slips()->attach($paymentSlip);
-//        $reader = $this->readersService->getById($request->reader_id);
-//        $reader->payment_slips()->attach($paymentSlip);
+        $this->paymentSlip->create([
+            'name' => $request->name,
+            'borrowed_days' => $request->borrowed_days,
+            'returned_days' => $request->returned_days,
+            'violated' => $request->violated,
+        ]);
 
-        return $paymentSlip;
     }
 
     public function update($id, $request)
     {
         $paymentSlip = $this->paymentSlip->find($id);
-        $paymentSlip->name = $request->name;
-        $paymentSlip->borrowed_days = $request->borrowed_days;
-        $paymentSlip->returnd_days = $request->returnd_days;
-        $paymentSlip->violated = $request->violated;
-        $paymentSlip->save();
+        $paymentSlip->update([
+            'name' => $request->name,
+            'borrowed_days' => $request->borrowed_days,
+            'returned_days' => $request->returned_days,
+            'violated' => $request->violated,
+        ]);
+        return $paymentSlip;
     }
 
     public function delete($id)
