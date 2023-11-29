@@ -47,6 +47,7 @@
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
                 <th class="min-w-150px">Borrowed Days</th>
+                <th class="min-w-150px">Name</th>
                 <th class="min-w-150px">Book</th>
                 <th class="min-w-150px">Reader</th>
                 <th class="min-w-200px">Action</th>
@@ -62,6 +63,7 @@
                     </td>
                     <td>{{$loan_slip->id}}</td>
                     <td>{{$loan_slip->borrowed_days}}</td>
+                    <td>{{$loan_slip->name}}</td>
                     <td>
                         @foreach($loan_slip->books as $book)
                             <span class="badge badge-success">{{$book->name}}</span>

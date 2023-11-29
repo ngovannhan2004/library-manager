@@ -53,6 +53,19 @@
                  data-td-target-toggle="nearest">
                 <input type="text" class="form-control" name="returned_days"
                        data-td-target="#kt_td_picker_localization"/>
+                <input type="text" class="form-control" name="borrowed_days" data-td-target="#kt_td_picker_localization"/>
+                <span class="input-group-text" data-td-target="#kt_td_picker_localization"
+                      data-td-toggle="datetimepicker">
+        <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
+    </span>
+            </div>
+        </div>
+
+        <div class="mb-10">
+            <label for="return_days" class="required form-label">Return Days</label>
+            <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
+                 data-td-target-toggle="nearest">
+                <input type="text" class="form-control" name="returned_days" data-td-target="#kt_td_picker_localization"/>
                 <span class="input-group-text" data-td-target="#kt_td_picker_localization"
                       data-td-toggle="datetimepicker">
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
@@ -68,6 +81,52 @@
             <input name="violated" type="text" class="form-control form-control-solid" placeholder="Nhập vi phạm"
                    value="{{ old('violated') }}">
         </div>
+
+
+
+        <div class="mb-10">
+            <label for="category_id" class="required form-label">Thể loại</label>
+            <select name="category_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0" >None</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-10">
+            <label for="publisher_id" class="required form-label">Nhà Xuất Bản</label>
+            <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0" >None</option>
+                @foreach($publishing_companies as $publishing_company)
+                    <option value="{{ $publishing_company->id }}">{{ $publishing_company->name }}</option>
+
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-10">
+            <label for="books" class="required form-label">Book</label>
+            <select name="books" cclass="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select " data-select2-id="1">
+                <option value="0" >None</option>
+                @foreach($books as $book)
+                    <option value="{{ $book->id }}">{{ $book->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-10">
+            <label for="reader" class="required form-label">Book</label>
+            <select name="reader" cclass="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select " data-select2-id="1">
+                <option value="0" >None</option>
+                @foreach($readers as $reader)
+                    <option value="{{ $reader->id }}">{{ $reader->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="mb-10">
             <label for="reader_id" class="required form-label">Reader</label>
             <select name="reader_id" class="form-select form-select-solid" data-control="select2"

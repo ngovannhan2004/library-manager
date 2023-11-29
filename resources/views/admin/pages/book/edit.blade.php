@@ -56,6 +56,18 @@
                 @endforeach
 
 
+            <label for="exampleFormControlInput1" class="required form-label">Name </label>
+            <input name="name" type="text" class="form-control form-control-solid"
+                   placeholder="Enter name category" {{old('name')}} value="{{$book->name}}">
+        </div>
+        <div class="mb-10">
+            <label for="category_id" class="required form-label">Thể loại</label>
+            <select name="category_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0">None</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
             </select>
 
             @error('category_id')
@@ -80,6 +92,21 @@
             <label for="statuses_id" class="required form-label">Status</label>
             <select name="statuses_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category"  >
+            <label for="publisher_id" class="required form-label">Nhà Xuất Bản</label>
+            <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0">None</option>
+                @foreach($publishing_companies as $publishing_company)
+                    <option value="{{ $publishing_company->id }}">{{ $publishing_company->name }}</option>
+
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-10">
+            <label for="statuses_id" class="required form-label">Trạng thái</label>
+            <select name="statuses_id" cclass="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0">None</option>
                 @foreach($statuses as $status)
                     <option value="{{ $status->id }}">{{ $status->name }}</option>
                 @endforeach

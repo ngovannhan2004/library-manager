@@ -63,6 +63,37 @@
                     data-placeholder="Select parent category" data-select2-id="1">
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
+        </div>
+
+        <div class="mb-10">
+            <label for="category_id" class="required form-label">Category</label>
+            <select name="category_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0" >None</option>
+        @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+        </select>
+        </div>
+
+        <div class="mb-10">
+            <label for="publisher_id" class="required form-label">Publishing Companies</label>
+            <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0" >None</option>
+                @foreach($publishing_companies as $publishing_company)
+                    <option value="{{ $publishing_company->id }}">{{ $publishing_company->name }}</option>
+
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-10">
+            <label for="statuses_id" class="required form-label">Statuses</label>
+            <select name="statuses_id" cclass="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0" >None</option>
+                @foreach($statuses as $status)
+                    <option value="{{ $status->id }}">{{ $status->name }}</option>
                 @endforeach
             </select>
             @error('category_id')

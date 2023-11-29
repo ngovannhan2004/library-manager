@@ -31,10 +31,10 @@ class LoanSlipController extends Controller
     public function index()
     {
         $ok = $this->loanSlipService->getReaderHaveBookBackMore0();
-        dd($ok);
         $loan_slips = $this->loanSlipService->getAll();
-
-        return view('admin.pages.loan_slip.index', compact('loan_slips'));
+        $books = $this->bookService->getAll();
+        $readers = $this->readersService->getAll();
+        return view('admin.pages.loan_slip.index', compact('loan_slips', 'books', 'readers'));
     }
 
     /**
@@ -44,6 +44,7 @@ class LoanSlipController extends Controller
     {
         $loan_slips = $this->loanSlipService->getAll();
         $books = $this->bookService->getBooksByAvailable();
+        $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
         return view('admin.pages.loan_slip.create', compact('loan_slips', 'books', 'readers'));
     }
@@ -83,10 +84,8 @@ class LoanSlipController extends Controller
      */
     public function update($id, UpdateLoanSlipRequest $request)
     {
-
         $this->loanSlipService->update($id, $request);
         return redirect()->route('admin.loan_slips.index')->with('success', 'Cập nhật phiếu mượn thành công');
-
     }
 
     /**

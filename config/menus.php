@@ -1,8 +1,28 @@
 <?php
 return [
+    [
+        'title' => 'Book',
+        'name' => 'book',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.books.index',
+        'children' => [
+            [
+                'title' => 'List Book',
+                'name' => 'index',
+                'route' => 'admin.books.index',
+            ],
+            [
+                'title' => 'Create Book',
+                'name' => 'create',
+                'route' => 'admin.books.create',
+            ],
+            [
+                'title' => 'Edit Book',
+                'name' => 'edit',
+            ]
 
-
-
+        ],
+    ],
     [
         'title' => 'User',
         'name' => 'user',
@@ -216,3 +236,4 @@ return [
     ],
 
 ];
+

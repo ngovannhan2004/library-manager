@@ -64,10 +64,8 @@
                     <td>{{$payment_slip->id}}</td>
                     <td>{{$payment_slip->returned_days}}</td>
                     <td>{{$payment_slip->violated}}</td>
-                    <td>{{$payment_slip->violated}}</td>
-                    <td>{{$payment_slip->violated}}</td>
-
-
+                    <td>{{$payment_slip->book->name}}</td>
+                    <td>{{$payment_slip->reader->name}}</td>
                     <td>
                         <a href="{{route('admin.payment_slips.edit', $payment_slip->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">

@@ -32,8 +32,8 @@ class PaymentSlipController extends Controller
     public function index()
     {
         $payment_slips = $this->paymentSlipService->getAll();
-
        return view('admin.pages.payment_slip.index', compact('payment_slips'));
+
     }
 
     /**
@@ -94,6 +94,13 @@ class PaymentSlipController extends Controller
     {
         $this->paymentSlipService->delete($id);
         return redirect()->route('admin.payment_slips.index')->with('success', 'Xóa phiếu thu thành công');
+    }
+
+    public function book_back(Request $request)
+    {
+        $this->paymentSlipService->book_back($request);
+        return redirect()->route('admin.payment_slips.book_back')->with('success', '');
+
     }
 
 

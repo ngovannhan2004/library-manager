@@ -36,6 +36,12 @@ class BookService implements DAOInterface
         return $this->book->find($id);
     }
 
+
+
+
+
+
+
     function getByName($name)
     {
         // TODO: Implement getByName() method.

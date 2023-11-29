@@ -44,17 +44,20 @@ class PaymentSlipService
         $paymentSlip->pays()->attach($request->book_ids);
         return $paymentSlip;
 
+
     }
 
     public function update($id, $request)
     {
         $paymentSlip = $this->paymentSlip->find($id);
         $paymentSlip->update([
+
             'returned_days' => $request->returned_days,
             'violated' => $request->violated,
         ]);
         $paymentSlip->readers()->attach($request->reader_id);
         $paymentSlip->books()->attach($request->book_ids);
+
 
         return $paymentSlip;
     }

@@ -94,7 +94,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'payment-slip'], function () {
         Route::get('/', [PaymentSlipController::class, 'index'])->name('admin.payment_slips.index');
-        Route::get('book-back', [BookBackController::class, 'index'])->name('admin.book_backs.index');
+        Route::get('book-back', [PaymentSlipController::class, 'book_back'])->name('admin.payment_slips.book_back');
         Route::get('/create', [PaymentSlipController::class, 'create'])->name('admin.payment_slips.create');
         Route::post('/store', [PaymentSlipController::class, 'store'])->name('admin.payment_slips.store');
         Route::get('/edit/{id}', [PaymentSlipController::class, 'edit'])->name('admin.payment_slips.edit');
@@ -119,5 +119,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::get('/delete/{id}', [BookController::class, 'destroy'])->name('admin.books.delete');
         Route::get('/restore/{id}', [BookController::class, 'restore'])->name('admin.books.restore');
     });
+
 
 });

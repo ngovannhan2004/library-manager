@@ -65,10 +65,8 @@
                     <td><?php echo e($payment_slip->id); ?></td>
                     <td><?php echo e($payment_slip->returned_days); ?></td>
                     <td><?php echo e($payment_slip->violated); ?></td>
-                    <td><?php echo e($payment_slip->violated); ?></td>
-                    <td><?php echo e($payment_slip->violated); ?></td>
-
-
+                    <td><?php echo e($payment_slip->book->name); ?></td>
+                    <td><?php echo e($payment_slip->reader->name); ?></td>
                     <td>
                         <a href="<?php echo e(route('admin.payment_slips.edit', $payment_slip->id)); ?>"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">

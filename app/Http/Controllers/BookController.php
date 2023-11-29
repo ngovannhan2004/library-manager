@@ -14,7 +14,6 @@ use App\Models\Book;
 class BookController extends Controller
 {
 
-//
     private BookService $bookService;
     private CategoryService $categoryService;
     private ConditionService $conditionService;
@@ -29,11 +28,11 @@ class BookController extends Controller
         $this->publishingCompanyService = $publishingCompanyService;
         $this->authorService = $authorService;
 
-    }
+}
+
 
     public function index()
     {
-
         $books = $this->bookService->getAll();
         return view('admin.pages.book.index', compact('books'));
     }
@@ -43,13 +42,13 @@ class BookController extends Controller
      */
     public function create()
     {
+
         $books = $this->bookService->getAll();
         $categories = $this->categoryService->getAll();
         $publishingCompanies = $this->publishingCompanyService->getAll();
         $conditions = $this->conditionService->getAll();
         $authors = $this->authorService->getAll();
         return view('admin.pages.book.create', compact('books', 'categories', 'publishingCompanies', 'conditions', 'authors'));
-
 
     }
 
@@ -58,9 +57,9 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-         $this->bookService->create($request);
-         return redirect()->route('admin.books.index');
 
+        $this->bookService->create($request);
+        return redirect()->route('admin.books.index')->with('success', 'Thêm sách thành công');
     }
 
     /**
@@ -84,8 +83,6 @@ class BookController extends Controller
         $authors = $this->authorService->getAll();
         $book = $this->bookService->getById($id);
         return view('admin.pages.book.edit', compact('books', 'categories', 'publishingCompanies', 'statuses', 'authors', 'book'));
-
-
     }
 
     /**
@@ -104,7 +101,6 @@ class BookController extends Controller
     public function destroy($id)
     {
         $this->bookService->delete($id);
-        return redirect()->route('admin.books.index');
-
+        return redirect()->route('admin.books.index')->with('success', 'Xóa sách thành công');
     }
 }

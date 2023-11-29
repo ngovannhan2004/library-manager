@@ -43,6 +43,7 @@ class LoanSlipService
 
     }
 
+
     public function update($id, $request)
     {
         $loanSlip = $this->loanSlip->find($id);
@@ -60,13 +61,4 @@ class LoanSlipService
         $loanSlip->delete();
     }
 
-    public function getReaderHaveBookBackMore0()
-    {
-        $usersWithBorrows = User::whereHas('loanSlips.borrows', function ($query) {
-            $query->where('back', false);
-        })->get();
-
-        dd($usersWithBorrows);
-        return $usersWithBorrows;
-    }
 }

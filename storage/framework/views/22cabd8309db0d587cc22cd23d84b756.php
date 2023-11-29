@@ -9,7 +9,6 @@
 <?php $__env->startSection('css_custom'); ?>
     <link href="<?php echo e(asset('/admin/assets/plugins/custom/datatables/datatables.bundle.css')); ?>" rel="stylesheet"
           type="text/css"/>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_custom'); ?>
     <script src="<?php echo e(asset('/admin/assets/plugins/custom/datatables/datatables.bundle.js')); ?>"></script>
@@ -44,8 +43,8 @@
                 <th class="min-w-150px">Name</th>
                 <th class="min-w-100px">Category</th>
                 <th class="min-w-50px">Condition</th>
-                <th class="min-w-50px">Publishing Companies</th>
                 <th class="min-w-150px">Authors</th>
+                <th class="min-w-50px">Publishing Companies</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -61,25 +60,28 @@
                     <td><?php echo e($book->name); ?></td>
                     <td><?php echo e($book->category->name); ?></td>
                     <td><span class="badge badge-success"><?php echo e($book->condition->name); ?></span></td>
-                    <td><?php echo e($book->publishingCompany->name); ?></td>
                     <td>
                         <?php $__currentLoopData = $book->authors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $author): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <span class="badge badge-success"><?php echo e($author->name); ?></span>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </td>
+                    <td><?php echo e($book->publishingCompany->name); ?></td>
                     <td>
                         <a href="<?php echo e(route('admin.books.edit', $book->id)); ?>"
-                           class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
+                           class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2"
+                           title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
                         <?php if($book->deleted_at == null): ?>
                             <a href="<?php echo e(route('admin.books.delete', $book->id)); ?>"
-                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
+                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger"
+                               title="Delete">
                                 <i class="fa fa-trash"></i>
                             </a>
                         <?php else: ?>
                             <a href="<?php echo e(route('admin.books.restore', $book->id)); ?>"
-                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
+                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning"
+                               title="Restore">
                                 <i class="fa fa-undo"></i>
                             </a>
                         <?php endif; ?>
