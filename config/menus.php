@@ -190,11 +190,6 @@ return [
         'route' => 'admin.books.index',
         'children' => [
             [
-                'title' => 'Book Back',
-                'name' => 'create',
-                'route' => 'admin.book_backs.index',
-            ],
-            [
                 'title' => 'List Payment Slip',
                 'name' => 'index',
                 'route' => 'admin.payment_slips.index',

@@ -96,12 +96,12 @@ class PaymentSlipController extends Controller
         return redirect()->route('admin.payment_slips.index')->with('success', 'Xóa phiếu thu thành công');
     }
 
-    public function book_back(Request $request)
-    {
-        $this->paymentSlipService->book_back($request);
-        return redirect()->route('admin.payment_slips.book_back')->with('success', '');
-
-    }
+//    public function book_back(Request $request)
+//    {
+//        $this->paymentSlipService->book_back($request);
+//        return redirect()->route('admin.payment_slips.book_back')->with('success', '');
+//
+//    }
 
 
 }
