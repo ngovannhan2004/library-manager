@@ -37,6 +37,15 @@
     Create Category
 @endsection
 @section('content_card')
+    @if ($errors->any())
+        <div class="alert alert-danger mt-3" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{route('admin.categories.store')}}" method="post" class="form-control-sm">
         @csrf
 
@@ -44,21 +53,35 @@
             <label for="name" class="required form-label">Name</label>
             <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
                    value="{{ old('name') }}">
+
+
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <label for="" class="required form-label">Parent_id</label>
             <select class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1" name="parent_id">
-                <option value="0">None</option>
+                <option >None</option>
                 @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
+
+            @error('parent_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <label for="description" class="required form-label">Description</label>
             <textarea name="description" id="" cols="20" rows="10"
                       class="form-control form-control-solid">{{old('description')}}</textarea>
+
+            @error('description')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

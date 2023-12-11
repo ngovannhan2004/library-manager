@@ -1,4 +1,4 @@
-define(['exports', '@form-validation/core', '@form-validation/plugin-field-status'], (function (exports, core, pluginFieldStatus) { 'use strict';
+define(['exports', '@form-validation/core', '@form-validation/plugin-field-condition'], (function (exports, core, pluginFieldStatus) { 'use strict';
 
     /******************************************************************************
     Copyright (c) Microsoft Corporation.

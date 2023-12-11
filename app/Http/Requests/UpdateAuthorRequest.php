@@ -30,6 +30,10 @@ class UpdateAuthorRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên.',
             'name.unique' => 'Tên này đã tồn tại.',
+            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
+            'email.required' => 'Vui lòng nhập email',
+            'email.unique' => 'Email đã tồn tại.',
+
         ];
     }
 }

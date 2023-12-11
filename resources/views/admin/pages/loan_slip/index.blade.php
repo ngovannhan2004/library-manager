@@ -26,7 +26,7 @@
     @endphp
 @endsection
 @section('title_component')
-   Loan Slip
+    Loan Slip
 @endsection
 @section('title_layout')
     List Loan Slip
@@ -46,6 +46,7 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
+                <th class="min-w-150px">Borrowed Days</th>
                 <th class="min-w-150px">Name</th>
                 <th class="min-w-150px">Book</th>
                 <th class="min-w-150px">Reader</th>
@@ -61,8 +62,13 @@
                         </div>
                     </td>
                     <td>{{$loan_slip->id}}</td>
+                    <td>{{$loan_slip->borrowed_days}}</td>
                     <td>{{$loan_slip->name}}</td>
-                    <td>{{$loan_slip->book->name}}</td>
+                    <td>
+                        @foreach($loan_slip->books as $book)
+                            <span class="badge badge-success">{{$book->name}}</span>
+                        @endforeach
+                    </td>
                     <td>{{$loan_slip->reader->name}}</td>
                     <td>
                         <a href="{{route('admin.loan_slips.edit', $loan_slip->id)}}"

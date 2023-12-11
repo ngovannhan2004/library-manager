@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->date('namsinh');
             $table->string('sdt');
-            $table->string('author');
+            $table->enum('role', ['admin', 'user'])->default('user');
             $table->string('gender');
             $table->timestamps();
 

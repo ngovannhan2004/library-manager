@@ -2,13 +2,13 @@
 
 namespace App\Http\Services;
 
-use App\Models\Readers;
+use App\Models\Reader;
 
 class ReadersService
 {
-    private Readers $readers;
+    private Reader $readers;
 
-    public function __construct(Readers $readers)
+    public function __construct(Reader $readers)
     {
         $this->readers = $readers;
     }

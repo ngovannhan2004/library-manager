@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReadersRequest;
 use App\Http\Requests\UpdateReadersRequest;
 use App\Http\Services\ReadersService;
-use App\Models\Readers;
+use App\Models\Reader;
 use Illuminate\Http\Request;
 
 class ReadersController extends Controller
@@ -47,7 +47,7 @@ class ReadersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Readers $readers)
+    public function show(Reader $readers)
     {
         //
     }

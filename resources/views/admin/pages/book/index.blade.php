@@ -8,15 +8,13 @@
 @section('css_custom')
     <link href="{{asset('/admin/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet"
           type="text/css"/>
-
 @endsection
 @section('js_custom')
     <script src="{{asset('/admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'book';
+        $menu_parent = 'books';
         $menu_child = 'index';
     @endphp
 @endsection
@@ -43,7 +41,8 @@
                 <th class="min-w-50">ID</th>
                 <th class="min-w-150px">Name</th>
                 <th class="min-w-100px">Category</th>
-                <th class="min-w-50px">Status</th>
+                <th class="min-w-50px">Condition</th>
+                <th class="min-w-150px">Authors</th>
                 <th class="min-w-50px">Publishing Companies</th>
                 <th class="min-w-200px">Action</th>
             </tr>
@@ -59,22 +58,29 @@
                     <td>{{$book->id}}</td>
                     <td>{{$book->name}}</td>
                     <td>{{$book->category->name}}</td>
-                    <td>{{$book->status->name}}</td>
-                    <td>{{$book->publishing_companies->name}}</td>
-
+                    <td><span class="badge badge-success">{{$book->condition->name}}</span></td>
+                    <td>
+                        @foreach($book->authors as $author)
+                            <span class="badge badge-success">{{$author->name}}</span>
+                        @endforeach
+                    </td>
+                    <td>{{$book->publishingCompany->name}}</td>
                     <td>
                         <a href="{{route('admin.books.edit', $book->id)}}"
-                           class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
+                           class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2"
+                           title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
                         @if($book->deleted_at == null)
                             <a href="{{route('admin.books.delete', $book->id)}}"
-                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
+                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger"
+                               title="Delete">
                                 <i class="fa fa-trash"></i>
                             </a>
                         @else
                             <a href="{{route('admin.books.restore', $book->id)}}"
-                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
+                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning"
+                               title="Restore">
                                 <i class="fa fa-undo"></i>
                             </a>
                         @endif

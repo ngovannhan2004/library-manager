@@ -46,7 +46,8 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-150px">Name</th>
+                <th class="min-w-150px">Return Days</th>
+                <th class="min-w-150px">Violated</th>
                 <th class="min-w-150px">Book</th>
                 <th class="min-w-150px">Reader</th>
                 <th class="min-w-200px">Action</th>
@@ -61,7 +62,8 @@
                         </div>
                     </td>
                     <td>{{$payment_slip->id}}</td>
-                    <td>{{$payment_slip->name}}</td>
+                    <td>{{$payment_slip->returned_days}}</td>
+                    <td>{{$payment_slip->violated}}</td>
                     <td>{{$payment_slip->book->name}}</td>
                     <td>{{$payment_slip->reader->name}}</td>
                     <td>

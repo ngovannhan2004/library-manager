@@ -32,9 +32,8 @@ class PaymentSlipController extends Controller
     public function index()
     {
         $payment_slips = $this->paymentSlipService->getAll();
-        $books = $this->bookService->getAll();
-        $readers = $this->readersService->getAll();
-       return view('admin.pages.payment_slip.index', compact('payment_slips', 'books', 'readers'));
+       return view('admin.pages.payment_slip.index', compact('payment_slips'));
+
     }
 
     /**
@@ -82,9 +81,9 @@ class PaymentSlipController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePaymentSlipRequest $request, PaymentSlip $paymentSlip)
+    public function update($id, UpdatePaymentSlipRequest $request)
     {
-        $this->paymentSlipService->update($request, $paymentSlip);
+        $this->paymentSlipService->update($id, $request);
         return redirect()->route('admin.payment_slips.index')->with('success', 'Cập nhật phiếu thu thành công');
     }
 
@@ -96,6 +95,13 @@ class PaymentSlipController extends Controller
         $this->paymentSlipService->delete($id);
         return redirect()->route('admin.payment_slips.index')->with('success', 'Xóa phiếu thu thành công');
     }
+
+//    public function book_back(Request $request)
+//    {
+//        $this->paymentSlipService->book_back($request);
+//        return redirect()->route('admin.payment_slips.book_back')->with('success', '');
+//
+//    }
 
 
 }

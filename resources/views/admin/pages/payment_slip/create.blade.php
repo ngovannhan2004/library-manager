@@ -48,15 +48,11 @@
     <form action="{{ route('admin.payment_slips.store') }}" method="post" class="form-control-sm">
         @csrf
         <div class="mb-10">
-            <label for="name" class="required form-label">Name</label>
-            <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
-                   value="{{ old('name') }}">
-        </div>
-
-        <div class="mb-10">
-            <label for="borrowed_days" class="required form-label">Borrowed Days</label>
+            <label for="returned_days" class="required form-label">Return Day</label>
             <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
                  data-td-target-toggle="nearest">
+                <input type="text" class="form-control" name="returned_days"
+                       data-td-target="#kt_td_picker_localization"/>
                 <input type="text" class="form-control" name="borrowed_days" data-td-target="#kt_td_picker_localization"/>
                 <span class="input-group-text" data-td-target="#kt_td_picker_localization"
                       data-td-toggle="datetimepicker">
@@ -75,6 +71,9 @@
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
     </span>
             </div>
+            @error('returned_days')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
@@ -127,6 +126,33 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="mb-10">
+            <label for="reader_id" class="required form-label">Reader</label>
+            <select name="reader_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select Reader">
+                @foreach($readers as $reader)
+                    <option value="{{ $reader->id }}">{{ $reader->name }}</option>
+                @endforeach
+            </select>
+            @error('reader_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-10">
+            <label for="book_ids" class="required form-label">Book</label>
+            <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
+                    data-placeholder="Select Books">
+                @foreach($books as $book)
+                    <option value="{{ $book->id }}">{{ $book->name }}</option>
+                @endforeach
+            </select>
+
+            @error('book_ids')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
 
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

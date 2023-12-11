@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\LoanSlip;
+use App\Models\User;
 
 class LoanSlipService
 {
@@ -22,6 +23,7 @@ class LoanSlipService
     {
         return $this->loanSlip->all();
     }
+
     public function getById($id)
     {
         return $this->loanSlip->find($id);
@@ -29,24 +31,30 @@ class LoanSlipService
 
     public function create($request)
     {
-        $this->loanSlip->create([
-            'name' => $request->name,
+
+        $loanSlip = $this->loanSlip->create([
             'borrowed_days' => $request->borrowed_days,
-            'returned_days' => $request->returned_days,
-            'violated' => $request->violated,
+            'reader_id' => $request->reader_id
         ]);
+        $loanSlip->books()->attach($request->book_ids);
+        $this->bookService->updateBookLoan($request->book_ids);
+        return $loanSlip;
+
+
     }
+
+
     public function update($id, $request)
     {
         $loanSlip = $this->loanSlip->find($id);
         $loanSlip->update([
-            'name' => $request->name,
             'borrowed_days' => $request->borrowed_days,
-            'returned_days' => $request->returned_days,
-            'violated' => $request->violated,
         ]);
+        $loanSlip->readers()->attach($request->reader_id);
+        $loanSlip->books()->attach($request->book_ids);
         return $loanSlip;
     }
+
     public function delete($id)
     {
         $loanSlip = $this->loanSlip->find($id);

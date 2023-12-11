@@ -1,7 +1,7 @@
 'use strict';
 
 var core = require('@form-validation/core');
-var pluginFieldStatus = require('@form-validation/plugin-field-status');
+var pluginFieldStatus = require('@form-validation/plugin-field-condition');
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.

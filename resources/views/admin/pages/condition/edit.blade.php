@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Create Status - Admin - {{ config('app.name') }}
+    Edit Status - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{auth()->user()->name}}
@@ -14,36 +14,37 @@
 @endsection
 @section('js_custom')
     <script src="{{asset('/admin/assets/plugins/global/plugins.bundle.js')}}"></script>
+
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'status';
-        $menu_child = 'create';
+        $menu_parent = 'condition';
+        $menu_child = 'edit';
     @endphp
 @endsection
 @section('title_component')
     Status
 @endsection
 @section('title_layout')
-    Create Status
+    Edit Status
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.statuses.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('admin.conditions.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-list"></i> List Status
     </a>
 @endsection
 @section('title_card')
-    Create Role
+    Edit Status
 @endsection
 @section('content_card')
-    <form action="{{route('admin.statuses.store')}}" method="post">
+    <form action="{{route('admin.conditions.update',$status->id)}}" method="post">
         @csrf
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>
-            <input type="text" name="name" id="exampleFormControlInput1" class="form-control" value="{{ old('name') }}">
+            <input type="text" name="name" id="exampleFormControlInput1" class="form-control" value="{{$status->name}}">
         </div>
 
-        <div class="mb-10 mt-3">
+        <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
                 <i class="fa fa-save"></i> Save
             </button>

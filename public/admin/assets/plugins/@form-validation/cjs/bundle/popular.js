@@ -717,10 +717,10 @@ function requireCjs$B () {
 	        return this.plugins[name];
 	    };
 	    /**
-	     * Update the field status
+	     * Update the field condition
 	     *
 	     * @param {string} field The field name
-	     * @param {string} status The new status
+	     * @param {string} status The new condition
 	     * @param {string} [validator] The validator name. If it isn't specified, all validators will be updated
 	     * @return {Core}
 	     */
@@ -758,11 +758,11 @@ function requireCjs$B () {
 	        return this;
 	    };
 	    /**
-	     * Update the element status
+	     * Update the element condition
 	     *
 	     * @param {string} field The field name
 	     * @param {HTMLElement} ele The field element
-	     * @param {string} status The new status
+	     * @param {string} status The new condition
 	     * @param {string} [validator] The validator name. If it isn't specified, all validators will be updated
 	     * @return {Core}
 	     */
@@ -2373,7 +2373,7 @@ var index_min$u = {};
  * (c) 2013 - 2023 Nguyen Huu Phuoc <me@phuoc.ng>
  *
  * @license https://formvalidation.io/license
- * @package @form-validation/plugin-field-status
+ * @package @form-validation/plugin-field-condition
  * @version 2.4.0
  */
 

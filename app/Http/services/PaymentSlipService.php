@@ -22,6 +22,7 @@ class PaymentSlipService
     {
         return $this->paymentSlip->all();
     }
+
     public function getById($id)
     {
         return $this->paymentSlip->find($id);
@@ -34,12 +35,15 @@ class PaymentSlipService
 
     public function create($request)
     {
-        $this->paymentSlip->create([
-            'name' => $request->name,
-            'borrowed_days' => $request->borrowed_days,
+
+        $paymentSlip = $this->paymentSlip->create([
             'returned_days' => $request->returned_days,
             'violated' => $request->violated,
+            'reader_id' => $request->reader_id
         ]);
+        $paymentSlip->pays()->attach($request->book_ids);
+        return $paymentSlip;
+
 
     }
 
@@ -47,11 +51,14 @@ class PaymentSlipService
     {
         $paymentSlip = $this->paymentSlip->find($id);
         $paymentSlip->update([
-            'name' => $request->name,
-            'borrowed_days' => $request->borrowed_days,
+
             'returned_days' => $request->returned_days,
             'violated' => $request->violated,
         ]);
+        $paymentSlip->readers()->attach($request->reader_id);
+        $paymentSlip->books()->attach($request->book_ids);
+
+
         return $paymentSlip;
     }
 

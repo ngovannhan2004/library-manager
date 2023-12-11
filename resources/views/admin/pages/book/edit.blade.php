@@ -38,6 +38,24 @@
     <form action="{{route('admin.books.update', $book->id)}}" method="post" class="form-control-sm">
         @csrf
         <div class="mb-10">
+            <label for="name" class="required form-label">Name</label>
+            <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
+                   value="{{$book->name }}">
+
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-10">
+            <label for="category_id" class="required form-label">Category</label>
+            <select name="category_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" data-select2-id="1">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+
+
             <label for="exampleFormControlInput1" class="required form-label">Name </label>
             <input name="name" type="text" class="form-control form-control-solid"
                    placeholder="Enter name category" {{old('name')}} value="{{$book->name}}">
@@ -51,9 +69,29 @@
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
+
+            @error('category_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
+            <label for="publisher_id" class="required form-label">Publishing Companies</label>
+            <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category" >
+                @foreach($publishingCompanies as $publishingCompany)
+                    <option value="{{ $publishingCompany->id }}">{{ $publishingCompany->name }}</option>
+
+                @endforeach
+            </select>
+            @error('publisher_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-10">
+            <label for="statuses_id" class="required form-label">Status</label>
+            <select name="statuses_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select parent category"  >
             <label for="publisher_id" class="required form-label">Nhà Xuất Bản</label>
             <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1">
@@ -73,6 +111,22 @@
                     <option value="{{ $status->id }}">{{ $status->name }}</option>
                 @endforeach
             </select>
+            @error('statuses_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-10">
+            <label for="author_ids" class="required form-label">Author</label>
+            <select name="author_ids[]" class="form-select form-select-solid" data-control="select2" multiple
+                    data-placeholder="Select Authors" >
+                @foreach($authors as $author)
+                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                @endforeach
+            </select>
+
+            @error('author_ids')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

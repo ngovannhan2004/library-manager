@@ -4,30 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Book extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'publisher_id',
-        'category_id',
-        'status_id',
-    ];
     protected $guarded = [];
 
-
-    public function authors(){
-        return $this->belongsToMany(Author::class,Composed::class,'book_id','author_id');
+    public function authors(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class, Composed::class, 'book_id', 'author_id');
     }
 
-  public function payment_slips(){
-    return $this->belongsToMany(PaymentSlip::class, Pay::class,'book_id','payment_slip_id');
-  }
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 
-  public function loan_slips(){
-    return $this->belongsToMany(LoanSlip::class, Borrow::class,'book_id','loan_slip_id');
-  }
+    public function condition(): BelongsTo
+    {
+        return $this->belongsTo(Condition::class, 'condition_id');
+    }
+
+    public function publishingCompany(): BelongsTo
+    {
+        return $this->belongsTo(PublishingCompany::class, 'publisher_id');
+    }
+
+
 
 }

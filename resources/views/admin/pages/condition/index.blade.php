@@ -21,7 +21,7 @@
 @endsection
 @section('menu')
     @php
-        $menu_parent = 'status';
+        $menu_parent = 'condition';
         $menu_child = 'index';
     @endphp
 @endsection
@@ -32,7 +32,7 @@
     List Status
 @endsection
 @section('actions_layout')
-    <a href="{{route('admin.statuses.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+    <a href="{{route('admin.conditions.create')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
         <i class="fa fa-plus"></i> Add Status
     </a>
 @endsection
@@ -51,7 +51,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($statuses as $status)
+            @foreach($conditions as $status)
                 <tr>
                     <td>
                         <div class="form-check form-check-sm form-check-custom form-check-solid">
@@ -62,17 +62,17 @@
                     <td>{{$status->name}}</td>
 
                     <td>
-                        <a href="{{route('admin.statuses.edit', $status->id)}}"
+                        <a href="{{route('admin.conditions.edit', $status->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
                             <i class="fa fa-edit"></i>
                         </a>
                         @if($status->deleted_at == null)
-                            <a href="{{route('admin.statuses.delete', $status->id)}}"
+                            <a href="{{route('admin.conditions.delete', $status->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
                                 <i class="fa fa-trash"></i>
                             </a>
                         @else
-                            <a href="{{route('admin.statuses.restore', $status->id)}}"
+                            <a href="{{route('admin.conditions.restore', $status->id)}}"
                                class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
                                 <i class="fa fa-undo"></i>
                             </a>

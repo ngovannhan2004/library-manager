@@ -38,6 +38,10 @@
             <label for="exampleFormControlInput1" class="required form-label">Name </label>
             <input name="name" value="{{$category -> name}}" type="text" class="form-control form-control-solid"
                    placeholder="Enter name category" {{old('name')}}>
+
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Parent_id</label>
@@ -49,10 +53,18 @@
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
+
+            @error('parent_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Description</label>
             <textarea name="description" id="" cols="20" rows="10" class="form-control form-control-solid">{{$category -> description}}</textarea>
+
+            @error('description')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

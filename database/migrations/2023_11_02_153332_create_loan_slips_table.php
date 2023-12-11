@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('loan_slips', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->datetime('borrowed_days');
-            $table->datetime('returned_days');
+            $table->date('borrowed_days');
+            $table->unsignedBigInteger('reader_id');
+            $table->foreign('reader_id')->references('id')->on('readers');
             $table->timestamps();
         });
     }
@@ -27,4 +27,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('loan_slips');
     }
+
+
 };

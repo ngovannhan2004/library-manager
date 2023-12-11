@@ -36,26 +36,48 @@
     Create Author
 @endsection
 @section('content_card')
+    @if ($errors->any())
+        <div class="alert alert-danger mt-3" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{route('admin.authors.store')}}" method="post">
         @csrf
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>
             <input type="text" name="name" id="exampleFormControlInput1" class="form-control" value="{{ old('name') }}">
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput2" class="required form-label">Address</label>
             <input type="text" name="address" id="exampleFormControlInput2" class="form-control" value="{{ old('address') }}">
+            @error('address')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput3" class="required form-label">Phone</label>
             <input type="text" name="phone" id="exampleFormControlInput3" class="form-control" value="{{ old('phone') }}">
+            @error('phone')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput4" class="required form-label">Email</label>
             <input type="email" name="email" id="exampleFormControlInput4" class="form-control" value="{{ old('email') }}">
+            @error('email')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
         </div>
 
         <div class="mb-10">
@@ -65,6 +87,9 @@
                 <option value="Nữ" {{ old('gender') === 'Nữ' ? 'selected' : '' }}>Nữ</option>
                 <option value="Khác" {{ old('gender') === 'Khác' ? 'selected' : '' }}>Khác</option>
             </select>
+            @error('gender')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10 mt-3">

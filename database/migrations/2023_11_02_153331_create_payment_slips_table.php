@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('payment_slips', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->datetime('borrowed_days');
-            $table->datetime('returned_days');
+            $table->date('returned_days');
             $table->string('violated');
+            $table->unsignedBigInteger('reader_id');
+            $table->foreign('reader_id')->references('id')->on('readers');
             $table->timestamps();
         });
     }

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Create Readers - Admin - {{ config('app.name') }}
+    Create Reader - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{auth()->user()->name}}
@@ -31,18 +31,18 @@
     @endphp
 @endsection
 @section('title_component')
-    Create Readers
+    Create Reader
 @endsection
 @section('title_layout')
-    Create Readers
+    Create Reader
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.readers.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Readers
+        <i class="fa fa-list"></i> List Reader
     </a>
 @endsection
 @section('title_card')
-    Create Readers
+    Create Reader
 @endsection
 @section('content_card')
     <form action="{{route('admin.readers.store')}}" method="post">

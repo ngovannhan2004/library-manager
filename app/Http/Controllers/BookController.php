@@ -6,38 +6,35 @@ use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Http\Services\AuthorService;
 use App\Http\Services\BookService;
+use App\Http\Services\CategoryService;
 use App\Http\services\PublishingCompanyService;
-use App\Http\Services\StatusService;
+use App\Http\Services\ConditionService;
 use App\Models\Book;
-use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
 
     private BookService $bookService;
+    private CategoryService $categoryService;
+    private ConditionService $conditionService;
+    private PublishingCompanyService $publishingCompanyService;
     private AuthorService $authorService;
 
-    private PublishingCompanyService $publishingCompanyService;
-
-    private StatusService $statusService;
-
-    public function __construct(BookService $bookService, AuthorService $authorService, PublishingCompanyService $publishingCompanyService, StatusService $statusService)
+    public function __construct(BookService $bookService, CategoryService $categoryService, ConditionService $conditionService, PublishingCompanyService $publishingCompanyService, AuthorService $authorService)
     {
         $this->bookService = $bookService;
-        $this->authorService = $authorService;
+        $this->categoryService = $categoryService;
+        $this->conditionService = $conditionService;
         $this->publishingCompanyService = $publishingCompanyService;
-        $this->statusService = $statusService;
-    }
+        $this->authorService = $authorService;
+
+}
+
+
     public function index()
     {
-        $publishing_companies = $this->publishingCompanyService->getAll();
-        $statuses = $this->statusService->getAll();
-        $authors = $this->authorService->getAll();
         $books = $this->bookService->getAll();
-        return view('admin.pages.book.index', compact('books', 'authors', 'publishing_companies', 'statuses'));
+        return view('admin.pages.book.index', compact('books'));
     }
 
     /**
@@ -46,11 +43,13 @@ class BookController extends Controller
     public function create()
     {
 
-        $publishing_companies = $this->publishingCompanyService->getAll();
-        $statuses = $this->statusService->getAll();
-        $authors = $this->authorService->getAll();
         $books = $this->bookService->getAll();
-        return view('admin.pages.book.create', compact('books', 'authors', 'publishing_companies', 'statuses'));
+        $categories = $this->categoryService->getAll();
+        $publishingCompanies = $this->publishingCompanyService->getAll();
+        $conditions = $this->conditionService->getAll();
+        $authors = $this->authorService->getAll();
+        return view('admin.pages.book.create', compact('books', 'categories', 'publishingCompanies', 'conditions', 'authors'));
+
     }
 
     /**
@@ -58,9 +57,9 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
+
         $this->bookService->create($request);
         return redirect()->route('admin.books.index')->with('success', 'Thêm sách thành công');
-
     }
 
     /**
@@ -77,21 +76,23 @@ class BookController extends Controller
     public function edit($id)
     {
 
-        $publishing_companies = $this->publishingCompanyService->getAll();
-        $statuses = $this->statusService->getAll();
-        $authors = $this->authorService->getAll();
         $books = $this->bookService->getAll();
+        $categories = $this->categoryService->getAll();
+        $publishingCompanies = $this->publishingCompanyService->getAll();
+        $statuses = $this->conditionService->getAll();
+        $authors = $this->authorService->getAll();
         $book = $this->bookService->getById($id);
-        return view('admin.pages.book.edit', compact('books', 'authors', 'book', 'publishing_companies', 'statuses'));
+        return view('admin.pages.book.edit', compact('books', 'categories', 'publishingCompanies', 'statuses', 'authors', 'book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBookRequest $request, Book $book)
+    public function update($id , UpdateBookRequest $request)
     {
-        $this->bookService->update($request, $book);
-        return redirect()->route('admin.books.index')->with('success', 'Sửa sách thành công');
+        $this->bookService->update($id, $request);
+        return redirect()->route('admin.books.index');
+
     }
 
     /**

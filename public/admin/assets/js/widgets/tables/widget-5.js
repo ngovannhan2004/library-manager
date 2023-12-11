@@ -29,7 +29,7 @@ var KTTablesWidget5 = function () {
         });
     }
 
-    // Handle status filter
+    // Handle condition filter
     const handleStatusFilter = () => {
         const select = document.querySelector('[data-kt-table-widget-5="filter_status"]');
 

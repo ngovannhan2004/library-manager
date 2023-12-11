@@ -23,12 +23,14 @@ class LoanSlipController extends Controller
 
     public function __construct(LoanSlipService $loanSlipService, BookService $bookService, ReadersService $readersService)
     {
+
         $this->loanSlipService = $loanSlipService;
         $this->bookService = $bookService;
         $this->readersService = $readersService;
     }
     public function index()
     {
+        $ok = $this->loanSlipService->getReaderHaveBookBackMore0();
         $loan_slips = $this->loanSlipService->getAll();
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
@@ -41,6 +43,7 @@ class LoanSlipController extends Controller
     public function create()
     {
         $loan_slips = $this->loanSlipService->getAll();
+        $books = $this->bookService->getBooksByAvailable();
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
         return view('admin.pages.loan_slip.create', compact('loan_slips', 'books', 'readers'));
@@ -79,12 +82,10 @@ class LoanSlipController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLoanSlipRequest $request, LoanSlip $loanSlip)
+    public function update($id, UpdateLoanSlipRequest $request)
     {
-
-        $this->loanSlipService->update($request, $loanSlip);
+        $this->loanSlipService->update($id, $request);
         return redirect()->route('admin.loan_slips.index')->with('success', 'Cập nhật phiếu mượn thành công');
-
     }
 
     /**
@@ -95,4 +96,6 @@ class LoanSlipController extends Controller
         $this->loanSlipService->delete($id);
         return redirect()->route('admin.loan_slips.index')->with('success', 'Xóa phiếu mượn thành công');
     }
+
+
 }
