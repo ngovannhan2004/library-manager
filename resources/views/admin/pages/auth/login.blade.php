@@ -130,17 +130,32 @@
     <div class="form-box">
         <div class="form-value">
             <form action="{{route('admin.auth.login-post')}}" method="post">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <h2>Login</h2>
                 @csrf
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
                     <input type="email" name="email" required>
                     <label for=" ">Email</label>
+                    @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="inputbox">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <input type="password" name="password" required>
                     <label for=" ">Password</label>
+                    @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="forget">
                     <label>

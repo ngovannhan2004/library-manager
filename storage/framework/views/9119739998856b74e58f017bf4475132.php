@@ -48,21 +48,67 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
     <form action="<?php echo e(route('admin.users.store')); ?>" method="post" class="form-control-sm">
+
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
             <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
                    value="<?php echo e(old('name')); ?>">
+
+            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
             <label for="email" class="required form-label">Email</label>
             <input name="email" type="text" class="form-control form-control-solid" placeholder="Nhập email"
                    value="<?php echo e(old('email')); ?>">
+
+            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
         </div>
         <div class="mb-10">
             <label for="password" class="required form-label">Mật khẩu</label>
             <input name="password" type="password" class="form-control form-control-solid" placeholder="Nhập mật khẩu"
                    value="<?php echo e(old('password')); ?>">
+
+
+            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
         </div>
         <div class="mb-10">
             <label for="namsinh" class="required form-label">Năm sinh</label>
@@ -79,9 +125,8 @@
         <div class="mb-10">
             <label for="gender" class="required form-label">Gender</label>
             <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" <?php echo e(old('gender') === 'Nam' ? 'selected' : ''); ?>>Nam</option>
-                <option value="Nữ" <?php echo e(old('gender') === 'Nữ' ? 'selected' : ''); ?>>Nữ</option>
-                <option value="Khác" <?php echo e(old('gender') === 'Khác' ? 'selected' : ''); ?>>Khác</option>
+                <option value="nam" <?php echo e(old('') === 'nam' ? 'selected' : ''); ?>>Nam</option>
+                <option value="nu" <?php echo e(old('') === 'nu' ? 'selected' : ''); ?>>Nữ</option>
             </select>
         </div>
 
@@ -89,6 +134,17 @@
             <label for="sdt" class="required form-label">Số Điện Thoại</label>
             <input name="sdt" type="text" class="form-control form-control-solid" placeholder="Nhập số điện thoại"
                    value="<?php echo e(old('sdt')); ?>">
+
+            <?php $__errorArgs = ['sdt'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
             <label for="role" class="required form-label">Role</label>

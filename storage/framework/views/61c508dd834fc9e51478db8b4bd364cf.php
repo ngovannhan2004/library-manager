@@ -65,15 +65,16 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
-
         <div class="mb-10">
             <label for="category_id" class="required form-label">Category</label>
             <select name="category_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1">
-                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <option value="0" >None</option>
+        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </select>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </select>
+
             <?php $__errorArgs = ['category_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -85,11 +86,10 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
-
         <div class="mb-10">
             <label for="publisher_id" class="required form-label">Publishing Companies</label>
             <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select Publishing">
+                    data-placeholder="Select Publishing Companies">
                 <?php $__currentLoopData = $publishingCompanies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publishingCompany): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($publishingCompany->id); ?>"><?php echo e($publishingCompany->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -107,14 +107,14 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
-            <label for="statuses_id" class="required form-label">Status</label>
+            <label for="condition_id" class="required form-label">Status</label>
             <select name="condition_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select Status">
                 <?php $__currentLoopData = $conditions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $condition): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($condition->id); ?>"><?php echo e($condition->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
-            <?php $__errorArgs = ['statuses_id'];
+            <?php $__errorArgs = ['condition_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

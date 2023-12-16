@@ -8,6 +8,7 @@ use App\Http\Services\BookService;
 use App\Http\Services\LoanSlipService;
 use App\Http\Services\ReadersService;
 use App\Models\LoanSlip;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class LoanSlipController extends Controller
@@ -30,7 +31,6 @@ class LoanSlipController extends Controller
     }
     public function index()
     {
-        $ok = $this->loanSlipService->getReaderHaveBookBackMore0();
         $loan_slips = $this->loanSlipService->getAll();
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
@@ -43,7 +43,6 @@ class LoanSlipController extends Controller
     public function create()
     {
         $loan_slips = $this->loanSlipService->getAll();
-        $books = $this->bookService->getBooksByAvailable();
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
         return view('admin.pages.loan_slip.create', compact('loan_slips', 'books', 'readers'));
@@ -74,8 +73,8 @@ class LoanSlipController extends Controller
         $loan_slips = $this->loanSlipService->getAll();
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
-        $book = $this->bookService->getById($id);
-        return view('admin.pages.loan_slip.edit', compact('loan_slips', 'books', 'readers', 'book'));
+        $loan_slip = $this->loanSlipService->getById($id);
+        return view('admin.pages.loan_slip.edit', compact('loan_slips', 'books', 'readers', 'loan_slip'));
 
     }
 
@@ -84,6 +83,7 @@ class LoanSlipController extends Controller
      */
     public function update($id, UpdateLoanSlipRequest $request)
     {
+
         $this->loanSlipService->update($id, $request);
         return redirect()->route('admin.loan_slips.index')->with('success', 'Cập nhật phiếu mượn thành công');
     }

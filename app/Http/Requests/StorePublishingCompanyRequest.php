@@ -30,17 +30,18 @@ class StorePublishingCompanyRequest extends FormRequest
     public function messages()
     {
         return [
-//            'name.required' => 'Vui lòng nhập tên',
-//            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
-//            'name.unique' => 'Tên đã tồn tại.',
-//            'email.required' => 'Vui lòng nhập email',
-//            'email.unique' => 'Email đã tồn tại.',
-//            'email.email' => 'Vui lòng nhập đúng định dạng email',
-//            'email.regex' => 'Địa chỉ email phải chứa ký tự @.',
-//            'phone.required' => 'Vui lòng nhập số điện thoại',
-//            'phone.integer' => 'Số điện thoại phải là số.',
-//            'phone.digits' => 'Số điện thoại phải có 10 chữ số.',
-//            'address.required' => 'Vui lòng nhập địa chỉ',
+            'name.required' => 'Vui lòng nhập tên',
+            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
+            'name.unique' => 'Tên đã tồn tại.',
+            'address.required' => 'Vui lòng nhập địa chỉ',
+            'email.required' => 'Vui lòng nhập email',
+            'email.unique' => 'Email đã tồn tại.',
+            'email.email' => 'Vui lòng nhập đúng định dạng email',
+            'email.regex' => 'Địa chỉ email phải chứa ký tự @.',
+            'phone.required' => 'Vui lòng nhập số điện thoại',
+            'phone.integer' => 'Số điện thoại phải là số.',
+            'phone.digits' => 'Số điện thoại phải có 10 chữ số.',
+
 
         ];
     }

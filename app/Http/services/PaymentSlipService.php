@@ -41,7 +41,8 @@ class PaymentSlipService
             'violated' => $request->violated,
             'reader_id' => $request->reader_id
         ]);
-        $paymentSlip->pays()->attach($request->book_ids);
+        $paymentSlip->books()->attach($request->book_ids);
+        $this->bookService->updateBookReturn($request->book_ids);
         return $paymentSlip;
 
 
@@ -54,11 +55,11 @@ class PaymentSlipService
 
             'returned_days' => $request->returned_days,
             'violated' => $request->violated,
+            'reader_id' => $request->reader_id
         ]);
-        $paymentSlip->readers()->attach($request->reader_id);
-        $paymentSlip->books()->attach($request->book_ids);
 
-
+        $paymentSlip->books()->sync($request->book_ids);
+        $this->bookService->updateBookReturn($request->book_ids);
         return $paymentSlip;
     }
 

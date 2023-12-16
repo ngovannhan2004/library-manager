@@ -46,16 +46,17 @@
     Create Loan Slip
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
-    <?php if($errors->any()): ?>
-        <div class="alert alert-danger mt-3" role="alert">
-            <ul>
-                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </ul>
-        </div>
-    <?php endif; ?>
+
     <form action="<?php echo e(route('admin.loan_slips.store')); ?>" method="post" class="form-control-sm">
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
         <div class="mb-10">
             <label for="borrowed_days" class="required form-label">Borrowed Days</label>
@@ -68,19 +69,19 @@
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
     </span>
             </div>
-
             <?php $__errorArgs = ['borrowed_days'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-            <div class="text-danger"><?php echo e($message); ?></div>
+            <div class="text-danger"><?php echo e($message); ?>
+
+            </div>
             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
-
 
         <div class="mb-10">
             <label for="book_ids" class="required form-label">Book</label>
@@ -90,13 +91,14 @@ unset($__errorArgs, $__bag); ?>
                     <option value="<?php echo e($book->id); ?>"><?php echo e($book->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
-
             <?php $__errorArgs = ['book_ids'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-            <div class="text-danger"><?php echo e($message); ?></div>
+            <div class="text-danger"><?php echo e($message); ?>
+
+            </div>
             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -120,6 +122,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
@@ -130,7 +133,6 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('footer_card'); ?>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_layout'); ?>
     <!--begin::Card-->
@@ -139,9 +141,9 @@ unset($__errorArgs, $__bag); ?>
              data-bs-target="#kt_docs_card_collapsible">
             <h3 class="card-title"><?php echo $__env->yieldContent('title_card'); ?></h3>
             <div class="card-toolbar rotate-180">
-                <span class="svg-icon svg-icon-1">
-                   <i class="fa fa-angle-down"></i>
-                </span>
+<span class="svg-icon svg-icon-1">
+   <i class="fa fa-angle-down"></i>
+</span>
             </div>
         </div>
         <div id="kt_docs_card_collapsible" class="collapse show">

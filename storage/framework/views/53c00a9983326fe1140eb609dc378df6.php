@@ -1,5 +1,5 @@
 <?php $__env->startSection('title_page'); ?>
-    Create Readers - Admin - <?php echo e(config('app.name')); ?>
+    Create Reader - Admin - <?php echo e(config('app.name')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('name_user'); ?>
@@ -33,49 +33,112 @@
     ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_component'); ?>
-    Create Readers
+    Create Reader
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_layout'); ?>
-    Create Readers
+    Create Reader
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('actions_layout'); ?>
     <a href="<?php echo e(route('admin.readers.index')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-list"></i> List Readers
+        <i class="fa fa-list"></i> List Reader
     </a>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_card'); ?>
-    Create Readers
+    Create Reader
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
     <form action="<?php echo e(route('admin.readers.store')); ?>" method="post">
+
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>
             <input type="text" name="name" id="exampleFormControlInput1" class="form-control" value="<?php echo e(old('name')); ?>">
+            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput2" class="required form-label">Address</label>
             <input type="text" name="address" id="exampleFormControlInput2" class="form-control" value="<?php echo e(old('address')); ?>">
+
+            <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput3" class="required form-label">Phone</label>
             <input type="text" name="phone" id="exampleFormControlInput3" class="form-control" value="<?php echo e(old('phone')); ?>">
+
+            <?php $__errorArgs = ['phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput4" class="required form-label">Email</label>
             <input type="email" name="email" id="exampleFormControlInput4" class="form-control" value="<?php echo e(old('email')); ?>">
+
+            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="mb-10">
             <label for="gender" class="required form-label">Gender</label>
             <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" <?php echo e(old('gender') === 'Nam' ? 'selected' : ''); ?>>Nam</option>
-                <option value="Nữ" <?php echo e(old('gender') === 'Nữ' ? 'selected' : ''); ?>>Nữ</option>
-                <option value="Khác" <?php echo e(old('gender') === 'Khác' ? 'selected' : ''); ?>>Khác</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
             </select>
+
+            <?php $__errorArgs = ['gender'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
             <label for="year_birth" class="required form-label">Year_birth</label>
@@ -87,6 +150,17 @@
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
     </span>
             </div>
+
+            <?php $__errorArgs = ['year_birth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
 
         <div class="mb-10 mt-3">

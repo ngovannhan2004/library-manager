@@ -71,7 +71,7 @@ class BookService implements DAOInterface
             'name' => $request->name,
             'publisher_id' => $request->publisher_id,
             'category_id' => $request->category_id,
-            'condition_id' => $request->statuses_id
+            'condition_id' => $request->condition_id
         ]);
         $book->authors()->sync($request->author_ids);
         return $book;
@@ -82,14 +82,11 @@ class BookService implements DAOInterface
     function delete($id)
     {
         $book = $this->book->find($id);
-        if ($book) {
-            $book->delete();
-        }
+        $book->delete();
     }
 
     function search($value)
     {
-
     }
 
     function getBooksByAvailable()
@@ -99,12 +96,18 @@ class BookService implements DAOInterface
 
     function updateBookLoan($ids)
     {
-
         $books = $this->book->whereIn('id', $ids);
         $books->update([
             'available' => 'no'
         ]);
 
+    }
+    function updateBookReturn($ids)
+    {
+        $books = $this->book->whereIn('id', $ids);
+        $books->update([
+            'available' => 'yes'
+        ]);
     }
 
 }

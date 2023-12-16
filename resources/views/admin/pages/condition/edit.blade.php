@@ -37,7 +37,17 @@
     Edit Status
 @endsection
 @section('content_card')
+
     <form action="{{route('admin.conditions.update',$status->id)}}" method="post">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>

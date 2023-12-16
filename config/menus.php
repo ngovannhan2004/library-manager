@@ -1,28 +1,6 @@
 <?php
 return [
-    [
-        'title' => 'Book',
-        'name' => 'book',
-        'icon' => 'fa fa-list',
-        'route' => 'admin.books.index',
-        'children' => [
-            [
-                'title' => 'List Book',
-                'name' => 'index',
-                'route' => 'admin.books.index',
-            ],
-            [
-                'title' => 'Create Book',
-                'name' => 'create',
-                'route' => 'admin.books.create',
-            ],
-            [
-                'title' => 'Edit Book',
-                'name' => 'edit',
-            ]
 
-        ],
-    ],
     [
         'title' => 'User',
         'name' => 'user',
@@ -68,6 +46,31 @@ return [
 
         ],
     ],
+
+
+    [
+        'title' => 'Book',
+        'name' => 'book',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.books.index',
+        'children' => [
+            [
+                'title' => 'List Book',
+                'name' => 'index',
+                'route' => 'admin.books.index',
+            ],
+            [
+                'title' => 'Create Book',
+                'name' => 'create',
+                'route' => 'admin.books.create',
+            ],
+            [
+                'title' => 'Edit Book',
+                'name' => 'edit',
+            ]
+
+        ],
+    ],
     [
         'title' => 'Publishing Company',
         'name' => 'Publishing-Company',
@@ -86,52 +89,6 @@ return [
             ],
             [
                 'title' => 'Edit publishing Company',
-                'name' => 'edit',
-            ]
-
-        ],
-    ],
-    [
-        'title' => 'Author',
-        'name' => 'author',
-        'icon' => 'fa fa-list',
-        'route' => 'admin.authors.index',
-        'children' => [
-            [
-                'title' => 'List Category',
-                'name' => 'index',
-                'route' => 'admin.authors.index',
-            ],
-            [
-                'title' => 'Create Category',
-                'name' => 'create',
-                'route' => 'admin.authors.create',
-            ],
-            [
-                'title' => 'Edit Category',
-                'name' => 'edit',
-            ]
-
-        ],
-    ],
-    [
-        'title' => 'Condition',
-        'name' => 'condition',
-        'icon' => 'fa fa-list',
-        'route' => 'admin.conditions.index',
-        'children' => [
-            [
-                'title' => 'List Condition',
-                'name' => 'index',
-                'route' => 'admin.conditions.index',
-            ],
-            [
-                'title' => 'Create Condition',
-                'name' => 'create',
-                'route' => 'admin.conditions.create',
-            ],
-            [
-                'title' => 'Edit Condition',
                 'name' => 'edit',
             ]
 
@@ -160,29 +117,55 @@ return [
 
         ],
     ],
+
     [
-        'title' => 'Book',
-        'name' => 'book',
+        'title' => 'Condition',
+        'name' => 'condition',
         'icon' => 'fa fa-list',
-        'route' => 'admin.books.index',
+        'route' => 'admin.conditions.index',
         'children' => [
             [
-                'title' => 'List Book',
+                'title' => 'List Condition',
                 'name' => 'index',
-                'route' => 'admin.books.index',
+                'route' => 'admin.conditions.index',
             ],
             [
-                'title' => 'Create Book',
+                'title' => 'Create Condition',
                 'name' => 'create',
-                'route' => 'admin.books.create',
+                'route' => 'admin.conditions.create',
             ],
             [
-                'title' => 'Edit Book',
+                'title' => 'Edit Condition',
                 'name' => 'edit',
             ]
 
         ],
     ],
+    [
+        'title' => 'Author',
+        'name' => 'author',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.authors.index',
+        'children' => [
+            [
+                'title' => 'List Category',
+                'name' => 'index',
+                'route' => 'admin.authors.index',
+            ],
+            [
+                'title' => 'Create Category',
+                'name' => 'create',
+                'route' => 'admin.authors.create',
+            ],
+            [
+                'title' => 'Edit Category',
+                'name' => 'edit',
+            ]
+
+        ],
+    ],
+
+
     [
         'title' => 'Payment Slip',
         'name' => 'payment-slip',
@@ -226,6 +209,20 @@ return [
                 'title' => 'Edit Loan Slip',
                 'name' => 'edit',
             ]
+
+        ],
+    ],
+    [
+        'title' => 'Statistic',
+        'name' => 'statistic',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.statistics.index',
+        'children' => [
+            [
+                'title' => 'Statistic',
+                'name' => 'index',
+                'route' => 'admin.statistics.index',
+            ],
 
         ],
     ],

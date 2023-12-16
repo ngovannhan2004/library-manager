@@ -28,8 +28,20 @@ class UpdateReadersRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Vui lòng nhập tên.',
-            'name.unique' => 'Tên này đã tồn tại.',
+            'name.required' => 'Vui lòng nhập tên',
+            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
+            'name.unique' => 'Tên đã tồn tại.',
+            'email.required' => 'Vui lòng nhập email',
+            'email.unique' => 'Email đã tồn tại.',
+            'email.email' => 'Email không đúng định dạng.',
+            'email.regex' => 'Địa chỉ email phải chứa ký tự @.',
+            'phone.required' => 'Vui lòng nhập số điện thoại',
+            'phone.integer' => 'Số điện thoại phải là số.',
+            'phone.digits' => 'Số điện thoại  phải có 10 chữ số.',
+            'address.required' => 'Vui lòng nhập địa chỉ',
+            'gender.required' => 'Vui lòng chọn giới tính',
+            'year_birth.required' => 'Vui lòng nhập năm sinh',
+
         ];
     }
 

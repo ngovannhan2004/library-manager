@@ -46,21 +46,46 @@
 @endsection
 @section('content_card')
     <form action="{{ route('admin.users.store') }}" method="post" class="form-control-sm">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
             <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
                    value="{{ old('name') }}">
+
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <label for="email" class="required form-label">Email</label>
             <input name="email" type="text" class="form-control form-control-solid" placeholder="Nhập email"
                    value="{{ old('email') }}">
+
+            @error('email')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
         </div>
         <div class="mb-10">
             <label for="password" class="required form-label">Mật khẩu</label>
             <input name="password" type="password" class="form-control form-control-solid" placeholder="Nhập mật khẩu"
                    value="{{ old('password') }}">
+
+
+            @error('password')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
         </div>
         <div class="mb-10">
             <label for="namsinh" class="required form-label">Năm sinh</label>
@@ -77,9 +102,8 @@
         <div class="mb-10">
             <label for="gender" class="required form-label">Gender</label>
             <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" {{ old('gender') === 'Nam' ? 'selected' : '' }}>Nam</option>
-                <option value="Nữ" {{ old('gender') === 'Nữ' ? 'selected' : '' }}>Nữ</option>
-                <option value="Khác" {{ old('gender') === 'Khác' ? 'selected' : '' }}>Khác</option>
+                <option value="nam" {{ old('') === 'nam' ? 'selected' : '' }}>Nam</option>
+                <option value="nu" {{ old('') === 'nu' ? 'selected' : '' }}>Nữ</option>
             </select>
         </div>
 
@@ -87,6 +111,10 @@
             <label for="sdt" class="required form-label">Số Điện Thoại</label>
             <input name="sdt" type="text" class="form-control form-control-solid" placeholder="Nhập số điện thoại"
                    value="{{ old('sdt') }}">
+
+            @error('sdt')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <label for="role" class="required form-label">Role</label>

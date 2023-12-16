@@ -71,7 +71,8 @@
                     <td><?php echo e($reader->phone); ?></td>
                     <td><?php echo e($reader->email); ?></td>
                     <td><?php echo e($reader->gender); ?></td>
-                    <td><?php echo e($reader->books() ->count()); ?></td>
+                    <td><?php echo e($reader->year_birth); ?></td>
+
 
 
                     <td>

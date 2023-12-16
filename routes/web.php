@@ -11,6 +11,7 @@ use App\Http\Controllers\PaymentSlipController;
 use App\Http\Controllers\PublishingCompanyController;
 use App\Http\Controllers\ReadersController;
 use App\Http\Controllers\ConditonController;
+use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -91,17 +92,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::get('/delete/{id}', [ReadersController::class, 'destroy'])->name('admin.readers.delete');
         Route::get('/restore/{id}', [ReadersController::class, 'restore'])->name('admin.readers.restore');
     });
-
     Route::group(['prefix' => 'payment-slip'], function () {
         Route::get('/', [PaymentSlipController::class, 'index'])->name('admin.payment_slips.index');
-        Route::get('book-back', [PaymentSlipController::class, 'book_back'])->name('admin.payment_slips.book_back');
         Route::get('/create', [PaymentSlipController::class, 'create'])->name('admin.payment_slips.create');
         Route::post('/store', [PaymentSlipController::class, 'store'])->name('admin.payment_slips.store');
         Route::get('/edit/{id}', [PaymentSlipController::class, 'edit'])->name('admin.payment_slips.edit');
         Route::post('/update/{id}', [PaymentSlipController::class, 'update'])->name('admin.payment_slips.update');
         Route::get('/delete/{id}', [PaymentSlipController::class, 'destroy'])->name('admin.payment_slips.delete');
         Route::get('/restore/{id}', [PaymentSlipController::class, 'restore'])->name('admin.payment_slips.restore');
-    });Route::group(['prefix' => 'loan-slip'], function () {
+    });
+    Route::group(['prefix' => 'loan-slip'], function () {
         Route::get('/', [LoanSlipController::class, 'index'])->name('admin.loan_slips.index');
         Route::get('/create', [LoanSlipController::class, 'create'])->name('admin.loan_slips.create');
         Route::post('/store', [LoanSlipController::class, 'store'])->name('admin.loan_slips.store');
@@ -110,7 +110,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::get('/delete/{id}', [LoanSlipController::class, 'destroy'])->name('admin.loan_slips.delete');
         Route::get('/restore/{id}', [LoanSlipController::class, 'restore'])->name('admin.loan_slips.restore');
     });
-    Route::group(['prefix' => 'book'], function () {
+     Route::group(['prefix' => 'book'], function () {
         Route::get('/', [BookController::class, 'index'])->name('admin.books.index');
         Route::get('/create', [BookController::class, 'create'])->name('admin.books.create');
         Route::post('/store', [BookController::class, 'store'])->name('admin.books.store');
@@ -118,6 +118,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::post('/update/{id}', [BookController::class, 'update'])->name('admin.books.update');
         Route::get('/delete/{id}', [BookController::class, 'destroy'])->name('admin.books.delete');
         Route::get('/restore/{id}', [BookController::class, 'restore'])->name('admin.books.restore');
+    });
+
+        Route::group(['prefix' => 'statistic'], function () {
+        Route::get('/', [StatisticController::class, 'index'])->name('admin.statistics.index');
     });
 
 

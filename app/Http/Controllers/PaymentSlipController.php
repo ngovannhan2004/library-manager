@@ -75,7 +75,7 @@ class PaymentSlipController extends Controller
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
         $payment_slip = $this->paymentSlipService->getById($id);
-        return view('admin.pages.payment_slip.edit', compact('payment_slips', 'payment_slip', 'books', 'readers'));
+        return view('admin.pages.payment_slip.edit', compact('payment_slip', 'payment_slip', 'books', 'readers'));
     }
 
     /**
@@ -96,12 +96,7 @@ class PaymentSlipController extends Controller
         return redirect()->route('admin.payment_slips.index')->with('success', 'Xóa phiếu thu thành công');
     }
 
-//    public function book_back(Request $request)
-//    {
-//        $this->paymentSlipService->book_back($request);
-//        return redirect()->route('admin.payment_slips.book_back')->with('success', '');
-//
-//    }
+
 
 
 }

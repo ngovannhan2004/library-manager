@@ -38,12 +38,20 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
     <form action="<?php echo e(route('admin.books.update', $book->id)); ?>" method="post" class="form-control-sm">
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
             <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
                    value="<?php echo e($book->name); ?>">
-
             <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -60,13 +68,11 @@ unset($__errorArgs, $__bag); ?>
             <label for="category_id" class="required form-label">Category</label>
             <select name="category_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1">
+                <option value="0">None</option>
                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
+                    <option <?php if($book->category_id == $category->id): ?> selected <?php endif; ?> value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
             </select>
-
             <?php $__errorArgs = ['category_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -78,14 +84,12 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
-
         <div class="mb-10">
             <label for="publisher_id" class="required form-label">Publishing Companies</label>
             <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" >
+                    data-placeholder="Select parent category">
                 <?php $__currentLoopData = $publishingCompanies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publishingCompany): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($publishingCompany->id); ?>"><?php echo e($publishingCompany->name); ?></option>
-
+                    <option <?php if($book->publisher_id == $publishingCompany->id): ?> selected <?php endif; ?> value="<?php echo e($publishingCompany->id); ?>"><?php echo e($publishingCompany->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
             <?php $__errorArgs = ['publisher_id'];
@@ -100,14 +104,14 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
-            <label for="statuses_id" class="required form-label">Status</label>
-            <select name="statuses_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category"  >
-                <?php $__currentLoopData = $statuses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $status): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($status->id); ?>"><?php echo e($status->name); ?></option>
+            <label for="condition_id" class="required form-label">Status</label>
+            <select name="condition_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select Status">
+                <?php $__currentLoopData = $conditions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $condition): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option <?php if($book->condition_id == $condition->id): ?> selected <?php endif; ?> value="<?php echo e($condition->id); ?>"><?php echo e($condition->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
-            <?php $__errorArgs = ['statuses_id'];
+            <?php $__errorArgs = ['condition_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -118,15 +122,15 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
+
         <div class="mb-10">
             <label for="author_ids" class="required form-label">Author</label>
             <select name="author_ids[]" class="form-select form-select-solid" data-control="select2" multiple
-                    data-placeholder="Select Authors" >
+                    data-placeholder="Select Authors">
                 <?php $__currentLoopData = $authors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $author): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($author->id); ?>"><?php echo e($author->name); ?></option>
+                    <option <?php if(in_array($author->id, $book->authors->pluck('id')->toArray())): ?> selected <?php endif; ?> value="<?php echo e($author->id); ?>"><?php echo e($author->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </select>
-
             <?php $__errorArgs = ['author_ids'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

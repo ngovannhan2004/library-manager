@@ -32,13 +32,13 @@ class StoreUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-//            'name.required' => 'Vui lòng nhập tên.',
-//            'name.unique' => 'User này đã tồn tại.',
-//            'email.required' => 'Vui lòng nhập email.',
-//            'email.unique' => 'Email này đã tồn tại.',
-//            'password.required' => 'Vui lòng nhập mật khẩu.',
-//            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
-//            'role.required' => 'Vui lòng chọn quyền.',
+            'name.required' => 'Vui lòng nhập tên.',
+            'name.unique' => 'User này đã tồn tại.',
+            'email.required' => 'Vui lòng nhập email.',
+            'email.unique' => 'Email này đã tồn tại.',
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
+            'role.required' => 'Vui lòng chọn quyền.',
         ];
     }
 

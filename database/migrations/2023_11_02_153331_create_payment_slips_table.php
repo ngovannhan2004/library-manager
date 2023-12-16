@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('payment_slips', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->date('returned_days');
+            $table->string('returned_days');
             $table->string('violated');
             $table->unsignedBigInteger('reader_id');
             $table->foreign('reader_id')->references('id')->on('readers');

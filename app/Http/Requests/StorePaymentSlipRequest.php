@@ -32,8 +32,8 @@ class StorePaymentSlipRequest extends FormRequest
     public function messages()
     {
         return [
-//            'borrowed_days.required' => 'Vui lòng nhap ngay muon',
-//            'returned_days.required' => 'Vui lòng nhap ngay tra',
+
+            'returned_days.required' => 'Vui lòng nhap ngay tra',
 
         ];
     }

@@ -46,33 +46,59 @@
 @endsection
 @section('content_card')
     <form action="{{route('admin.readers.update',$reader->id)}}" method="post">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>
             <input type="text" name="name" id="exampleFormControlInput1" class="form-control" value="{{$reader->name}}">
+            @error('name')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput2" class="required form-label">Address</label>
             <input type="text" name="address" id="exampleFormControlInput2" class="form-control"  value="{{ $reader->address }}">
+
+            @error('address')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput3" class="required form-label">Phone</label>
             <input type="text" name="phone" id="exampleFormControlInput3" class="form-control" value="{{ $reader->phone  }}">
+
+            @error('phone')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
         </div>
 
         <div class="mb-10">
             <label for="exampleFormControlInput4" class="required form-label">Email</label>
             <input type="email" name="email" id="exampleFormControlInput4" class="form-control" value="{{$reader->email }}">
+
+            @error('email')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
         </div>
 
         <div class="mb-10">
             <label for="gender" class="required form-label">Gender</label>
             <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" {{ old('gender') === 'Nam' ? 'selected' : '' }}>Nam</option>
-                <option value="Nữ" {{ old('gender') === 'Nữ' ? 'selected' : '' }}>Nữ</option>
-                <option value="Khác" {{ old('gender') === 'Khác' ? 'selected' : '' }}>Khác</option>
+                <option value="Male" {{$reader->gender == 'Male' ? 'selected' : ''}}>Male</option>
+                <option value="Female" {{$reader->gender == 'Female' ? 'selected' : ''}}>Female</option>
             </select>
         </div>
         <div class="mb-10">

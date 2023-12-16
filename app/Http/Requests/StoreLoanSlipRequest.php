@@ -30,10 +30,7 @@ class StoreLoanSlipRequest extends FormRequest
     public function messages()
     {
         return [
-//            'borrowed_days.required' => 'Vui lòng nhập  ngày muượn',
-//            'returned_days.required' => 'Vui lòng nhập trả ngày',
-
-
+            'borrowed_days.required' => 'Vui lòng nhập  ngày muượn',
         ];
     }
 

@@ -43,131 +43,66 @@
     Edit Payment Slip
 @endsection
 @section('content_card')
-    <form action="{{route('admin.payment_slips.update', $paymentSlip->id)}}" method="post" class="form-control-sm">
+    <form action="{{route('admin.payment_slips.update', $payment_slip->id)}}" method="post" class="form-control-sm">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
-
         <div class="mb-10">
             <label for="returned_days" class="required form-label">Return Day</label>
             <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
                  data-td-target-toggle="nearest">
-                <input type="text" class="form-control" name="returned_days"
-                       data-td-target="#kt_td_picker_localization"/>
-                <label for="name" class="required form-label">Name</label>
-                <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
-                       value="{{ $paymentSlip->name }}">
-            </div>
-
-            <div class="mb-10">
-                <label for="borrowed_days" class="required form-label">Borrowed Days</label>
-                <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
-                     data-td-target-toggle="nearest">
-                    <input type="text" class="form-control" name="borrowed_days" value="{{$paymentSlip->borrowed_days}}"
-                           data-td-target="#kt_td_picker_localization"/>
-                    <span class="input-group-text" data-td-target="#kt_td_picker_localization"
-                          data-td-toggle="datetimepicker">
+                <input type="text" class="form-control" name="returned_days" data-td-target="#kt_td_picker_localization" value="{{ $payment_slip->returned_days }}">
+                <span class="input-group-text" data-td-target="#kt_td_picker_localization"
+                      data-td-toggle="datetimepicker">
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
     </span>
-                </div>
-
-                @error('returned_days')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
             </div>
+            @error('returned_days')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-10">
+            <label for="violated" class="required form-label">Violated</label>
+            <input name="violated" type="text" class="form-control form-control-solid" placeholder=""
+                   value="{{ $payment_slip->violated }}">
+        </div>
+        <div class="mb-10">
+            <label for="reader_id" class="required form-label">Reader</label>
+            <select name="reader_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select Reader">
+                @foreach($readers as $reader)
+                    <option @if($reader->id == $payment_slip->reader_id) selected @endif value="{{ $reader->id }}">{{ $reader->name }}</option>
+                @endforeach
+            </select>
+            @error('reader_id')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-10">
+            <label for="book_ids" class="required form-label">Book</label>
+            <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
+                    data-placeholder="Select Books">
+                @foreach($books as $book)
+                    <option @if(in_array($book->id, $payment_slip->books->pluck('id')->toArray())) selected @endif value="{{ $book->id }}">{{ $book->name }}</option>
+                @endforeach
+            </select>
+            @error('book_ids')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
 
-            <div class="mb-10">
-                <label for="violated" class="required form-label">Violated</label>
-                <input name="violated" type="text" class="form-control form-control-solid" placeholder="Nhập vi phạm"
-                       value="{{ old('violated') }}">
-            </div>
-
-            <div class="mb-10">
-                <label for="book_ids" class="required form-label">Book</label>
-                <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
-                        data-placeholder="Select Books">
-                    @foreach($books as $book)
-                        <option value="{{ $book->id }}">{{ $book->name }}</option>
-                    @endforeach
-                </select>
-                @error('book_ids')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="mb-10">
-                <label for="reader_id" class="required form-label">Reader</label>
-                <select name="reader_id" class="form-select form-select-solid" data-control="select2"
-                        data-placeholder="Select Reader">
-                    <label for="return_days" class="required form-label">Return Days</label>
-                    <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
-                         data-td-target-toggle="nearest">
-                        <input type="text" class="form-control" name="returned_days"
-                               value="{{$paymentSlip->returned_days}}" data-td-target="#kt_td_picker_localization"/>
-                        <span class="input-group-text" data-td-target="#kt_td_picker_localization"
-                              data-td-toggle="datetimepicker">
-        <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
-    </span>
-                    </div>
-                </select>
-
-                <div class="mb-10">
-                    <label for="violated" class="required form-label">Violated</label>
-                    <input name="violated" type="text" class="form-control form-control-solid"
-                           placeholder="Nhập vi phạm"
-                           value="{{$paymentSlip->violated}}">
-                </div>
-
-
-                <div class="mb-10">
-                    <label for="category_id" class="required form-label">Category</label>
-                    <select name="category_id" class="form-select form-select-solid" data-control="select2"
-                            data-placeholder="Select parent category" data-select2-id="1">
-                        <option value="0">None</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="mb-10">
-                    <label for="publisher_id" class="required form-label">Publishing Company</label>
-                    <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
-                            data-placeholder="Select parent category" data-select2-id="1">
-                        <option value="0">None</option>
-                        @foreach($publishing_companies as $publishing_company)
-                            <option value="{{ $publishing_company->id }}">{{ $publishing_company->name }}</option>
-
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-10">
-                    <label for="books" class="required form-label">Book</label>
-                    <select name="books" cclass="form-select form-select-solid" data-control="select2"
-                            data-placeholder="Select " data-select2-id="1">
-                        <option value="0">None</option>
-                        @foreach($books as $book)
-                            <option value="{{ $book->id }}">{{ $book->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-10">
-                    <label for="reader" class="required form-label">Reader</label>
-                    <select name="reader" cclass="form-select form-select-solid" data-control="select2"
-                            data-placeholder="Select " data-select2-id="1">
-                        <option value="0">None</option>
-                        @foreach($readers as $reader)
-                            <option value="{{ $reader->id }}">{{ $reader->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('reader_id')
-                    <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
                 <div class="mb-10">
                     <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
                         <i class="fa fa-save"></i> Save
                     </button>
                 </div>
-            </div>
-        </div>
 
     </form>
 

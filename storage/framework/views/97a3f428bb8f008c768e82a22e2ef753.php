@@ -46,16 +46,49 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
     <form action="<?php echo e(route('admin.users.update', $user->id)); ?>" method="post" class="form-control-sm">
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name </label>
             <input name="name" type="text" class="form-control form-control-solid"
                    placeholder="Enter name category" <?php echo e(old('name')); ?> value="<?php echo e($user->name); ?>">
+
+            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
         </div>
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Email </label>
             <input name="email" type="text" class="form-control form-control-solid"
                    placeholder="Enter name category" <?php echo e(old('email')); ?> value="<?php echo e($user->email); ?>">
+
+            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
         </div>
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Password </label>
@@ -77,16 +110,28 @@
         <div class="mb-10">
             <label for="gender" class="required form-label">Giới Tính</label>
             <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" <?php echo e(old('gender') === 'Nam' ? 'selected' : ''); ?>>Nam</option>
-                <option value="Nữ" <?php echo e(old('gender') === 'Nữ' ? 'selected' : ''); ?>>Nữ</option>
-                <option value="Khác" <?php echo e(old('gender') === 'Khác' ? 'selected' : ''); ?>>Khác</option>
+                <option value="Nam" <?php echo e(old('author') === 'Nam' ? 'selected' : ''); ?>>Nam</option>
+                <option value="Nữ" <?php echo e(old('author') === 'Nữ' ? 'selected' : ''); ?>>Nữ</option>
             </select>
         </div>
 
         <div class="mb-10">
             <label for="sdt" class="required form-label">Số Điện Thoại</label>
             <input name="sdt" type="text" class="form-control form-control-solid" placeholder="Nhập số điện thoại"<?php echo e(old('sdt')); ?>  value="<?php echo e($user->sdt); ?>">
+
+            <?php $__errorArgs = ['sdt'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
         </div>
+
         <div class="mb-10">
             <label for="role" class="required form-label">Role</label>
             <select name="role" class="form-control form-control-solid" >

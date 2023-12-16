@@ -25,24 +25,24 @@ class StoreAuthorRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:authors,email',
         ];
     }
 
     public function messages()
     {
         return [
-//            'name.required' => 'Vui lòng nhập tên',
-//            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
-//            'name.unique' => 'Tên đã tồn tại.',
-//            'address.required' => 'Vui lòng nhập địa chỉ',
-//            'gender.required' => 'Vui lòng chọn giới tính',
-//            'phone.required' => 'Vui lòng nhập số điện thoại',
-//            'phone.integer' => 'Số điện thoại phải là số.',
-//            'phone.digits' => 'Số điện thoại phải có đúng 10 chữ số.',
-//            'email.required' => 'Vui lòng nhập email',
-//            'email.unique' => 'Email đã tồn tại.',
-//            'email.email' => 'Vui lòng nhập một địa chỉ email hợp lệ.',
-//            'email.regex' => 'Địa chỉ email phải chứa ký tự @.',
+            'name.required' => 'Vui lòng nhập tên',
+            'email.required' => 'Vui lòng nhập email',
+            'email.unique' => 'Email đã tồn tại.',
+            'email.email' => 'Vui lòng nhập một địa chỉ email hợp lệ.',
+            'email.regex' => 'Địa chỉ email phải chứa ký tự @.',
+            'address.required' => 'Vui lòng nhập địa chỉ',
+            'gender.required' => 'Vui lòng chọn giới tính',
+            'phone.required' => 'Vui lòng nhập số điện thoại',
+            'phone.integer' => 'Số điện thoại phải là số.',
+            'phone.digits' => 'Số điện thoại phải có đúng 10 chữ số.',
+
         ];
     }
 }

@@ -33,12 +33,20 @@
 @endsection
 @section('content_card')
     <form action="{{route('admin.categories.update', $category->id)}}" method="post" class="form-control-sm">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name </label>
             <input name="name" value="{{$category -> name}}" type="text" class="form-control form-control-solid"
                    placeholder="Enter name category" {{old('name')}}>
-
             @error('name')
             <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -61,7 +69,6 @@
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Description</label>
             <textarea name="description" id="" cols="20" rows="10" class="form-control form-control-solid">{{$category -> description}}</textarea>
-
             @error('description')
             <div class="text-danger">{{ $message }}</div>
             @enderror

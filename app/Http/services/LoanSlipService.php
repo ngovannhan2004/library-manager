@@ -49,9 +49,10 @@ class LoanSlipService
         $loanSlip = $this->loanSlip->find($id);
         $loanSlip->update([
             'borrowed_days' => $request->borrowed_days,
+            'reader_id' => $request->reader_id
         ]);
-        $loanSlip->readers()->attach($request->reader_id);
-        $loanSlip->books()->attach($request->book_ids);
+        $loanSlip->books()->sync($request->book_ids);
+        $this->bookService->updateBookLoan($request->book_ids);
         return $loanSlip;
     }
 

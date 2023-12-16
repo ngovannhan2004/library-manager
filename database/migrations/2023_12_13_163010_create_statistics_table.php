@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loan_slips', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('borrowed_days');
-            $table->unsignedBigInteger('reader_id');
-            $table->foreign('reader_id')->references('id')->on('readers');
+        Schema::create('statistics', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -25,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loan_slips');
+        Schema::dropIfExists('statistics');
     }
-
-
 };

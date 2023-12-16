@@ -37,16 +37,17 @@
 @endsection
 @section('content_card')
 
-    @if ($errors->any())
-        <div class="alert alert-danger mt-3" role="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+
     <form action="{{ route('admin.books.store') }}" method="post" class="form-control-sm">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
@@ -56,15 +57,6 @@
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-
-        <div class="mb-10">
-            <label for="category_id" class="required form-label">Category</label>
-            <select name="category_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" data-select2-id="1">
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-        </div>
-
         <div class="mb-10">
             <label for="category_id" class="required form-label">Category</label>
             <select name="category_id" class="form-select form-select-solid" data-control="select2"
@@ -74,37 +66,15 @@
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
         </select>
-        </div>
 
-        <div class="mb-10">
-            <label for="publisher_id" class="required form-label">Publishing Companies</label>
-            <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" data-select2-id="1">
-                <option value="0" >None</option>
-                @foreach($publishing_companies as $publishing_company)
-                    <option value="{{ $publishing_company->id }}">{{ $publishing_company->name }}</option>
-
-                @endforeach
-            </select>
-        </div>
-        <div class="mb-10">
-            <label for="statuses_id" class="required form-label">Statuses</label>
-            <select name="statuses_id" cclass="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" data-select2-id="1">
-                <option value="0" >None</option>
-                @foreach($statuses as $status)
-                    <option value="{{ $status->id }}">{{ $status->name }}</option>
-                @endforeach
-            </select>
             @error('category_id')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-
         <div class="mb-10">
             <label for="publisher_id" class="required form-label">Publishing Companies</label>
             <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select Publishing">
+                    data-placeholder="Select Publishing Companies">
                 @foreach($publishingCompanies as $publishingCompany)
                     <option value="{{ $publishingCompany->id }}">{{ $publishingCompany->name }}</option>
                 @endforeach
@@ -115,14 +85,14 @@
             @enderror
         </div>
         <div class="mb-10">
-            <label for="statuses_id" class="required form-label">Status</label>
+            <label for="condition_id" class="required form-label">Status</label>
             <select name="condition_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select Status">
                 @foreach($conditions as $condition)
                     <option value="{{ $condition->id }}">{{ $condition->name }}</option>
                 @endforeach
             </select>
-            @error('statuses_id')
+            @error('condition_id')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>

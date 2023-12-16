@@ -53,8 +53,7 @@
             <label for="returned_days" class="required form-label">Return Day</label>
             <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
                  data-td-target-toggle="nearest">
-                <input type="text" class="form-control" name="returned_days"
-                       data-td-target="#kt_td_picker_localization"/>
+                <input type="text" class="form-control" name="returned_days" data-td-target="#kt_td_picker_localization"/>
                 <span class="input-group-text" data-td-target="#kt_td_picker_localization"
                       data-td-toggle="datetimepicker">
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
@@ -72,11 +71,14 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
 
+
         <div class="mb-10">
             <label for="violated" class="required form-label">Violated</label>
-            <input name="violated" type="text" class="form-control form-control-solid" placeholder="Nhập vi phạm"
+            <input name="violated" type="text" class="form-control form-control-solid" placeholder=""
                    value="<?php echo e(old('violated')); ?>">
         </div>
+
+
         <div class="mb-10">
             <label for="reader_id" class="required form-label">Reader</label>
             <select name="reader_id" class="form-select form-select-solid" data-control="select2"

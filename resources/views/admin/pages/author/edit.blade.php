@@ -38,6 +38,15 @@
 @endsection
 @section('content_card')
     <form action="{{route('admin.authors.update',$author->id)}}" method="post">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>
@@ -75,11 +84,9 @@
         <div class="mb-10">
             <label for="gender" class="required form-label">Gender</label>
             <select name="gender" class="form-control form-control-solid">
-                <option value="Nam" {{ old('gender') === 'Nam' ? 'selected' : '' }}>Nam</option>
-                <option value="Nữ" {{ old('gender') === 'Nữ' ? 'selected' : '' }}>Nữ</option>
-                <option value="Khác" {{ old('gender') === 'Khác' ? 'selected' : '' }}>Khác</option>
+                <option @if($author->gender == 'male') selected @endif value="male">Male</option>
+                <option @if($author->gender == 'female') selected @endif value="female">Female</option>
             </select>
-
             @error('gender')
             <div class="text-danger">{{ $message }}</div>
             @enderror

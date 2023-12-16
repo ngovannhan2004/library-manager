@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
+
 class UpdatePaymentSlipRequest extends FormRequest
 {
     /**
@@ -22,18 +24,15 @@ class UpdatePaymentSlipRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập tên',
-            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
-            'name.unique' => 'Tên đã tồn tại.',
-            'borrowed_days.required' => 'Vui lòng nhập ngày mượn',
-            'returned_days.required' => 'Vui lòng nhập trả ngày',
+            'borrowed_days.required' => 'Vui lòng nhập ngày mượn',
+            'reader_id.required' => 'Vui lòng chọn độc giả',
+            'book_ids.required' => 'Vui lòng chọn sách',
         ];
     }
 

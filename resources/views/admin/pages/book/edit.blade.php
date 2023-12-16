@@ -36,12 +36,20 @@
 @endsection
 @section('content_card')
     <form action="{{route('admin.books.update', $book->id)}}" method="post" class="form-control-sm">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @csrf
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
             <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
                    value="{{$book->name }}">
-
             @error('name')
             <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -51,37 +59,21 @@
             <label for="category_id" class="required form-label">Category</label>
             <select name="category_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1">
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-
-
-            <label for="exampleFormControlInput1" class="required form-label">Name </label>
-            <input name="name" type="text" class="form-control form-control-solid"
-                   placeholder="Enter name category" {{old('name')}} value="{{$book->name}}">
-        </div>
-        <div class="mb-10">
-            <label for="category_id" class="required form-label">Thể loại</label>
-            <select name="category_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" data-select2-id="1">
                 <option value="0">None</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option @if($book->category_id == $category->id) selected @endif value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
-
             @error('category_id')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
-
         <div class="mb-10">
             <label for="publisher_id" class="required form-label">Publishing Companies</label>
             <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" >
+                    data-placeholder="Select parent category">
                 @foreach($publishingCompanies as $publishingCompany)
-                    <option value="{{ $publishingCompany->id }}">{{ $publishingCompany->name }}</option>
-
+                    <option @if($book->publisher_id == $publishingCompany->id) selected @endif value="{{ $publishingCompany->id }}">{{ $publishingCompany->name }}</option>
                 @endforeach
             </select>
             @error('publisher_id')
@@ -89,41 +81,26 @@
             @enderror
         </div>
         <div class="mb-10">
-            <label for="statuses_id" class="required form-label">Status</label>
-            <select name="statuses_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category"  >
-            <label for="publisher_id" class="required form-label">Nhà Xuất Bản</label>
-            <select name="publisher_id" class="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" data-select2-id="1">
-                <option value="0">None</option>
-                @foreach($publishing_companies as $publishing_company)
-                    <option value="{{ $publishing_company->id }}">{{ $publishing_company->name }}</option>
-
+            <label for="condition_id" class="required form-label">Status</label>
+            <select name="condition_id" class="form-select form-select-solid" data-control="select2"
+                    data-placeholder="Select Status">
+                @foreach($conditions as $condition)
+                    <option @if($book->condition_id == $condition->id) selected @endif value="{{ $condition->id }}">{{ $condition->name }}</option>
                 @endforeach
             </select>
-        </div>
-        <div class="mb-10">
-            <label for="statuses_id" class="required form-label">Trạng thái</label>
-            <select name="statuses_id" cclass="form-select form-select-solid" data-control="select2"
-                    data-placeholder="Select parent category" data-select2-id="1">
-                <option value="0">None</option>
-                @foreach($statuses as $status)
-                    <option value="{{ $status->id }}">{{ $status->name }}</option>
-                @endforeach
-            </select>
-            @error('statuses_id')
+            @error('condition_id')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
         <div class="mb-10">
             <label for="author_ids" class="required form-label">Author</label>
             <select name="author_ids[]" class="form-select form-select-solid" data-control="select2" multiple
-                    data-placeholder="Select Authors" >
+                    data-placeholder="Select Authors">
                 @foreach($authors as $author)
-                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                    <option @if(in_array($author->id, $book->authors->pluck('id')->toArray())) selected @endif value="{{ $author->id }}">{{ $author->name }}</option>
                 @endforeach
             </select>
-
             @error('author_ids')
             <div class="text-danger">{{ $message }}</div>
             @enderror

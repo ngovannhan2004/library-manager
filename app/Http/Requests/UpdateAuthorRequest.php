@@ -33,7 +33,6 @@ class UpdateAuthorRequest extends FormRequest
             'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
             'email.required' => 'Vui lòng nhập email',
             'email.unique' => 'Email đã tồn tại.',
-
         ];
     }
 }

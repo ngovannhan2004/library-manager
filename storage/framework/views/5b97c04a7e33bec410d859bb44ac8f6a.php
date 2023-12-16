@@ -47,9 +47,9 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-150px">Return Days</th>
+                <th class="min-w-100px">Return Days</th>
                 <th class="min-w-150px">Violated</th>
-                <th class="min-w-150px">Book</th>
+                <th class="min-w-200px">Book</th>
                 <th class="min-w-150px">Reader</th>
                 <th class="min-w-200px">Action</th>
             </tr>
@@ -65,7 +65,11 @@
                     <td><?php echo e($payment_slip->id); ?></td>
                     <td><?php echo e($payment_slip->returned_days); ?></td>
                     <td><?php echo e($payment_slip->violated); ?></td>
-                    <td><?php echo e($payment_slip->book->name); ?></td>
+                    <td>
+                        <?php $__currentLoopData = $payment_slip->books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <span class="badge badge-success"><?php echo e($book->name); ?></span>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </td>
                     <td><?php echo e($payment_slip->reader->name); ?></td>
                     <td>
                         <a href="<?php echo e(route('admin.payment_slips.edit', $payment_slip->id)); ?>"

@@ -79,10 +79,10 @@ class BookController extends Controller
         $books = $this->bookService->getAll();
         $categories = $this->categoryService->getAll();
         $publishingCompanies = $this->publishingCompanyService->getAll();
-        $statuses = $this->conditionService->getAll();
+        $conditions = $this->conditionService->getAll();
         $authors = $this->authorService->getAll();
         $book = $this->bookService->getById($id);
-        return view('admin.pages.book.edit', compact('books', 'categories', 'publishingCompanies', 'statuses', 'authors', 'book'));
+        return view('admin.pages.book.edit', compact('books', 'categories', 'publishingCompanies', 'conditions', 'authors', 'book'));
     }
 
     /**

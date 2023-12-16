@@ -26,15 +26,13 @@ class UpdateBookRequest extends FormRequest
     public function messages()
     {
         return [
-//            'name.required' => 'Vui lòng nhập tên',
-//            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
-//
-//            'name.string' => 'Vui lòng nhập tên là chuỗi.',
-//            'email.required' => 'Vui lòng nhập email.',
-//            'email.unique' => 'Email này đã tồn tại.',
-//            'password.required' => 'Vui lòng nhập mật khẩu.',
-//            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
-//            'role.required' => 'Vui lòng chọn quyền.',
+            'name.required' => 'Vui lòng nhập tên',
+            'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
+            'name.string' => 'Vui lòng nhập tên là chuỗi.',
+            'author_id.required' => 'Vui lòng nhập tác giả',
+            'category_id.required' => 'Vui lòng nhập thể loại',
+            'publisher_id.required' => 'Vui lòng nhập năm xuất bản',
+            'condition_id.required' => 'Vui lòng nhập tình trạng',
         ];
     }
 

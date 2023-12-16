@@ -20,14 +20,12 @@ class LoanSlip extends Model
         return $this->belongsTo(Reader::class, 'reader_id');
     }
 
-    public function borrows(): HasMany
+    public function books(): BelongsToMany
     {
-        return $this->hasMany(Borrow::class, 'loan_slip_id');
+        return $this->belongsToMany(Book::class, Borrow::class, 'loan_slip_id', 'book_id');
     }
 
-    public function books()
-    {
-        return $this->hasManyThrough(Book::class, LoanSlip::class, Borrow::class, 'loan_slip_id', 'id', 'id');
-    }
+
+
 
 }

@@ -70,8 +70,9 @@
                     <td>{{$reader->phone}}</td>
                     <td>{{$reader->email}}</td>
                     <td>{{$reader->gender}}</td>
-                    <td>{{ $reader->books() ->count() }}</td>
-{{--                    <td>{{$reader->year_bith}}</td>--}}
+                    <td>{{$reader->year_birth}}</td>
+
+
 
                     <td>
                         <a href="{{route('admin.readers.edit', $reader->id)}}"
