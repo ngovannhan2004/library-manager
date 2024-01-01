@@ -38,13 +38,21 @@
         <table id="kt_datatable_horizontal_scroll" class="table table-row-dashed gy-5 gs-7">
             <thead>
             <tr class="fw-semibold fs-6 text-gray-800">
+                <th class="w-10px pe-2 sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 29.9px;">
+                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                        <input class="form-check-input" type="checkbox" data-kt-check="true"
+                               data-kt-check-target="#kt_datatable_horizontal_scroll .form-check-input" value="1">
+                    </div>
+                </th>
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
                 <th class="min-w-150px">Name</th>
+                <th class="min-w-100px">Book code</th>
+                <th class="min-w-100px">Quantity</th>
                 <th class="min-w-100px">Category</th>
                 <th class="min-w-50px">Condition</th>
                 <th class="min-w-150px">Authors</th>
-                <th class="min-w-50px">Publishing Companies</th>
+                <th class="min-w-150px">Publishing Companies</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -56,8 +64,11 @@
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
+                    <td></td>
                     <td><?php echo e($book->id); ?></td>
                     <td><?php echo e($book->name); ?></td>
+                    <td><?php echo e($book->book_code); ?></td>
+                    <td><?php echo e($book->quantity); ?></td>
                     <td><?php echo e($book->category->name); ?></td>
                     <td><span class="badge badge-success"><?php echo e($book->condition->name); ?></span></td>
                     <td>

@@ -27,7 +27,7 @@ class HomeController extends Controller
         $checkLogin = $this->userService->login($request);
         if($checkLogin !== null){
             auth()->login($checkLogin);
-            return redirect()->route('admin.users.index')->with('success', 'Đăng nhập thành công');
+            return redirect()->route('admin.books.index')->with('success', 'Đăng nhập thành công');
         }
         return redirect()->back()->with('error', 'Tài khoản hoặc mật khẩu không chính xác');
     }

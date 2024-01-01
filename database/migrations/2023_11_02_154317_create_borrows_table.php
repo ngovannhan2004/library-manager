@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('loan_slip_id');
             $table->enum('back', ['true', 'false'])->default('false');
-            $table->foreign('book_id')->references('id')->on('books');
-            $table->foreign('loan_slip_id')->references('id')->on('loan_slips');
+            $table->foreign('book_id')->references('id')->on('books') ->onDelete('cascade');
+            $table->foreign('loan_slip_id')->references('id')->on('loan_slips') ->onDelete('cascade');
             $table->timestamps();
         });
     }

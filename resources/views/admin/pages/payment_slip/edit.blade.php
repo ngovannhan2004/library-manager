@@ -69,11 +69,6 @@
             @enderror
         </div>
         <div class="mb-10">
-            <label for="violated" class="required form-label">Violated</label>
-            <input name="violated" type="text" class="form-control form-control-solid" placeholder=""
-                   value="{{ $payment_slip->violated }}">
-        </div>
-        <div class="mb-10">
             <label for="reader_id" class="required form-label">Reader</label>
             <select name="reader_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select Reader">

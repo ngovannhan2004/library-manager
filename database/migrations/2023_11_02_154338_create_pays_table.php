@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('payment_slip_id');
-            $table->foreign('book_id')->references('id')->on('books');
-            $table->foreign('payment_slip_id')->references('id')->on('payment_slips');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('payment_slip_id')->references('id')->on('payment_slips')->onDelete('cascade');
             $table->timestamps();
         });
     }

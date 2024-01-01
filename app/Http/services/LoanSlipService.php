@@ -4,6 +4,8 @@ namespace App\Http\Services;
 
 use App\Models\LoanSlip;
 use App\Models\User;
+use http\Env\Request;
+use Illuminate\Support\Carbon;
 
 class LoanSlipService
 {
@@ -34,22 +36,23 @@ class LoanSlipService
 
         $loanSlip = $this->loanSlip->create([
             'borrowed_days' => $request->borrowed_days,
-            'reader_id' => $request->reader_id
+            'reader_id' => $request->reader_id,
+            'payment_deadline' => $request->payment_deadline,
+            'violated' => $request->violated
         ]);
         $loanSlip->books()->attach($request->book_ids);
         $this->bookService->updateBookLoan($request->book_ids);
         return $loanSlip;
-
-
     }
-
 
     public function update($id, $request)
     {
         $loanSlip = $this->loanSlip->find($id);
         $loanSlip->update([
             'borrowed_days' => $request->borrowed_days,
-            'reader_id' => $request->reader_id
+            'reader_id' => $request->reader_id,
+            'payment_deadline' => $request->payment_deadline,
+            'violated' => $request->violated
         ]);
         $loanSlip->books()->sync($request->book_ids);
         $this->bookService->updateBookLoan($request->book_ids);
@@ -61,5 +64,23 @@ class LoanSlipService
         $loanSlip = $this->loanSlip->find($id);
         $loanSlip->delete();
     }
+
+    public function search($request)
+    {
+
+    }
+
+    public function getLateDaysOrRemainingDays($payment_deadline)
+    {
+        // Parse ngày hết hạn từ chuỗi hoặc từ thuộc tính trong model
+        $payment_deadline = Carbon::parse($payment_deadline);
+        // Lấy ngày hiện tại
+        $today = Carbon::now();
+        // Tính số ngày trễ hạn hoặc số ngày còn lại
+        $daysDifference = $today->diffInDays($payment_deadline, false);
+        return $daysDifference;
+    }
+
+
 
 }

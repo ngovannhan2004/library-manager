@@ -13,6 +13,9 @@
     <!-- Tempus Dominus Styles -->
 @endsection
 @section('js_custom')
+    <script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js') }}"></script>
 
 @endsection
 @section('menu')
@@ -37,7 +40,6 @@
 @endsection
 @section('content_card')
 
-
     <form action="{{ route('admin.books.store') }}" method="post" class="form-control-sm">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -56,16 +58,26 @@
             @error('name')
             <div class="text-danger">{{ $message }}</div>
             @enderror
+
+        </div>
+            
+        <div class="mb-10">
+            <label for="quantity" class="required form-label">Quantity</label>
+            <input name="quantity" type="text" class="form-control form-control-solid" placeholder="Nhập số lượng"
+                   value="{{ old('quantity') }}">
+            @error('quantity')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-10">
             <label for="category_id" class="required form-label">Category</label>
             <select name="category_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1">
-                <option value="0" >None</option>
-        @foreach($categories as $category)
+                <option value="0">None</option>
+                @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
-        @endforeach
-        </select>
+                @endforeach
+            </select>
 
             @error('category_id')
             <div class="text-danger">{{ $message }}</div>
@@ -108,6 +120,7 @@
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
 
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

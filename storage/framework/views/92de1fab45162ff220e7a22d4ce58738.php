@@ -63,7 +63,36 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
-
+            <div class="mb-10">
+                <label for="book_code" class="required form-label">Book code</label>
+                <input name="book_code" type="text" class="form-control form-control-solid" placeholder="Nhập mã sách"
+                       value="<?php echo e($book->book_code); ?>">
+                <?php $__errorArgs = ['book_code'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                <div class="text-danger"><?php echo e($message); ?></div>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+            </div>
+            <div class="mb-10">
+                <label for="quantity" class="required form-label">Quantity</label>
+                <input name="quantity" type="text" class="form-control form-control-solid" placeholder="Nhập số lượng"
+                       value="<?php echo e($book->quantity); ?>">
+                <?php $__errorArgs = ['quantity'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                <div class="text-danger"><?php echo e($message); ?></div>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+            </div>
         <div class="mb-10">
             <label for="category_id" class="required form-label">Category</label>
             <select name="category_id" class="form-select form-select-solid" data-control="select2"

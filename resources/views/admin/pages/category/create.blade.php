@@ -53,8 +53,6 @@
             <label for="name" class="required form-label">Name</label>
             <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
                    value="{{ old('name') }}">
-
-
             @error('name')
             <div class="text-danger">{{ $message }}</div>
             @enderror

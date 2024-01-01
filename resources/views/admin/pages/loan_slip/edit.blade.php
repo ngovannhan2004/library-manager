@@ -73,6 +73,23 @@
             </div>
             @enderror
         </div>
+ <div class="mb-10">
+            <label for="payment_deadline" class="required form-label">Payment Deadline </label>
+            <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
+                 data-td-target-toggle="nearest">
+                <input type="text" class="form-control" name="payment_deadline"
+                       value="{{ $loan_slip->payment_deadline }}"
+                       data-td-target="#kt_td_picker_localization"/>
+                <span class="input-group-text" data-td-target="#kt_td_picker_localization"
+                      data-td-toggle="datetimepicker">
+        <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
+    </span>
+            </div>
+            @error('payment_deadline')
+            <div class="text-danger">{{ $message }}
+            </div>
+            @enderror
+        </div>
 
         <div class="mb-10">
             <label for="book_ids" class="required form-label">Book</label>

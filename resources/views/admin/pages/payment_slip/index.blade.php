@@ -47,7 +47,6 @@
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
                 <th class="min-w-100px">Return Days</th>
-                <th class="min-w-150px">Violated</th>
                 <th class="min-w-200px">Book</th>
                 <th class="min-w-150px">Reader</th>
                 <th class="min-w-200px">Action</th>
@@ -63,13 +62,12 @@
                     </td>
                     <td>{{$payment_slip->id}}</td>
                     <td>{{$payment_slip->returned_days}}</td>
-                    <td>{{$payment_slip->violated}}</td>
                     <td>
                         @foreach($payment_slip->books as $book)
-                            <span class="badge badge-success">{{$book->name}}</span>
+                            <span class="badge badge-success">{{$book->book_code}}-{{$book->name}} </span>
                         @endforeach
                     </td>
-                    <td>{{$payment_slip->reader->name}}</td>
+                    <td>{{$payment_slip->reader->reader_code}}-{{$payment_slip->reader->name}}</td>
                     <td>
                         <a href="{{route('admin.payment_slips.edit', $payment_slip->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">

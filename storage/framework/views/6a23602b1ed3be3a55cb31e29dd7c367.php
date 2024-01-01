@@ -82,6 +82,28 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
+            <div class="mb-10">
+                <label for="payment_deadline" class="required form-label"> Payment Deadline</label>
+                <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
+                     data-td-target-toggle="nearest">
+                    <input type="text" class="form-control" name="payment_deadline" data-td-target="#kt_td_picker_localization"/>
+                    <span class="input-group-text" data-td-target="#kt_td_picker_localization"
+                          data-td-toggle="datetimepicker">
+        <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
+    </span>
+                </div>
+                <?php $__errorArgs = ['payment_deadline'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                <div class="text-danger"><?php echo e($message); ?></div>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+            </div>
+
 
         <div class="mb-10">
             <label for="book_ids" class="required form-label">Book</label>
