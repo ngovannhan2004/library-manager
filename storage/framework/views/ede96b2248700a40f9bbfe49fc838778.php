@@ -47,9 +47,11 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-150px">Borrowed Days</th>
+                <th class="min-w-100px">Borrowed Days</th>
+                <th class="min-w-100px">Payment Deadline</th>
                 <th class="min-w-150px">Book</th>
                 <th class="min-w-150px">Reader</th>
+                <th class="min-w-100px">Violate</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -63,12 +65,22 @@
                     </td>
                     <td><?php echo e($loan_slip->id); ?></td>
                     <td><?php echo e($loan_slip->borrowed_days); ?></td>
+                    <td><?php echo e($loan_slip->payment_deadline); ?></td>
                     <td>
                         <?php $__currentLoopData = $loan_slip->books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <span class="badge badge-success"><?php echo e($book->name); ?></span>
+                            <span class="badge badge-success"><?php echo e($book->book_code); ?> - <?php echo e($book->name); ?> </span>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </td>
-                    <td><?php echo e($loan_slip->reader->name); ?></td>
+                    <td><?php echo e($loan_slip->reader->reader_code); ?>-<?php echo e($loan_slip->reader->name); ?></td>
+                    <?php if($loan_slip->daysDifference < 0): ?>
+                        <td  style="color: red;" ><b>Trả muộn <?php echo e(abs($loan_slip->daysDifference)); ?> ngày. </b></td>
+                    <?php elseif($loan_slip->daysDifference == 0): ?>
+                        <td style="color: orange;"><b>Đến hạn trả.</b></td>
+
+                    <?php elseif($loan_slip->daysDifference > 0): ?>
+                        <td style="color: green;"><b>Sắp đến hạn trả.</b></td>
+                    <?php endif; ?>
+
                     <td>
                         <a href="<?php echo e(route('admin.loan_slips.edit', $loan_slip->id)); ?>"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">

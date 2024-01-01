@@ -25,7 +25,7 @@ class BookService implements DAOInterface
 
     }
 
-    function getAll(): Collection
+    function getAll()
     {
         return $this->book->all();
     }
@@ -35,12 +35,6 @@ class BookService implements DAOInterface
     {
         return $this->book->find($id);
     }
-
-
-
-
-
-
 
     function getByName($name)
     {
@@ -53,7 +47,9 @@ class BookService implements DAOInterface
             'name' => $request->name,
             'publisher_id' => $request->publisher_id,
             'category_id' => $request->category_id,
-            'condition_id' => $request->condition_id
+            'condition_id' => $request->condition_id,
+            'quantity' => $request->quantity,
+            'book_code' => strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)),
         ]);
         $book->authors()->attach($request->author_ids);
 
@@ -71,7 +67,9 @@ class BookService implements DAOInterface
             'name' => $request->name,
             'publisher_id' => $request->publisher_id,
             'category_id' => $request->category_id,
-            'condition_id' => $request->condition_id
+            'condition_id' => $request->condition_id,
+            'quantity' => $request->quantity,
+            'book_code' => strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)),
         ]);
         $book->authors()->sync($request->author_ids);
         return $book;
@@ -88,26 +86,33 @@ class BookService implements DAOInterface
     function search($value)
     {
     }
-
-    function getBooksByAvailable()
-    {
-        return $this->book->where('available', 'yes')->get();
+    public function getBookLoan(){
+        return $this->book->where('quantity', '>', 0)->get();
     }
 
     function updateBookLoan($ids)
     {
-        $books = $this->book->whereIn('id', $ids);
-        $books->update([
-            'available' => 'no'
-        ]);
+            // Giảm số lượng sách cho những sách vẫn còn trong phiếu mượn
+            for ($i = 0; $i < count($ids); $i++) {
+                $book = $this->book->where('id', $ids[$i])->first();
+                $newQuantity = $book->quantity - 1;
+                $book->update([
+                    'quantity' => $newQuantity
+                ]);
+            }
+        }
 
-    }
+
     function updateBookReturn($ids)
     {
-        $books = $this->book->whereIn('id', $ids);
-        $books->update([
-            'available' => 'yes'
-        ]);
+        for ($i = 0; $i < count($ids); $i++) {
+            $book = $this->book->where('id', $ids[$i])->first();
+            $newQuantity = $book->quantity + 1;
+            $book->update([
+                'quantity' => $newQuantity
+            ]);
+        }
     }
+
 
 }

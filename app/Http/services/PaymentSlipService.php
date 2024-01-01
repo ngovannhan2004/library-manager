@@ -38,7 +38,6 @@ class PaymentSlipService
 
         $paymentSlip = $this->paymentSlip->create([
             'returned_days' => $request->returned_days,
-            'violated' => $request->violated,
             'reader_id' => $request->reader_id
         ]);
         $paymentSlip->books()->attach($request->book_ids);
@@ -54,7 +53,6 @@ class PaymentSlipService
         $paymentSlip->update([
 
             'returned_days' => $request->returned_days,
-            'violated' => $request->violated,
             'reader_id' => $request->reader_id
         ]);
 
@@ -70,5 +68,6 @@ class PaymentSlipService
             $paymentSlip->delete();
         }
     }
+
 
 }

@@ -23,10 +23,10 @@
     @endphp
 @endsection
 @section('title_component')
-    Role
+    Author
 @endsection
 @section('title_layout')
-    Edit Role
+    Edit Author
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.authors.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
@@ -34,7 +34,7 @@
     </a>
 @endsection
 @section('title_card')
-    Edit Role
+    Edit Author
 @endsection
 @section('content_card')
     <form action="{{route('admin.authors.update',$author->id)}}" method="post">

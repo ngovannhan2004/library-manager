@@ -30,6 +30,7 @@ class ReadersService
             'address' => $request->address,
             'gender' => $request->gender,
             'year_birth' => $request->year_birth,
+            'reader_code' => strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)),
         ]);
 
     }
@@ -43,6 +44,7 @@ class ReadersService
             'address' => $request->address,
             'gender' => $request->gender,
             'year_birth' => $request->year_birth,
+            'reader_code' => strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)),
         ]);
         return $readers;
     }

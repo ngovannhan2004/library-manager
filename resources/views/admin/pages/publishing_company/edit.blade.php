@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('title_page')
-    Create Publishing Company - Admin - {{ config('app.name') }}
+    Edit Publishing Company - Admin - {{ config('app.name') }}
 @endsection
 @section('name_user')
     {{auth()->user()->name}}
@@ -21,7 +21,7 @@
     Publishing Company
 @endsection
 @section('title_layout')
-    Create Publishing Company
+    Edit Publishing Company
 @endsection
 @section('actions_layout')
     <a href="{{route('admin.publishing_companies.index')}}" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
@@ -29,7 +29,7 @@
     </a>
 @endsection
 @section('title_card')
-    Create Category
+    Edit Publishing Company
 @endsection
 @section('content_card')
     <form action="{{route('admin.publishing_companies.update', $publishing_company->id)}}" method="post" class="form-control-sm">

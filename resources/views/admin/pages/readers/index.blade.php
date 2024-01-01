@@ -44,14 +44,16 @@
         <table id="kt_datatable_horizontal_scroll" class="table table-row-dashed gy-5 gs-7">
             <thead>
             <tr class="fw-semibold fs-6 text-gray-800">
-                <th class="min-w-50"></th>
+                <th class="min-w-30"></th>
                 <th class="min-w-50">ID</th>
                 <th class="min-w-100px">Name</th>
-                <th class="min-w-100px">Address</th>
+                <th class="min-w-50px">Reader code</th>
+                <th class="min-w-50px">Address</th>
                 <th class="min-w-100px">Phone</th>
-                <th class="min-w-150px">Email</th>
+                <th class="min-w-100px">Email</th>
                 <th class="min-w-50px">Gender</th>
-                <th class="min-w-100px">Year_bith</th>
+                <th class="min-w-50px">Year_bith</th>
+
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -66,6 +68,7 @@
 
                     <td>{{$reader->id}}</td>
                     <td>{{$reader->name}}</td>
+                    <td>{{$reader->reader_code}}</td>
                     <td>{{$reader->address}}</td>
                     <td>{{$reader->phone}}</td>
                     <td>{{$reader->email}}</td>

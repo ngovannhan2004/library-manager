@@ -2,6 +2,30 @@
 return [
 
     [
+        'title' => 'Book',
+        'name' => 'book',
+        'icon' => 'fa fa-list',
+        'route' => 'admin.books.index',
+        'children' => [
+            [
+                'title' => 'List Book',
+                'name' => 'index',
+                'route' => 'admin.books.index',
+            ],
+            [
+                'title' => 'Create Book',
+                'name' => 'create',
+                'route' => 'admin.books.create',
+            ],
+            [
+                'title' => 'Edit Book',
+                'name' => 'edit',
+            ]
+
+        ],
+    ],
+
+    [
         'title' => 'User',
         'name' => 'user',
         'icon' => 'fa fa-list',
@@ -48,29 +72,7 @@ return [
     ],
 
 
-    [
-        'title' => 'Book',
-        'name' => 'book',
-        'icon' => 'fa fa-list',
-        'route' => 'admin.books.index',
-        'children' => [
-            [
-                'title' => 'List Book',
-                'name' => 'index',
-                'route' => 'admin.books.index',
-            ],
-            [
-                'title' => 'Create Book',
-                'name' => 'create',
-                'route' => 'admin.books.create',
-            ],
-            [
-                'title' => 'Edit Book',
-                'name' => 'edit',
-            ]
 
-        ],
-    ],
     [
         'title' => 'Publishing Company',
         'name' => 'Publishing-Company',
@@ -189,7 +191,8 @@ return [
 
 
         ],
-    ], [
+    ],
+    [
         'title' => 'Loan Slip',
         'name' => 'loan-slip',
         'icon' => 'fa fa-list',
@@ -213,13 +216,13 @@ return [
         ],
     ],
     [
-        'title' => 'Statistic',
-        'name' => 'statistic',
+        'title' => 'Statistics',
+        'name' => 'Statistic',
         'icon' => 'fa fa-list',
         'route' => 'admin.statistics.index',
         'children' => [
             [
-                'title' => 'Statistic',
+                'title' => 'Borrow',
                 'name' => 'index',
                 'route' => 'admin.statistics.index',
             ],

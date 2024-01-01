@@ -6,12 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\DB;
 
 class Book extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+
+    // Định nghĩa trường để lưu trữ mã sách
+    protected $fillable = ['book_code', 'name', 'publisher_id', 'category_id', 'condition_id', 'quantity'];
+
 
     public function authors(): BelongsToMany
     {
@@ -31,6 +36,16 @@ class Book extends Model
     public function publishingCompany(): BelongsTo
     {
         return $this->belongsTo(PublishingCompany::class, 'publisher_id');
+    }
+
+    public static function countBorrows()
+    {
+        return DB::table('books')
+            ->select('books.id', 'books.name', DB::raw('COUNT(borrows.id) as borrow_count'))
+            ->leftJoin('borrows', 'books.id', '=', 'borrows.book_id')
+            ->groupBy('books.id', 'books.name')
+            ->get();
+
     }
 
 

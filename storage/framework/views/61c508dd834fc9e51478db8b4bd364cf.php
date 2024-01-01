@@ -15,6 +15,9 @@
     <!-- Tempus Dominus Styles -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_custom'); ?>
+    <script src="<?php echo e(asset('assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/pages/crud/forms/widgets/bootstrap-timepicker.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/pages/crud/forms/widgets/bootstrap-datetimepicker.js')); ?>"></script>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('menu'); ?>
@@ -39,16 +42,16 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
 
-    <?php if($errors->any()): ?>
-        <div class="alert alert-danger mt-3" role="alert">
-            <ul>
-                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </ul>
-        </div>
-    <?php endif; ?>
     <form action="<?php echo e(route('admin.books.store')); ?>" method="post" class="form-control-sm">
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
         <div class="mb-10">
             <label for="name" class="required form-label">Name</label>
@@ -64,16 +67,33 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+
+        </div>
+            
+        <div class="mb-10">
+            <label for="quantity" class="required form-label">Quantity</label>
+            <input name="quantity" type="text" class="form-control form-control-solid" placeholder="Nhập số lượng"
+                   value="<?php echo e(old('quantity')); ?>">
+            <?php $__errorArgs = ['quantity'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
             <label for="category_id" class="required form-label">Category</label>
             <select name="category_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1">
-                <option value="0" >None</option>
-        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <option value="0">None</option>
+                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </select>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
 
             <?php $__errorArgs = ['category_id'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -144,6 +164,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
+
 
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">

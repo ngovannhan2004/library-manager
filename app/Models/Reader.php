@@ -13,6 +13,16 @@ class Reader extends Model
 
     protected $guarded = [];
 
+    protected $fillable = ['reader_code', 'name', 'phone', 'email', 'address', 'gender', 'year_birth'];
+
+//    protected static function boot()
+//    {
+//        parent::boot();
+//        static::creating(function ($book) {
+//            $book->reader_code = strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)); // Tạo mã  ngẫu nhiên có 6 ký tự
+//        });
+//    }
+
     public function loanSlips(): HasMany
     {
         return $this->hasMany(LoanSlip::class, 'reader_id');

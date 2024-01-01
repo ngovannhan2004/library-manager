@@ -46,9 +46,11 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-150px">Borrowed Days</th>
+                <th class="min-w-100px">Borrowed Days</th>
+                <th class="min-w-100px">Payment Deadline</th>
                 <th class="min-w-150px">Book</th>
                 <th class="min-w-150px">Reader</th>
+                <th class="min-w-100px">Violate</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -62,12 +64,22 @@
                     </td>
                     <td>{{$loan_slip->id}}</td>
                     <td>{{$loan_slip->borrowed_days}}</td>
+                    <td>{{$loan_slip->payment_deadline}}</td>
                     <td>
                         @foreach($loan_slip->books as $book)
-                            <span class="badge badge-success">{{$book->name}}</span>
+                            <span class="badge badge-success">{{$book->book_code}} - {{$book->name}} </span>
                         @endforeach
                     </td>
-                    <td>{{$loan_slip->reader->name}}</td>
+                    <td>{{$loan_slip->reader->reader_code}}-{{$loan_slip->reader->name}}</td>
+                    @if ($loan_slip->daysDifference < 0)
+                        <td  style="color: red;" ><b>Trả muộn {{ abs($loan_slip->daysDifference) }} ngày. </b></td>
+                    @elseif($loan_slip->daysDifference == 0)
+                        <td style="color: orange;"><b>Đến hạn trả.</b></td>
+
+                    @elseif($loan_slip->daysDifference > 0)
+                        <td style="color: green;"><b>Sắp đến hạn trả.</b></td>
+                    @endif
+
                     <td>
                         <a href="{{route('admin.loan_slips.edit', $loan_slip->id)}}"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">

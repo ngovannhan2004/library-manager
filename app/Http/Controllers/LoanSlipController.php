@@ -22,9 +22,9 @@ class LoanSlipController extends Controller
     private ReadersService $readersService;
 
 
+
     public function __construct(LoanSlipService $loanSlipService, BookService $bookService, ReadersService $readersService)
     {
-
         $this->loanSlipService = $loanSlipService;
         $this->bookService = $bookService;
         $this->readersService = $readersService;
@@ -32,6 +32,9 @@ class LoanSlipController extends Controller
     public function index()
     {
         $loan_slips = $this->loanSlipService->getAll();
+        for ($i = 0; $i < count($loan_slips); $i++) {
+            $loan_slips[$i]->daysDifference = $this->loanSlipService->getLateDaysOrRemainingDays($loan_slips[$i]->payment_deadline);
+        }
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
         return view('admin.pages.loan_slip.index', compact('loan_slips', 'books', 'readers'));
@@ -43,7 +46,7 @@ class LoanSlipController extends Controller
     public function create()
     {
         $loan_slips = $this->loanSlipService->getAll();
-        $books = $this->bookService->getAll();
+        $books = $this->bookService->getBookLoan();
         $readers = $this->readersService->getAll();
         return view('admin.pages.loan_slip.create', compact('loan_slips', 'books', 'readers'));
     }

@@ -13,10 +13,12 @@ return new class extends Migration {
         Schema::create('books', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('book_code');
+            $table->integer('quantity');
             $table->unsignedBigInteger('publisher_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('condition_id');
-            $table->enum('available', ['yes', 'no', 'lost'])->default('yes');
+            $table->enum('available', ['true', ' false'])->default('true');
             $table->foreign('publisher_id')->references('id')->on('publishing_companies');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('condition_id')->references('id')->on('conditions');

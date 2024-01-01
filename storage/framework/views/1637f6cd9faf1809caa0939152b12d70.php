@@ -39,6 +39,15 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
     <form action="<?php echo e(route('admin.conditions.store')); ?>" method="post">
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
         <div class="mb-10">
             <label for="exampleFormControlInput1" class="required form-label">Name</label>
