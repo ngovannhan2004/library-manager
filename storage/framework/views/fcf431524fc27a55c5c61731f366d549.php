@@ -1,5 +1,5 @@
 <?php $__env->startSection('title_page'); ?>
-    List Publishing Company - Admin - <?php echo e(config('app.name')); ?>
+    List Book - Admin - <?php echo e(config('app.name')); ?>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('name_user'); ?>
@@ -9,81 +9,55 @@
 <?php $__env->startSection('css_custom'); ?>
     <link href="<?php echo e(asset('/admin/assets/plugins/custom/datatables/datatables.bundle.css')); ?>" rel="stylesheet"
           type="text/css"/>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_custom'); ?>
     <script src="<?php echo e(asset('/admin/assets/plugins/custom/datatables/datatables.bundle.js')); ?>"></script>
-    <script !src="">
-        $("#kt_datatable_horizontal_scroll").DataTable({
-            dom: 'Bfrtip',
-            order: [],
-        });
-    </script>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('menu'); ?>
+
     <?php
-        $menu_parent = 'publishing_company';
-        $menu_child = 'index';
+        $menu_parent = 'readers';
+        $menu_child = 'book';
     ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_component'); ?>
-    Publishing Company
+    List Book Borrow
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_layout'); ?>
-    List Publishing Company
+    List Book
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('actions_layout'); ?>
-    <a href="<?php echo e(route('admin.publishing_companies.create')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
-        <i class="fa fa-plus"></i> Add Publishing Company
+    <a href="<?php echo e(route('admin.readers.index')); ?>" class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
+        <i class="fa fa-plus"></i> List Reader
     </a>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_card'); ?>
-    List Publishing Company
+    List Book
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
     <div class="table-responsive">
         <table id="kt_datatable_horizontal_scroll" class="table table-row-dashed gy-5 gs-7">
             <thead>
             <tr class="fw-semibold fs-6 text-gray-800">
-                <th class="min-w-50"></th>
-                <th class="min-w-50">ID</th>
+                <th class="min-w-10px"></th>
                 <th class="min-w-150px">Name</th>
-                <th class="min-w-200px">Address</th>
-                <th class="min-w-100px">Phone</th>
-                <th class="min-w-150px">Email</th>
-                <th class="min-w-200px">Action</th>
+                <th class="min-w-100px">Book code</th>
+
             </tr>
             </thead>
             <tbody>
-            <?php $__currentLoopData = $publishing_companies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $publishing_company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+            <?php $__currentLoopData = $borrowedBooks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $loanSlip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                 <tr>
                     <td>
                         <div class="form-check form-check-sm form-check-custom form-check-solid">
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
-                    <td><?php echo e($publishing_company->id); ?></td>
-                    <td><?php echo e($publishing_company->name); ?></td>
-                    <td><?php echo e($publishing_company->address); ?></td>
-                    <td><?php echo e($publishing_company->phone); ?></td>
-                    <td><?php echo e($publishing_company->email); ?></td>
-                    <td>
-                        <a href="<?php echo e(route('admin.publishing_companies.edit', $publishing_company->id)); ?>"
-                           class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <?php if($publishing_company->deleted_at == null): ?>
-                            <a href="<?php echo e(route('admin.publishing_companies.delete', $publishing_company->id)); ?>"
-                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-danger" title="Delete">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        <?php else: ?>
-                            <a href="<?php echo e(route('admin.publishing_companies.restore', $publishing_company->id)); ?>"
-                               class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-warning" title="Restore">
-                                <i class="fa fa-undo"></i>
-                            </a>
-                        <?php endif; ?>
-                    </td>
+                    <td><?php echo e($loanSlip->name); ?></td>
+                    <td><?php echo e($loanSlip->book_code); ?></td>
+
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -120,4 +94,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\web\library\resources\views/admin/pages/publishing_company/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\web\library\resources\views/admin/pages/readers/books.blade.php ENDPATH**/ ?>

@@ -73,6 +73,21 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
+            <div class="mb-10">
+            <label for="exampleFormControlInput1" class="required form-label"> Reader code</label>
+            <input type="text" name="reader_code" id="exampleFormControlInput1" class="form-control" value="<?php echo e(old('reader_code')); ?>">
+            <?php $__errorArgs = ['reader_code'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+        </div>
+
 
         <div class="mb-10">
             <label for="exampleFormControlInput2" class="required form-label">Address</label>

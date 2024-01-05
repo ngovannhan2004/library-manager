@@ -69,7 +69,7 @@ class BookService implements DAOInterface
             'category_id' => $request->category_id,
             'condition_id' => $request->condition_id,
             'quantity' => $request->quantity,
-            'book_code' => strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)),
+            'book_code' => $request->book_code,
         ]);
         $book->authors()->sync($request->author_ids);
         return $book;

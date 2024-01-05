@@ -39,7 +39,6 @@ class StoreCategoryRequest extends FormRequest
             'name.required' => 'Tên thể loại không được để trống',
             'name.unique' => 'Tên thể loại đã tồn tại',
             'name.max' => 'Tên thể loại không được vượt quá 255 ký tự',
-            'parent_id.numeric' => 'Thể loại cha phải là số',
             'description.required' => 'Mô tả không được để trống',
         ];
     }

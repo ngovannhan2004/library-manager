@@ -47,7 +47,6 @@ class UserService
             'sdt' => $request->sdt,
             'gender' => $request->gender,
             'role' => $request->role
-
         ]);
         return $userCreate;
     }

@@ -24,6 +24,10 @@ class StorePublishingCompanyRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'address' => 'required',
+            'email' => 'required|email|unique:publishing_companies,email',
+            'phone' => 'required|digits:10',
+
         ];
 
     }
@@ -32,7 +36,6 @@ class StorePublishingCompanyRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên',
             'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
-            'name.unique' => 'Tên đã tồn tại.',
             'address.required' => 'Vui lòng nhập địa chỉ',
             'email.required' => 'Vui lòng nhập email',
             'email.unique' => 'Email đã tồn tại.',

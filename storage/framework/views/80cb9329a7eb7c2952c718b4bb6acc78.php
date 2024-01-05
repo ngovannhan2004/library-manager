@@ -78,11 +78,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
-            <label for="violated" class="required form-label">Violated</label>
-            <input name="violated" type="text" class="form-control form-control-solid" placeholder=""
-                   value="<?php echo e($payment_slip->violated); ?>">
-        </div>
-        <div class="mb-10">
             <label for="reader_id" class="required form-label">Reader</label>
             <select name="reader_id" class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select Reader">
@@ -119,6 +114,23 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+
+            <div class="mb-10">
+                <label for="exampleFormControlInput1" class="required form-label">punishment</label>
+                <input type="text" name="punishment" id="exampleFormControlInput1" class="form-control" value="<?php echo e($payment_slip->punishment); ?>">
+            </div>
+            <?php $__errorArgs = ['punishment'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
+
         </div>
 
                 <div class="mb-10">

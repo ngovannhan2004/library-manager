@@ -48,12 +48,11 @@
                 <th class="min-w-50">ID</th>
                 <th class="min-w-100px">Name</th>
                 <th class="min-w-50px">Reader code</th>
-                <th class="min-w-50px">Address</th>
-                <th class="min-w-100px">Phone</th>
-                <th class="min-w-100px">Email</th>
+                <th class="min-w-100px">Address</th>
+                <th class="min-w-50px">Phone</th>
+                <th class="min-w-50px">Email</th>
                 <th class="min-w-50px">Gender</th>
                 <th class="min-w-50px">Year_bith</th>
-
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -74,8 +73,6 @@
                     <td>{{$reader->email}}</td>
                     <td>{{$reader->gender}}</td>
                     <td>{{$reader->year_birth}}</td>
-
-
 
                     <td>
                         <a href="{{route('admin.readers.edit', $reader->id)}}"

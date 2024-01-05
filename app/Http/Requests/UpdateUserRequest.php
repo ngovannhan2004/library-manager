@@ -17,6 +17,8 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255' ,
+            'email' => 'required|string|email|max:255',
+
 
 
         ];
@@ -32,12 +34,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name.required' => 'Vui lòng nhập tên.',
-            'name.unique' => 'Tên này đã tồn tại.',
             'email.required' => 'Vui lòng nhập email.',
-            'email.unique' => 'Email này đã tồn tại.',
-            'password.required' => 'Vui lòng nhập mật khẩu.',
-            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
-            'author.required' => 'Vui lòng chọn quyền.',
         ];
     }
 }

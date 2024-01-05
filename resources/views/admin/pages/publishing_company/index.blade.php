@@ -47,7 +47,7 @@
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
                 <th class="min-w-150px">Name</th>
-                <th class="min-w-150px">Address</th>
+                <th class="min-w-200px">Address</th>
                 <th class="min-w-100px">Phone</th>
                 <th class="min-w-150px">Email</th>
                 <th class="min-w-200px">Action</th>

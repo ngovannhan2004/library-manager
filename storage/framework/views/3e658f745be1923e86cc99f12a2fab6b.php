@@ -15,7 +15,6 @@
     <!-- Tempus Dominus Styles -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_custom'); ?>
-
     <script>
         new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization"), {
             localization: {
@@ -62,7 +61,8 @@
             <label for="returned_days" class="required form-label">Return Day</label>
             <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
                  data-td-target-toggle="nearest">
-                <input type="text" class="form-control" name="returned_days" data-td-target="#kt_td_picker_localization"/>
+                <input type="text" class="form-control" name="returned_days"
+                       data-td-target="#kt_td_picker_localization"/>
                 <span class="input-group-text" data-td-target="#kt_td_picker_localization"
                       data-td-toggle="datetimepicker">
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
@@ -74,6 +74,28 @@ if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
             <div class="text-danger"><?php echo e($message); ?></div>
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
+        </div>
+        <div class="mb-10">
+            <label for="book_ids" class="required form-label">Book</label>
+            <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
+                    data-placeholder="Select Books">
+                <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($book->id); ?>"><?php echo e($book->name); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+            <?php $__errorArgs = ['book_ids'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+            <div class="text-danger"><?php echo e($message); ?>
+
+            </div>
             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
@@ -92,22 +114,20 @@ $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-            <div class="text-danger"><?php echo e($message); ?></div>
+            <div class="text-danger"><?php echo e($message); ?>
+
+            </div>
             <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
-            <label for="book_ids" class="required form-label">Book</label>
-            <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
-                    data-placeholder="Select Books">
-                <?php $__currentLoopData = $books; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $book): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($book->id); ?>"><?php echo e($book->name); ?></option>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </select>
+            <label for="exampleFormControlInput1" class="required form-label">punishment</label>
+            <input type="text" name="punishment" id="exampleFormControlInput1" class="form-control"
+                   value="<?php echo e(old('punishment')); ?>">
 
-            <?php $__errorArgs = ['book_ids'];
+            <?php $__errorArgs = ['punishment'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Services;
 
+use App\Models\Book;
 use App\Models\PaymentSlip;
+use App\Models\Reader;
 
 class PaymentSlipService
 {
@@ -38,7 +40,8 @@ class PaymentSlipService
 
         $paymentSlip = $this->paymentSlip->create([
             'returned_days' => $request->returned_days,
-            'reader_id' => $request->reader_id
+            'reader_id' => $request->reader_id,
+            'punishment' => $request->punishment
         ]);
         $paymentSlip->books()->attach($request->book_ids);
         $this->bookService->updateBookReturn($request->book_ids);
@@ -53,7 +56,8 @@ class PaymentSlipService
         $paymentSlip->update([
 
             'returned_days' => $request->returned_days,
-            'reader_id' => $request->reader_id
+            'reader_id' => $request->reader_id,
+            'punishment' => $request->punishment
         ]);
 
         $paymentSlip->books()->sync($request->book_ids);
@@ -68,6 +72,7 @@ class PaymentSlipService
             $paymentSlip->delete();
         }
     }
+
 
 
 }

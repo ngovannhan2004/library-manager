@@ -24,6 +24,12 @@ class StoreReadersRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'reader_code' => 'required|unique:readers,reader_code',
+            'email' => 'required|email|unique:readers,email',
+            'phone' => 'required|digits:10',
+            'address' => 'required',
+            'gender' => 'required',
+            'year_birth' => 'required',
         ];
     }
     public function messages()
@@ -31,7 +37,8 @@ class StoreReadersRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên',
             'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
-            'name.unique' => 'Tên đã tồn tại.',
+            'reader_code.required' => 'Vui lòng nhập mã độc giả',
+            'reader_code.unique' => 'Mã độc giả đã tồn tại.',
             'email.required' => 'Vui lòng nhập email',
             'email.unique' => 'Email đã tồn tại.',
             'email.email' => 'Email không đúng định dạng.',

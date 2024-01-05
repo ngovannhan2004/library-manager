@@ -25,8 +25,8 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255' ,
-            'parent_id' => 'required|integer|exists:categories,id',
+            'name' => 'required|string|max:255',
+            'description' => 'required',
         ];
     }
     /**
@@ -40,9 +40,6 @@ class UpdateCategoryRequest extends FormRequest
             'name.required' => 'Vui lòng nhập tên.',
             'name.string' => 'Tên phải là một chuỗi.',
             'name.max' => 'Tên không được vượt quá :max ký tự.',
-            'parent_id.required' => 'Vui lòng chọn danh mục cha.',
-            'parent_id.integer' => 'Danh mục cha phải là một số nguyên.',
-            'parent_id.exists' => 'Danh mục cha không tồn tại.',
         ];
     }
 
