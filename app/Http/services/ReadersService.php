@@ -2,11 +2,14 @@
 
 namespace App\Http\Services;
 
+use App\Models\LoanSlip;
 use App\Models\Reader;
+use Illuminate\Support\Facades\DB;
 
 class ReadersService
 {
     private Reader $readers;
+
 
     public function __construct(Reader $readers)
     {
@@ -30,7 +33,7 @@ class ReadersService
             'address' => $request->address,
             'gender' => $request->gender,
             'year_birth' => $request->year_birth,
-            'reader_code' => strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)),
+            'reader_code' =>$request->reader_code
         ]);
 
     }
@@ -44,7 +47,7 @@ class ReadersService
             'address' => $request->address,
             'gender' => $request->gender,
             'year_birth' => $request->year_birth,
-            'reader_code' => strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 6)),
+            'reader_code' =>$request->reader_code
         ]);
         return $readers;
     }
@@ -53,4 +56,8 @@ class ReadersService
         $readers = $this->readers->find($id);
         $readers->delete();
     }
+
+
+
+
 }

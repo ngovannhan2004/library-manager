@@ -20,6 +20,8 @@ class UpdateBookRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+
+
         ];
     }
 
@@ -28,11 +30,6 @@ class UpdateBookRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên',
             'name.max' => 'Vui lòng nhập tên nhỏ hơn 255 ký tự.',
-            'name.string' => 'Vui lòng nhập tên là chuỗi.',
-            'author_id.required' => 'Vui lòng nhập tác giả',
-            'category_id.required' => 'Vui lòng nhập thể loại',
-            'publisher_id.required' => 'Vui lòng nhập năm xuất bản',
-            'condition_id.required' => 'Vui lòng nhập tình trạng',
         ];
     }
 

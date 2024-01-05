@@ -26,6 +26,10 @@ class StoreAuthorRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:authors,email',
+            'address' => 'required',
+            'gender' => 'required',
+            'phone' => 'required|digits:10',
+
         ];
     }
 
@@ -40,7 +44,6 @@ class StoreAuthorRequest extends FormRequest
             'address.required' => 'Vui lòng nhập địa chỉ',
             'gender.required' => 'Vui lòng chọn giới tính',
             'phone.required' => 'Vui lòng nhập số điện thoại',
-            'phone.integer' => 'Số điện thoại phải là số.',
             'phone.digits' => 'Số điện thoại phải có đúng 10 chữ số.',
 
         ];

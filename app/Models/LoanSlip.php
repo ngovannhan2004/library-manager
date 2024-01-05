@@ -35,6 +35,16 @@ class LoanSlip extends Model
        return self::query()->distinct('reader_id')->count('reader_id');
     }
 
+    public function book()
+    {
+        return $this->belongsTo(Book::class, 'book_id');
+    }
+
+    public function borrow()
+    {
+        return $this->hasMany(Borrow::class, 'loan_slip_id');
+    }
+
 
 
 

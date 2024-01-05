@@ -6,9 +6,12 @@ use App\Events\PaymentViolationEvent;
 use App\Http\Requests\StorePaymentSlipRequest;
 use App\Http\Requests\UpdatePaymentSlipRequest;
 use App\Http\Services\BookService;
+use App\Http\Services\LoanSlipService;
 use App\Http\Services\PaymentSlipService;
 use App\Http\Services\ReadersService;
+use App\Models\LoanSlip;
 use App\Models\PaymentSlip;
+use App\Models\Reader;
 use Illuminate\Http\Request;
 
 class PaymentSlipController extends Controller
@@ -21,12 +24,14 @@ class PaymentSlipController extends Controller
 
     private BookService $bookService;
     private ReadersService $readersService;
+    private LoanSlipService $loanSlipService;
 
-    public function __construct(PaymentSlipService $paymentSlipService, BookService $bookService, ReadersService $readersService)
+    public function __construct(PaymentSlipService $paymentSlipService, BookService $bookService, ReadersService $readersService, LoanSlipService $loanSlipService)
     {
         $this->paymentSlipService = $paymentSlipService;
         $this->bookService = $bookService;
         $this->readersService = $readersService;
+        $this->loanSlipService = $loanSlipService;
 
     }
     public function index()
@@ -41,10 +46,12 @@ class PaymentSlipController extends Controller
      */
     public function create()
     {
+
+        $loan_slips = $this->loanSlipService->getAll();
         $payment_slips = $this->paymentSlipService->getAll();
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
-        return view('admin.pages.payment_slip.create', compact('payment_slips', 'books', 'readers'));
+        return view('admin.pages.payment_slip.create', compact('payment_slips', 'books', 'readers', 'loan_slips',));
 
     }
 
@@ -75,7 +82,7 @@ class PaymentSlipController extends Controller
         $books = $this->bookService->getAll();
         $readers = $this->readersService->getAll();
         $payment_slip = $this->paymentSlipService->getById($id);
-        return view('admin.pages.payment_slip.edit', compact('payment_slip', 'payment_slip', 'books', 'readers'));
+        return view('admin.pages.payment_slip.edit', compact('payment_slip', 'payment_slip', 'books', 'readers', 'payment_slips'));
     }
 
     /**

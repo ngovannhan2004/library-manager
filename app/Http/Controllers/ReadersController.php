@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateReadersRequest;
 use App\Http\Services\ReadersService;
 use App\Models\Reader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReadersController extends Controller
 {
@@ -79,4 +80,5 @@ class ReadersController extends Controller
         $this->readersService->delete($id);
         return redirect() ->route('admin.readers.index');
     }
+
 }

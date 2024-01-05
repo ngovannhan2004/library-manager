@@ -17,6 +17,7 @@ class UpdateConditionRequest extends FormRequest
             'name' => 'required|string|max:255' ,
 
 
+
         ];
 
     }
@@ -30,7 +31,7 @@ class UpdateConditionRequest extends FormRequest
     {
         return [
             'name.required' => 'Vui lòng nhập tên.',
-            'name.unique' => 'Tên này đã tồn tại.',
+
         ];
     }
 

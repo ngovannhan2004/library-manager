@@ -40,7 +40,8 @@ class HomeController extends Controller
 
     public function register()
     {
-        return view('admin.pages.auth.register');
+        $users = $this->userService->getAll();
+        return view('admin.pages.auth.register', compact('users'));
     }
 
     public function registerPost(Request $request)
@@ -50,7 +51,7 @@ class HomeController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
-        $user = $this->userService->register($request);
+        $user = $this->userService->create($request);
         if ($user) {
             //set auth user
             auth()->login($user);

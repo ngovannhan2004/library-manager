@@ -91,6 +91,16 @@
             @error('book_ids')
             <div class="text-danger">{{ $message }}</div>
             @enderror
+
+            <div class="mb-10">
+                <label for="exampleFormControlInput1" class="required form-label">punishment</label>
+                <input type="text" name="punishment" id="exampleFormControlInput1" class="form-control" value="{{ $payment_slip->punishment }}">
+            </div>
+            @error('punishment')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
+
         </div>
 
                 <div class="mb-10">

@@ -46,11 +46,11 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-100px">Borrowed Days</th>
-                <th class="min-w-100px">Payment Deadline</th>
+                <th class="min-w-50px">Borrowed Days</th>
+                <th class="min-w-50px">Payment Deadline</th>
                 <th class="min-w-150px">Book</th>
                 <th class="min-w-150px">Reader</th>
-                <th class="min-w-100px">Violate</th>
+                <th class="min-w-100px">Note</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -72,13 +72,13 @@
                     </td>
                     <td>{{$loan_slip->reader->reader_code}}-{{$loan_slip->reader->name}}</td>
                     @if ($loan_slip->daysDifference < 0)
-                        <td  style="color: red;" ><b>Trả muộn {{ abs($loan_slip->daysDifference) }} ngày. </b></td>
-                    @elseif($loan_slip->daysDifference == 0)
-                        <td style="color: orange;"><b>Đến hạn trả.</b></td>
-
-                    @elseif($loan_slip->daysDifference > 0)
+                        <td style="color: red;"><b>Trễ hạn {{ abs($loan_slip->daysDifference) }} ngày.</b></td>
+                    @elseif ($loan_slip->daysDifference == 0)
+                        <td style="color: orange;"><b>Đúng hạn trả.</b></td>
+                    @elseif ($loan_slip->daysDifference > 0)
                         <td style="color: green;"><b>Sắp đến hạn trả.</b></td>
                     @endif
+
 
                     <td>
                         <a href="{{route('admin.loan_slips.edit', $loan_slip->id)}}"

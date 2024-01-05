@@ -11,6 +11,14 @@
 @endsection
 @section('js_custom')
     <script src="{{asset('/admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#kt_datatable_books').DataTable({
+                dom: 'Bfrtip',
+                order: [],
+            });
+        });
+    </script>
 @endsection
 @section('menu')
     @php
@@ -34,24 +42,19 @@
 @endsection
 @section('content_card')
     <div class="table-responsive">
-        <table id="kt_datatable_horizontal_scroll" class="table table-row-dashed gy-5 gs-7">
+        <table id="kt_datatable_books" class="table table-row-dashed gy-5 gs-7">
             <thead>
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="w-10px pe-2 sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 29.9px;">
-                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                        <input class="form-check-input" type="checkbox" data-kt-check="true"
-                               data-kt-check-target="#kt_datatable_horizontal_scroll .form-check-input" value="1">
-                    </div>
                 </th>
-                <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-150px">Name</th>
-                <th class="min-w-100px">Book code</th>
-                <th class="min-w-100px">Quantity</th>
+                <th class="min-w-100px">Name</th>
+                <th class="min-w-50px">Book code</th>
+                <th class="min-w-20px">Quantity</th>
                 <th class="min-w-100px">Category</th>
                 <th class="min-w-50px">Condition</th>
-                <th class="min-w-150px">Authors</th>
-                <th class="min-w-150px">Publishing Companies</th>
+                <th class="min-w-100px">Authors</th>
+                <th class="min-w-100px">Publishing Companies</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -63,7 +66,6 @@
                             <input class="form-check-input" type="checkbox" value="1">
                         </div>
                     </td>
-                    <td></td>
                     <td>{{$book->id}}</td>
                     <td>{{$book->name}}</td>
                     <td>{{$book->book_code}}</td>

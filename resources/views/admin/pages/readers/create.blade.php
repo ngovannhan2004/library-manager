@@ -64,6 +64,14 @@
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+            <div class="mb-10">
+            <label for="exampleFormControlInput1" class="required form-label"> Reader code</label>
+            <input type="text" name="reader_code" id="exampleFormControlInput1" class="form-control" value="{{ old('reader_code') }}">
+            @error('reader_code')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
 
         <div class="mb-10">
             <label for="exampleFormControlInput2" class="required form-label">Address</label>

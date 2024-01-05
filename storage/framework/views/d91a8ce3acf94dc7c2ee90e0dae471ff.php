@@ -3,25 +3,18 @@
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('name_user'); ?>
-    <?php echo e(auth()->user()->name); ?>
-
-
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('email_user'); ?>
-    <?php echo e(auth()->user()->email); ?>
-
+    Nam 077
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css_custom'); ?>
     <link href="<?php echo e(asset('/admin/assets/plugins/global/plugins.bundle.css')); ?>" rel="stylesheet" type="text/css"/>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_custom'); ?>
     <script src="<?php echo e(asset('/admin/assets/plugins/global/plugins.bundle.js')); ?>"></script>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('menu'); ?>
     <?php
         $menu_parent = 'category';
-        $menu_child = 'create';
+        $menu_child = 'edit';
     ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('title_component'); ?>
@@ -39,22 +32,21 @@
     Create Category
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content_card'); ?>
-    <?php if($errors->any()): ?>
-        <div class="alert alert-danger mt-3" role="alert">
-            <ul>
-                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </ul>
-        </div>
-    <?php endif; ?>
-    <form action="<?php echo e(route('admin.categories.store')); ?>" method="post" class="form-control-sm">
+    <form action="<?php echo e(route('admin.categories.update', $category->id)); ?>" method="post" class="form-control-sm">
+        <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <?php echo csrf_field(); ?>
-
         <div class="mb-10">
-            <label for="name" class="required form-label">Name</label>
-            <input name="name" type="text" class="form-control form-control-solid" placeholder="Nhập tên"
-                   value="<?php echo e(old('name')); ?>">
+            <label for="exampleFormControlInput1" class="required form-label">Name </label>
+            <input name="name" value="<?php echo e($category -> name); ?>" type="text" class="form-control form-control-solid"
+                   placeholder="Enter name category" <?php echo e(old('name')); ?>>
             <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -67,10 +59,11 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
-            <label for="" class="required form-label">Parent_id</label>
+            <label for="exampleFormControlInput1" class="required form-label">Parent_id</label>
             <select class="form-select form-select-solid" data-control="select2"
                     data-placeholder="Select parent category" data-select2-id="1" name="parent_id">
-                <option >None</option>
+                <option></option>
+                <option value="0">None</option>
                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($category->id); ?>"><?php echo e($category->name); ?></option>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -88,10 +81,8 @@ endif;
 unset($__errorArgs, $__bag); ?>
         </div>
         <div class="mb-10">
-            <label for="description" class="required form-label">Description</label>
-            <textarea name="description" id="" cols="20" rows="10"
-                      class="form-control form-control-solid"><?php echo e(old('description')); ?></textarea>
-
+            <label for="exampleFormControlInput1" class="required form-label">Description</label>
+            <textarea name="description" id="" cols="20" rows="10" class="form-control form-control-solid"><?php echo e($category -> description); ?></textarea>
             <?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -102,7 +93,6 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
         </div>
         <div class="mb-10">
             <button class="btn btn-primary btn-sm mr-2 mb-2 mb-lg-0">
@@ -140,4 +130,4 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\web\library\resources\views/admin/pages/category/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH F:\web\library\resources\views/admin/pages/category/edit.blade.php ENDPATH**/ ?>

@@ -13,7 +13,6 @@
     <!-- Tempus Dominus Styles -->
 @endsection
 @section('js_custom')
-
     <script>
         new tempusDominus.TempusDominus(document.getElementById("kt_td_picker_localization"), {
             localization: {
@@ -60,7 +59,8 @@
             <label for="returned_days" class="required form-label">Return Day</label>
             <div class="input-group" id="kt_td_picker_localization" data-td-target-input="nearest"
                  data-td-target-toggle="nearest">
-                <input type="text" class="form-control" name="returned_days" data-td-target="#kt_td_picker_localization"/>
+                <input type="text" class="form-control" name="returned_days"
+                       data-td-target="#kt_td_picker_localization"/>
                 <span class="input-group-text" data-td-target="#kt_td_picker_localization"
                       data-td-toggle="datetimepicker">
         <i class="ki-duotone ki-calendar fs-2"><span class="path1"></span><span class="path2"></span></i>
@@ -68,6 +68,20 @@
             </div>
             @error('returned_days')
             <div class="text-danger">{{ $message }}</div>
+            @enderror
+
+        </div>
+        <div class="mb-10">
+            <label for="book_ids" class="required form-label">Book</label>
+            <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
+                    data-placeholder="Select Books">
+                @foreach($books as $book)
+                    <option value="{{ $book->id }}">{{ $book->name }}</option>
+                @endforeach
+            </select>
+            @error('book_ids')
+            <div class="text-danger">{{ $message }}
+            </div>
             @enderror
         </div>
         <div class="mb-10">
@@ -79,19 +93,16 @@
                 @endforeach
             </select>
             @error('reader_id')
-            <div class="text-danger">{{ $message }}</div>
+            <div class="text-danger">{{ $message }}
+            </div>
             @enderror
         </div>
         <div class="mb-10">
-            <label for="book_ids" class="required form-label">Book</label>
-            <select name="book_ids[]" class="form-select form-select-solid" data-control="select2" multiple
-                    data-placeholder="Select Books">
-                @foreach($books as $book)
-                    <option value="{{ $book->id }}">{{ $book->name }}</option>
-                @endforeach
-            </select>
+            <label for="exampleFormControlInput1" class="required form-label">punishment</label>
+            <input type="text" name="punishment" id="exampleFormControlInput1" class="form-control"
+                   value="{{ old('punishment') }}">
 
-            @error('book_ids')
+            @error('punishment')
             <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>

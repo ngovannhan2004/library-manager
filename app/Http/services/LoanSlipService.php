@@ -38,7 +38,6 @@ class LoanSlipService
             'borrowed_days' => $request->borrowed_days,
             'reader_id' => $request->reader_id,
             'payment_deadline' => $request->payment_deadline,
-            'violated' => $request->violated
         ]);
         $loanSlip->books()->attach($request->book_ids);
         $this->bookService->updateBookLoan($request->book_ids);
@@ -52,7 +51,6 @@ class LoanSlipService
             'borrowed_days' => $request->borrowed_days,
             'reader_id' => $request->reader_id,
             'payment_deadline' => $request->payment_deadline,
-            'violated' => $request->violated
         ]);
         $loanSlip->books()->sync($request->book_ids);
         $this->bookService->updateBookLoan($request->book_ids);
@@ -67,6 +65,7 @@ class LoanSlipService
 
     public function search($request)
     {
+
 
     }
 

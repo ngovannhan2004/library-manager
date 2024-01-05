@@ -50,6 +50,7 @@
                 <th class="min-w-100px">Return Days</th>
                 <th class="min-w-200px">Book</th>
                 <th class="min-w-150px">Reader</th>
+                <th class="min-w-100px">Punishment</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -69,6 +70,7 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </td>
                     <td><?php echo e($payment_slip->reader->reader_code); ?>-<?php echo e($payment_slip->reader->name); ?></td>
+                    <td><?php echo e($payment_slip->punishment); ?>$</td>
                     <td>
                         <a href="<?php echo e(route('admin.payment_slips.edit', $payment_slip->id)); ?>"
                            class="btn btn-sm btn-clean btn-icon btn-icon-md btn-circle btn-primary mr-2" title="Edit">

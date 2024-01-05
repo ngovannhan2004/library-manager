@@ -47,11 +47,11 @@
             <tr class="fw-semibold fs-6 text-gray-800">
                 <th class="min-w-50"></th>
                 <th class="min-w-50">ID</th>
-                <th class="min-w-100px">Borrowed Days</th>
-                <th class="min-w-100px">Payment Deadline</th>
+                <th class="min-w-50px">Borrowed Days</th>
+                <th class="min-w-50px">Payment Deadline</th>
                 <th class="min-w-150px">Book</th>
                 <th class="min-w-150px">Reader</th>
-                <th class="min-w-100px">Violate</th>
+                <th class="min-w-100px">Note</th>
                 <th class="min-w-200px">Action</th>
             </tr>
             </thead>
@@ -73,13 +73,13 @@
                     </td>
                     <td><?php echo e($loan_slip->reader->reader_code); ?>-<?php echo e($loan_slip->reader->name); ?></td>
                     <?php if($loan_slip->daysDifference < 0): ?>
-                        <td  style="color: red;" ><b>Trả muộn <?php echo e(abs($loan_slip->daysDifference)); ?> ngày. </b></td>
+                        <td style="color: red;"><b>Trễ hạn <?php echo e(abs($loan_slip->daysDifference)); ?> ngày.</b></td>
                     <?php elseif($loan_slip->daysDifference == 0): ?>
-                        <td style="color: orange;"><b>Đến hạn trả.</b></td>
-
+                        <td style="color: orange;"><b>Đúng hạn trả.</b></td>
                     <?php elseif($loan_slip->daysDifference > 0): ?>
                         <td style="color: green;"><b>Sắp đến hạn trả.</b></td>
                     <?php endif; ?>
+
 
                     <td>
                         <a href="<?php echo e(route('admin.loan_slips.edit', $loan_slip->id)); ?>"
